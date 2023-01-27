@@ -1,0 +1,38 @@
+Cahier des charges Puissance4++:
+
+
+Description :
+	Alignés 4 pièces de la même couleurs.
+	Il existe des pièces spéciales, les pièces creuses, les bloquantes.
+	Les pièces creuses peuvent passer au-dessus des pièces pleines.
+	Les pièces bloquantes empêche les pièces creuses de passer.
+
+
+Fonctionnalités :
+	Un mode normal et un mode spécial avec les pièces spéciales en plus.
+	
+	Pièce pleine, pièce creuse et pièces bloquantes:
+	Quantités de pièces par joueur :
+		Pièce creuse : 19
+		Pièce pleine : 19
+		Pièce bloquante : 2
+	Règles:
+		Cas particuliers:
+			Si une pièce creuse est en bas:
+				Si une pièce creuse arrive : La case se remplit
+				Si une pièce pleine arrive : La case se remplit 
+				Si une pièce bloquante arrive : La pièce reste au dessus de la pièce creuse
+			Si une pièce pleine est en bas:
+				Si une pièce creuse arrive : La case se remplit
+				Si une pièce pleine arrive : La pièce reste au dessus de la pièce pleine
+				Si une pièce bloquante arrive : La pièce reste au dessus de la pièce pleine	
+			Si une pièce bloquante est en bas:
+				Si une pièce creuse arrive : La pièce reste au dessus de la pièce bloquante	
+				Si une pièce pleine arrive : La pièce reste au dessus de la pièce bloquante
+				Si une pièce bloquante arrive : La pièce reste au dessus de la pièce bloquante	
+	
+	Jouer contre un joueur.
+	Jouer contre un ordinateur (aléatoire ou semi-aléatoire).
+	Interface Graphique (SDL).
+
+	
