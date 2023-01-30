@@ -4,4 +4,4 @@ membres:
 ABART	Raphaël
 El Ghoumari Soumia
 Coupé	Xavier
-Brindeau @Thomas
+Brindeau Thomas
