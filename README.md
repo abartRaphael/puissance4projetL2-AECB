@@ -1,10 +1,14 @@
 # puissance4projetL2-AEC
 
 Membres:
-	ABART	Raphaël
-	El Ghoumari Soumia
-	Coupé	Xavier
-	Brindeau Thomas
+
+- ABART Raphaël
+
+- El Ghoumari Soumia
+
+- Coupé Xavier
+
+- Brindeau Thomas
 	
 Cadre:
 
