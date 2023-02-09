@@ -55,4 +55,8 @@ remove: clean
 	@$(rm) $(BINDIR)/$(TARGETS)
 	@echo "Executable removed!"
 
+.PHONY: doc
+doc: 
+	doxygen
+	@echo "Doc complete"
 
