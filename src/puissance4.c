@@ -1,7 +1,11 @@
 #include <stdio.h>
 //#include <stdlib.h>
 
-//ABART Raphael TP1
+/**
+ * \file puissance4.c
+ * \brief tp de L1 de puissance4
+ * \date {9/02/2023}
+*/
 
 #define LIGNES 6
 #define COLONNES 7
@@ -12,9 +16,10 @@ typedef enum{vide, rouge, jaune, } t_pion;
 
 
 
-/*
- * Remplit toutes les cases de la grille de puissance 4 avec la valeur "vide"
- * grille : grille de puissance 4
+/**
+ * \fn void initGrille(t_pion grille[LIGNES][COLONNES])
+ * \brief Remplit toutes les cases de la grille de puissance 4 avec la valeur "vide"
+ * \param grille grille de puissance 4
  */
 void initGrille(t_pion grille[LIGNES][COLONNES]) {
 
@@ -28,11 +33,12 @@ void initGrille(t_pion grille[LIGNES][COLONNES]) {
 
 
 
-/*
- * Permet de savoir si une colonne est pleine, et donc on ne peut plus y ajouter de pions
- * grille : grille de puissance 4
- * c : indice de la colonne à vérifier
- * retourne 1 si on ne peut plus ajouter de pions à cette colonne, 0 sinon
+/**
+ * \fn int estPleine(t_pion grille[LIGNES][COLONNES], int c)
+ * \brief Permet de savoir si une colonne est pleine, et donc on ne peut plus y ajouter de pions
+ * \param grille grille de puissance 4
+ * \param c indice de la colonne à vérifier
+ * \return retourne 1 si on ne peut plus ajouter de pions à cette colonne, 0 sinon
  */
 int estPleine(t_pion grille[LIGNES][COLONNES], int c) {
 
@@ -46,11 +52,12 @@ int estPleine(t_pion grille[LIGNES][COLONNES], int c) {
 
 
 
-/*
- * Permet de savoir quelle case d'une colonne donnée est vide, et la plus basse
- * grille : grille de puissance 4
- * c : indice de la colonne à vérifier
- * retourne l'indice de la ligne où la case est vide, ou -1 si la colonne est pleine
+/**
+ * \fn int caseLibre(t_pion grille[LIGNES][COLONNES], int c)
+ * \brief Permet de savoir quelle case d'une colonne donnée est vide, et la plus basse
+ * \param grille grille de puissance 4
+ * \param c indice de la colonne à vérifier
+ * \return retourne l'indice de la ligne où la case est vide, ou -1 si la colonne est pleine
  */
 int caseLibre(t_pion grille[LIGNES][COLONNES], int c) {
 
@@ -72,12 +79,13 @@ int caseLibre(t_pion grille[LIGNES][COLONNES], int c) {
 
 
 
-/*
- * Permet d'ajouter un pion à la grille de jeu
- * grille : grille de puissance 4
- * c : indice de la colonne à vérifier
- * couleur : la couleur du pion du joueur qui le joue (rouge/jaune)
- * retourne 0 si le pion est bien ajouté à la grille, 1 sinon, avec un message d'erreur
+/**
+ * \fn int ajoutPion(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur)
+ * \brief Permet d'ajouter un pion à la grille de jeu
+ * \param grille grille de puissance 4
+ * \param c indice de la colonne à vérifier
+ * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \return retourne 0 si le pion est bien ajouté à la grille, 1 sinon, avec un message d'erreur
  */
 int ajoutPion(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur){
 
@@ -102,13 +110,14 @@ int ajoutPion(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur){
 
 
 
-/*
- * vérifie si 4 pions de même couleur ou plus se trouvent sur la même LIGNE
- * grille : grille de puissance 4
- * c : indice de la colonne où le joueur à joué
- * l : indice de la ligne où le joueur à joué
- * couleur : la couleur du pion du joueur qui le joue (rouge/jaune)
- * retourne 1 s'il y a un 4 la la suite, 0 sinon
+/**
+ * \fn int quatreALaSuiteHorizontal(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur) 
+ * \brief vérifie si 4 pions de même couleur ou plus se trouvent sur la même LIGNE
+ * \param grille grille de puissance 4
+ * \param c indice de la colonne où le joueur à joué
+ * \param l indice de la ligne où le joueur à joué
+ * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int quatreALaSuiteHorizontal(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur) {
 
@@ -138,12 +147,13 @@ int quatreALaSuiteHorizontal(t_pion grille[LIGNES][COLONNES], int c, int l, t_pi
 
 
 
-/*
- * vérifie si 4 pions de même couleur ou plus se trouvent sur la même COLONNE
- * grille : grille de puissance 4
- * c : indice de la colonne où le joueur à joué
- * couleur : la couleur du pion du joueur qui le joue (rouge/jaune)
- * retourne 1 s'il y a un 4 la la suite, 0 sinon
+/**
+ * \fn int quatreALaSuiteVertical(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur)
+ * \brief vérifie si 4 pions de même couleur ou plus se trouvent sur la même COLONNE
+ * \param grille grille de puissance 4
+ * \param c indice de la colonne où le joueur à joué
+ * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int quatreALaSuiteVertical(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur) {
 
@@ -169,13 +179,14 @@ int quatreALaSuiteVertical(t_pion grille[LIGNES][COLONNES], int c, t_pion couleu
 
 
 
-/*
- * vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la gauche/haut
- * grille : grille de puissance 4
- * c : indice de la colonne où le joueur à joué
- * l : indice de la ligne où le joueur à joué
- * couleur : la couleur du pion du joueur qui le joue (rouge/jaune)
- * retourne 1 s'il y a un 4 la la suite, 0 sinon
+/**
+ * \fn int quatreALaSuiteDiagonale1(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur)
+ * \brief vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la gauche/haut
+ * \param grille grille de puissance 4
+ * \param c indice de la colonne où le joueur à joué
+ * \param l indice de la ligne où le joueur à joué
+ * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int quatreALaSuiteDiagonale1(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur) {
 
@@ -220,13 +231,14 @@ int quatreALaSuiteDiagonale1(t_pion grille[LIGNES][COLONNES], int c, int l, t_pi
 
 
 
-/*
- * vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la droite/haut
- * grille : grille de puissance 4
- * c : indice de la colonne où le joueur à joué
- * l : indice de la ligne où le joueur à joué
- * couleur : la couleur du pion du joueur qui le joue (rouge/jaune)
- * retourne 1 s'il y a un 4 la la suite, 0 sinon
+/**
+ * \fn int quatreALaSuiteDiagonale2(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur)
+ * \brief vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la droite/haut
+ * \param grille grille de puissance 4
+ * \param c indice de la colonne où le joueur à joué
+ * \param l indice de la ligne où le joueur à joué
+ * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int quatreALaSuiteDiagonale2(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur) {
 
@@ -273,12 +285,13 @@ int quatreALaSuiteDiagonale2(t_pion grille[LIGNES][COLONNES], int c, int l, t_pi
 
 
 
-/*
- * appelle les quatre fonctions pour vérifier s'il y a un 4 à la suite après le dernier coup joué
- * grille : grille de puissance 4
- * c : indice de la colonne où le joueur à joué
- * couleur : la couleur du pion du joueur qui le joue (rouge/jaune)
- * retourne 1 s'il y a un 4 la la suite, 0 sinon
+/**
+ * \fn int estQuatreALaSuite(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur)
+ * \brief appelle les quatre fonctions pour vérifier s'il y a un 4 à la suite après le dernier coup joué
+ * \param grille grille de puissance 4
+ * \param c indice de la colonne où le joueur à joué
+ * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int estQuatreALaSuite(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur) {
 
@@ -300,9 +313,10 @@ int estQuatreALaSuite(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur) {
 
 
 
-/*
- * Affiche la grille de jeu
- * grille : grille de puissance 4
+/**
+ * \fn void afficherGrille(t_pion grille[LIGNES][COLONNES])
+ * \brief Affiche la grille de jeu
+ * \param grille grille de puissance 4
  */
 void afficherGrille(t_pion grille[LIGNES][COLONNES]) {
 
@@ -333,11 +347,12 @@ void afficherGrille(t_pion grille[LIGNES][COLONNES]) {
 
 
 
-/*
- * Sauvegarde la configuration de la partie actuelle
- * grille : grille de puissance 4
- * couleur : couleur du dernier joueur à avoir joué
- * nbTours : nombre de tours effectués
+/**
+ * \fn void sauvegardeAuto(t_pion grille[LIGNES][COLONNES], t_pion couleur, int nbTours)
+ * \brief Sauvegarde la configuration de la partie actuelle
+ * \param grille grille de puissance 4
+ * \param couleur couleur du dernier joueur à avoir joué
+ * \param nbTours nombre de tours effectués
  */
 void sauvegardeAuto(t_pion grille[LIGNES][COLONNES], t_pion couleur, int nbTours) {
 
@@ -364,11 +379,12 @@ void sauvegardeAuto(t_pion grille[LIGNES][COLONNES], t_pion couleur, int nbTours
 
 
 
-/*
- * Charge la configuration de la partie sauvegardée dans le fichier "partie.txt"
- * grille : grille de puissance 4
- * couleur : couleur du dernier joueur à avoir joué
- * nbTours : nombre de tours effectués
+/**
+ * \fn void chargerPartie(t_pion grille[LIGNES][COLONNES], t_pion* couleur, int* nbTours)
+ * \brief Charge la configuration de la partie sauvegardée dans le fichier "partie.txt"
+ * \param grille grille de puissance 4
+ * \param couleur couleur du dernier joueur à avoir joué
+ * \param nbTours nombre de tours effectués
  */
 void chargerPartie(t_pion grille[LIGNES][COLONNES], t_pion* couleur, int* nbTours) {
 
@@ -407,8 +423,9 @@ void chargerPartie(t_pion grille[LIGNES][COLONNES], t_pion* couleur, int* nbTour
 
 
 
-/*
- * Supprime la partie sauvegardée dans le fichier "partie.txt", car la partie est finie
+/**
+ * \fn void supprimerPartie()
+ * \brief Supprime la partie sauvegardée dans le fichier "partie.txt", car la partie est finie
  */
 void supprimerPartie() {
 
