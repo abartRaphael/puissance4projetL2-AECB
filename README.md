@@ -13,7 +13,7 @@ Membres:
 Cadre:
 
 
-	Projet de L2 informatique de Le mas Université
+	Projet de L2 informatique de Le mans Université
 	janvier 2023 --> mars 2023
 	
 	
