@@ -1,19 +1,4 @@
-#include <stdio.h>
-//#include <stdlib.h>
-
-/**
- * \file puissance4.c
- * \brief tp de L1 de puissance4
- * \date {9/02/2023}
-*/
-
-#define LIGNES 6
-#define COLONNES 7
-
-
-
-typedef enum{vide, rouge, jaune, } t_pion;
-
+#include "fonc.h"
 
 
 /**
@@ -31,8 +16,6 @@ void initGrille(t_pion grille[LIGNES][COLONNES]) {
     }
 }
 
-
-
 /**
  * \fn int estPleine(t_pion grille[LIGNES][COLONNES], int c)
  * \brief Permet de savoir si une colonne est pleine, et donc on ne peut plus y ajouter de pions
@@ -49,8 +32,6 @@ int estPleine(t_pion grille[LIGNES][COLONNES], int c) {
         return 1;
     }
 }
-
-
 
 /**
  * \fn int caseLibre(t_pion grille[LIGNES][COLONNES], int c)
@@ -76,8 +57,6 @@ int caseLibre(t_pion grille[LIGNES][COLONNES], int c) {
 
     return -1;
 }
-
-
 
 /**
  * \fn int ajoutPion(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur)
@@ -107,8 +86,6 @@ int ajoutPion(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur){
     printf("Cette colonne est pleine, recommencez\n");
     return 1;
 }
-
-
 
 /**
  * \fn int quatreALaSuiteHorizontal(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur) 
@@ -145,8 +122,6 @@ int quatreALaSuiteHorizontal(t_pion grille[LIGNES][COLONNES], int c, int l, t_pi
     return 0;
 }
 
-
-
 /**
  * \fn int quatreALaSuiteVertical(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur)
  * \brief vérifie si 4 pions de même couleur ou plus se trouvent sur la même COLONNE
@@ -176,8 +151,6 @@ int quatreALaSuiteVertical(t_pion grille[LIGNES][COLONNES], int c, t_pion couleu
     
     return 0;
 }
-
-
 
 /**
  * \fn int quatreALaSuiteDiagonale1(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur)
@@ -434,82 +407,3 @@ void supprimerPartie() {
     fclose(f);
 }
 
-
-
-int main() {
-
-    int c, 
-        nbTours=1;
-
-    t_pion grille[LIGNES][COLONNES], 
-            couleur;
-
-
-
-    printf("Charger partie sauvegardée? (1= oui) : ");
-    scanf("%i", &c);
-
-    if(c != 0) {
-        chargerPartie(grille, &couleur, &nbTours);
-    }
-    else {
-        //joueur rouge commence
-        couleur = jaune;
-        
-        initGrille(grille);
-    }
-
-
-
-    do {
-
-        afficherGrille(grille);
-
-        //alterne la couleur de pion du joueur
-        couleur = (couleur == rouge ? jaune : rouge);
-
-
-        do{
-            printf("==== Tour des ");
-            switch(couleur) {
-                case rouge: printf("rouges(X)"); break;
-                case jaune: printf("jaunes(O)"); break;
-            }
-            printf(" ====\n");
-
-            printf("Placer un pion dans quelle colonne? : ");
-            scanf("%i", &c);
-
-        }while(ajoutPion(grille, c-1, couleur));
-
-
-        sauvegardeAuto(grille, couleur, nbTours);
-
-
-        nbTours++;
-
-    //la partie s'arrête quand il y a un 4 à la suite, ou quand les 42 pions ont été joués (tour n°42)
-    }while(!estQuatreALaSuite(grille, c-1, couleur) 
-        && nbTours <= (LIGNES*COLONNES));
-
-
-
-    //fin de partie
-    afficherGrille(grille);
-
-    if(nbTours == (LIGNES*COLONNES)) {
-        printf("match nul\n");
-    }
-    else {
-        printf("les ");
-        switch(couleur) {
-                case rouge: printf("rouges(X)"); break;
-                case jaune: printf("jaunes(O)"); break;
-            }
-        printf(" ont gagnés\n\n");
-    }
-
-    supprimerPartie();
-
-    return 0;
-}
