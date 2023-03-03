@@ -17,7 +17,7 @@ int main() {
         nbTours=1;
 
     t_pion grille[LIGNES][COLONNES], 
-            couleur;
+            couleurJoueur;
 
 
 
@@ -25,11 +25,11 @@ int main() {
     scanf("%i", &c);
 
     if(c != 0) {
-        chargerPartie(grille, &couleur, &nbTours);
+        chargerPartie(grille, &couleurJoueur, &nbTours);
     }
     else {
         //joueur rouge commence
-        couleur = jaune;
+        couleurJoueur = jaune;
         
         initGrille(grille);
     }
@@ -41,12 +41,12 @@ int main() {
         afficherGrille(grille);
 
         //alterne la couleur de pion du joueur
-        couleur = (couleur == rouge ? jaune : rouge);
+        couleurJoueur = (couleurJoueur == rouge ? jaune : rouge);
 
 
         do{
             printf("==== Tour des ");
-            switch(couleur) {
+            switch(couleurJoueur) {
                 case rouge: printf("rouges(X)"); break;
                 case jaune: printf("jaunes(O)"); break;
             }
@@ -55,16 +55,16 @@ int main() {
             printf("Placer un pion dans quelle colonne? : ");
             scanf("%i", &c);
 
-        }while(ajoutPion(grille, c-1, couleur));
+        }while(ajoutPion(grille, c-1, couleurJoueur));
 
 
-        sauvegardeAuto(grille, couleur, nbTours);
+        sauvegardeAuto(grille, couleurJoueur, nbTours);
 
 
         nbTours++;
 
     //la partie s'arrête quand il y a un 4 à la suite, ou quand les 42 pions ont été joués (tour n°42)
-    }while(!estQuatreALaSuite(grille, c-1, couleur) 
+    }while(!estQuatreALaSuite(grille, c-1, couleurJoueur) 
         && nbTours <= (LIGNES*COLONNES));
 
 
@@ -77,7 +77,7 @@ int main() {
     }
     else {
         printf("les ");
-        switch(couleur) {
+        switch(couleurJoueur) {
                 case rouge: printf("rouges(X)"); break;
                 case jaune: printf("jaunes(O)"); break;
             }
