@@ -14,7 +14,7 @@
 int main() {
 
     int c, 
-        nbTours=1;
+        nbTours=0;
 
     t_pion grille[LIGNES][COLONNES], 
             couleurJoueur;
@@ -57,11 +57,11 @@ int main() {
 
         }while(ajoutPion(grille, c-1, couleurJoueur));
 
+        nbTours++;
+
 
         sauvegardeAuto(grille, couleurJoueur, nbTours);
 
-
-        nbTours++;
 
     //la partie s'arrête quand il y a un 4 à la suite, ou quand les 42 pions ont été joués (tour n°42)
     }while(!estQuatreALaSuite(grille, c-1, couleurJoueur) 
@@ -71,6 +71,10 @@ int main() {
 
     //fin de partie
     afficherGrille(grille);
+
+    printf("nbTours = %d",nbTours);
+    printf("LIGNES*COLONNES = %d",LIGNES*COLONNES);
+    
 
     if(nbTours == (LIGNES*COLONNES)) {
         printf("match nul\n");
