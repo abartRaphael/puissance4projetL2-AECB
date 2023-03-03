@@ -1,5 +1,5 @@
-#include "fonc.h"
-
+#include "../lib/fonc.h"
+#include <stdio.h>
 
 /**
  * \fn void initGrille(t_pion grille[LIGNES][COLONNES])

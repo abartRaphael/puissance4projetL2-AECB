@@ -1,5 +1,5 @@
 #Project name (generate executable with this name)
-TARGETS  = projet
+TARGETS  = fonc
 
 CC       = gcc
 #Compiling flags here
@@ -13,6 +13,7 @@ LFLAGS   = -Wall -I. -lm
 SRCDIR   = src
 OBJDIR   = obj
 BINDIR   = bin
+LIBDIR = lib
 TRGS	 := $(TARGETS:%=$(BINDIR)/%)
 
 DIRS	 = $(OBJDIR) $(BINDIR) 
@@ -26,7 +27,7 @@ $(BINDIR):
 	mkdir -p $(BINDIR)
 
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
-INCLUDES := $(wildcard $(SRCDIR)/*.h)
+INCLUDES := $(wildcard $(LIBDIR)/*.h)
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 MAINS	 := $(TARGETS:%=$(OBJDIR)/%.o)
 
