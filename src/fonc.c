@@ -219,10 +219,10 @@ int quatreALaSuiteDiagonale2(t_pion grille[LIGNES][COLONNES], int c, int l, t_pi
         x=c, 
         y=l;
 
-    printf("x=%i\ny=%i\n", x, y);
+    //printf("x=%i\ny=%i\n", x, y);
 
     //décaler les "coordonnées" jusqu'à atteindre le bord (droit ou haut) de la grille
-    while(x < COLONNES && y > 0) {
+    while(x < (COLONNES-1) && y > 0) {
         x++;
         y--;
     }
