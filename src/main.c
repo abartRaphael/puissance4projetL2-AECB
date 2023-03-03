@@ -58,22 +58,19 @@ int main() {
         }while(ajoutPion(grille, c-1, couleurJoueur));
 
         nbTours++;
-
+        
 
         sauvegardeAuto(grille, couleurJoueur, nbTours);
 
 
     //la partie s'arrête quand il y a un 4 à la suite, ou quand les 42 pions ont été joués (tour n°42)
     }while(!estQuatreALaSuite(grille, c-1, couleurJoueur) 
-        && nbTours <= (LIGNES*COLONNES));
+        && nbTours < (LIGNES*COLONNES));
 
 
 
     //fin de partie
     afficherGrille(grille);
-
-    printf("nbTours = %d",nbTours);
-    printf("LIGNES*COLONNES = %d",LIGNES*COLONNES);
     
 
     if(nbTours == (LIGNES*COLONNES)) {
