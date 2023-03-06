@@ -59,5 +59,6 @@ remove: clean
 .PHONY: doc
 doc: 
 	doxygen
-	@echo "Doc complete"
+	@echo "Doc complete !"
+	
 
