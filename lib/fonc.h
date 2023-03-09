@@ -3,7 +3,8 @@
 
 
 
-typedef enum{vide, rouge, jaune, } t_pion;
+typedef enum{vide, rouge, jaune,} t_pion;
+
 
 
 
