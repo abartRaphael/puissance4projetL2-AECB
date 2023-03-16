@@ -1,9 +1,18 @@
 #define LIGNES 6
 #define COLONNES 7
 
+#define NB_CREUSE 3
+#define NB_BLOQUANTE 3
 
 
-typedef enum{vide, rouge, jaune,} t_pion;
+typedef enum{vide, rouge, jaune, rougejaune} t_couleur;
+typedef enum{no_type, creuse , pleine,bloquante} t_type;
+
+typedef struct{
+	t_couleur couleur;
+	t_type type;
+}t_pion;
+
 
 
 
@@ -18,8 +27,8 @@ void initGrille(t_pion grille[LIGNES][COLONNES]);
 /**
  * \fn int estPleine(t_pion grille[LIGNES][COLONNES], int c)
  * \brief Permet de savoir si une colonne est pleine, et donc on ne peut plus y ajouter de pions
- * \param grille grille de puissance 4
- * \param c indice de la colonne à vérifier
+ * \param grille : grille de puissance 4
+ * \param c : indice de la colonne à vérifier
  * \return retourne 1 si on ne peut plus ajouter de pions à cette colonne, 0 sinon
  */
 int estPleine(t_pion grille[LIGNES][COLONNES], int c);
@@ -130,8 +139,17 @@ void supprimerPartie();
 
 
 
+/**
+ * \fn int mode_creux()
+ * \brief Lance une partie en mode creux
+ */
+int mode_creux();
 
-
+/**
+ * \fn int mode_normal()
+ * \brief Lance une partie en mode normal
+ */
+int mode_normal();
 
 
 
