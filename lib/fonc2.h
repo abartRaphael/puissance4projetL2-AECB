@@ -1,3 +1,6 @@
+#ifndef H_FONC2_
+#define H_FONC2_
+
 #define LIGNES 6
 #define COLONNES 7
 
@@ -152,26 +155,5 @@ int mode_creux();
 int mode_normal();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#endif /*H_FONC2_ */
 

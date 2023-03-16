@@ -1,5 +1,6 @@
+
 #include <stdio.h>
-#include "../lib/fonc.h"
+#include "../lib/fonc2.h"
 #include <stdlib.h>
 
 /**

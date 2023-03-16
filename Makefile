@@ -1,5 +1,5 @@
 #Project name (generate executable with this name)
-TARGETS  = fonc
+TARGETS  = fonc2
 
 CC       = gcc
 #Compiling flags here
