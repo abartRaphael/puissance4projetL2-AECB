@@ -1,13 +1,36 @@
 #include "../lib/fonc2.h"
 #include <stdio.h>
 
+
 /**
-	* Compteur de pieces spéciales
+ * \file fonc2.c
+ * \brief Corps des fonctions
+ * \version 0.1
+ * \date {9/02/2023}
+ * \author Abart Raphaël
+ * \author ElGhoumari Soumia
+ * \author Coupé Xavier
+*/
+
+
+/**
+	* Compteur de pieces creuses rouges
 	*/
 unsigned int cpt_rouge_creuse = NB_CREUSE;
+
+/**
+	* Compteur de pieces bloquantes rouges
+	*/
 unsigned int cpt_rouge_bloquante = NB_BLOQUANTE;
 
+/**
+	* Compteur de pieces creuses jaunes
+	*/
 unsigned int cpt_jaune_creuse = NB_CREUSE;
+
+/**
+	* Compteur de pieces bloquantes jaunes
+	*/
 unsigned int cpt_jaune_bloquante = NB_BLOQUANTE;
 
 /**

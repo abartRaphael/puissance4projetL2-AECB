@@ -1,0 +1,351 @@
+\hypertarget{fonc2_8c}{}\doxysection{Référence du fichier src/fonc2.c}
+\label{fonc2_8c}\index{src/fonc2.c@{src/fonc2.c}}
+
+
+Corps des fonctions.  
+
+
+{\ttfamily \#include \char`\"{}../lib/fonc2.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fonc2_8c_ae658c2ef8593ea9598088f785b171f55}{init\+Grille}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]})
+\begin{DoxyCompactList}\small\item\em Remplit toutes les cases de la grille de puissance 4 avec la valeur \char`\"{}vide\char`\"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonc2_8c_a6655a1fc6f020b3092a018cf408632ef}{est\+Pleine}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c)
+\begin{DoxyCompactList}\small\item\em Permet de savoir si une colonne est pleine, et donc on ne peut plus y ajouter de pions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonc2_8c_a09ab0ca5741593c36a08cfcf4b4f40d1}{case\+Libre}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c)
+\begin{DoxyCompactList}\small\item\em Permet de savoir quelle case d\textquotesingle{}une colonne donnée est vide, et la plus basse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonc2_8c_a36f9ce92ef78a6347fca7d6e75862ed0}{ajout\+Pion}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, t\+\_\+pion pion)
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}ajouter un pion à la grille de jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonc2_8c_ad28f2b9a36c2a3026e39bb8fc320b6fa}{quatre\+ALa\+Suite\+Horizontal}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, int l, t\+\_\+pion pion)
+\begin{DoxyCompactList}\small\item\em vérifie si 4 pions de même couleur ou plus se trouvent sur la même LIGNE \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonc2_8c_aeb1de0b9d832cece94e005bf5ff42305}{quatre\+ALa\+Suite\+Vertical}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, t\+\_\+pion pion)
+\begin{DoxyCompactList}\small\item\em vérifie si 4 pions de même couleur ou plus se trouvent sur la même COLONNE \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonc2_8c_a8c52611d6fc479eee02f3b64614baaf5}{quatre\+ALa\+Suite\+Diagonale1}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, int l, t\+\_\+pion pion)
+\begin{DoxyCompactList}\small\item\em vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la gauche/haut \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonc2_8c_a210f97580eebc473669ddb4cc39a9245}{quatre\+ALa\+Suite\+Diagonale2}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, int l, t\+\_\+pion pion)
+\begin{DoxyCompactList}\small\item\em vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la droite/haut \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fonc2_8c_aafef57db9199d6e3e92b107674a30b1b}{est\+Quatre\+ALa\+Suite}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, t\+\_\+pion pion)
+\begin{DoxyCompactList}\small\item\em appelle les quatre fonctions pour vérifier s\textquotesingle{}il y a un 4 à la suite après le dernier coup joué \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonc2_8c_a5e3b0d641b1cab2857258a169a212939}{afficher\+Grille}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche la grille de jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonc2_8c_ada7b82b9b7c01def5d2bdb20994b8c36}{sauvegarde\+Auto}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, t\+\_\+pion pion, int nb\+Tours)
+\begin{DoxyCompactList}\small\item\em Sauvegarde la configuration de la partie actuelle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fonc2_8c_ae6e08f6eb80af03a7c4f4d719038458d}{charger\+Partie}} (t\+\_\+pion grille\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, t\+\_\+pion $\ast$pion, int $\ast$nb\+Tours)
+\begin{DoxyCompactList}\small\item\em Charge la configuration de la partie sauvegardée dans le fichier \char`\"{}partie.\+txt\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonc2_8c_a1e9bffae93e218015506d55dd1ecca1d}\label{fonc2_8c_a1e9bffae93e218015506d55dd1ecca1d}} 
+void \mbox{\hyperlink{fonc2_8c_a1e9bffae93e218015506d55dd1ecca1d}{supprimer\+Partie}} ()
+\begin{DoxyCompactList}\small\item\em Supprime la partie sauvegardée dans le fichier \char`\"{}partie.\+txt\char`\"{}, car la partie est finie. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonc2_8c_afcf469d712a17f3e1c7e39f3964f6ba1}\label{fonc2_8c_afcf469d712a17f3e1c7e39f3964f6ba1}} 
+int \mbox{\hyperlink{fonc2_8c_afcf469d712a17f3e1c7e39f3964f6ba1}{mode\+\_\+creux}} ()
+\begin{DoxyCompactList}\small\item\em Lance une partie en mode creux. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{fonc2_8c_ab4f6ea7e56deb7f787bdebbfa14c6b4b}\label{fonc2_8c_ab4f6ea7e56deb7f787bdebbfa14c6b4b}} 
+int \mbox{\hyperlink{fonc2_8c_ab4f6ea7e56deb7f787bdebbfa14c6b4b}{mode\+\_\+normal}} ()
+\begin{DoxyCompactList}\small\item\em Lance une partie en mode normal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{fonc2_8c_ac48d09bca5041bc555769a209bbfd20a}{cpt\+\_\+rouge\+\_\+creuse}} = NB\+\_\+\+CREUSE
+\item 
+unsigned int \mbox{\hyperlink{fonc2_8c_a8f357234208bd3333f5e476985d30873}{cpt\+\_\+rouge\+\_\+bloquante}} = NB\+\_\+\+BLOQUANTE
+\item 
+unsigned int \mbox{\hyperlink{fonc2_8c_a71a5c4036695a91b151acbe985f3be33}{cpt\+\_\+jaune\+\_\+creuse}} = NB\+\_\+\+CREUSE
+\item 
+unsigned int \mbox{\hyperlink{fonc2_8c_ac906f1ec285e8f7f88fafa5b3ca3459a}{cpt\+\_\+jaune\+\_\+bloquante}} = NB\+\_\+\+BLOQUANTE
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Corps des fonctions. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+\{9/02/2023\} 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Auteur}
+Abart Raphaël 
+
+El\+Ghoumari Soumia 
+
+Coupé Xavier 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{fonc2_8c_a5e3b0d641b1cab2857258a169a212939}\label{fonc2_8c_a5e3b0d641b1cab2857258a169a212939}} 
+\index{fonc2.c@{fonc2.c}!afficherGrille@{afficherGrille}}
+\index{afficherGrille@{afficherGrille}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{afficherGrille()}{afficherGrille()}}
+{\footnotesize\ttfamily void afficher\+Grille (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche la grille de jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonc2_8c_a36f9ce92ef78a6347fca7d6e75862ed0}\label{fonc2_8c_a36f9ce92ef78a6347fca7d6e75862ed0}} 
+\index{fonc2.c@{fonc2.c}!ajoutPion@{ajoutPion}}
+\index{ajoutPion@{ajoutPion}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{ajoutPion()}{ajoutPion()}}
+{\footnotesize\ttfamily int ajout\+Pion (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{int}]{c,  }\item[{t\+\_\+pion}]{couleur }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}ajouter un pion à la grille de jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em c} & indice de la colonne à vérifier \\
+\hline
+{\em couleur} & la couleur du pion du joueur qui le joue (rouge/jaune) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 0 si le pion est bien ajouté à la grille, 1 sinon, avec un message d\textquotesingle{}erreur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonc2_8c_a09ab0ca5741593c36a08cfcf4b4f40d1}\label{fonc2_8c_a09ab0ca5741593c36a08cfcf4b4f40d1}} 
+\index{fonc2.c@{fonc2.c}!caseLibre@{caseLibre}}
+\index{caseLibre@{caseLibre}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{caseLibre()}{caseLibre()}}
+{\footnotesize\ttfamily int case\+Libre (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Permet de savoir quelle case d\textquotesingle{}une colonne donnée est vide, et la plus basse. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em c} & indice de la colonne à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne l\textquotesingle{}indice de la ligne où la case est vide, ou -\/1 si la colonne est pleine 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonc2_8c_ae6e08f6eb80af03a7c4f4d719038458d}\label{fonc2_8c_ae6e08f6eb80af03a7c4f4d719038458d}} 
+\index{fonc2.c@{fonc2.c}!chargerPartie@{chargerPartie}}
+\index{chargerPartie@{chargerPartie}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{chargerPartie()}{chargerPartie()}}
+{\footnotesize\ttfamily void charger\+Partie (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{t\+\_\+pion $\ast$}]{couleur,  }\item[{int $\ast$}]{nb\+Tours }\end{DoxyParamCaption})}
+
+
+
+Charge la configuration de la partie sauvegardée dans le fichier \char`\"{}partie.\+txt\char`\"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em couleur} & couleur du dernier joueur à avoir joué \\
+\hline
+{\em nb\+Tours} & nombre de tours effectués \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonc2_8c_a6655a1fc6f020b3092a018cf408632ef}\label{fonc2_8c_a6655a1fc6f020b3092a018cf408632ef}} 
+\index{fonc2.c@{fonc2.c}!estPleine@{estPleine}}
+\index{estPleine@{estPleine}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{estPleine()}{estPleine()}}
+{\footnotesize\ttfamily int est\+Pleine (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Permet de savoir si une colonne est pleine, et donc on ne peut plus y ajouter de pions. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em c} & indice de la colonne à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 1 si on ne peut plus ajouter de pions à cette colonne, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonc2_8c_aafef57db9199d6e3e92b107674a30b1b}\label{fonc2_8c_aafef57db9199d6e3e92b107674a30b1b}} 
+\index{fonc2.c@{fonc2.c}!estQuatreALaSuite@{estQuatreALaSuite}}
+\index{estQuatreALaSuite@{estQuatreALaSuite}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{estQuatreALaSuite()}{estQuatreALaSuite()}}
+{\footnotesize\ttfamily int est\+Quatre\+ALa\+Suite (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{int}]{c,  }\item[{t\+\_\+pion}]{couleur }\end{DoxyParamCaption})}
+
+
+
+appelle les quatre fonctions pour vérifier s\textquotesingle{}il y a un 4 à la suite après le dernier coup joué 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em c} & indice de la colonne où le joueur à joué \\
+\hline
+{\em couleur} & la couleur du pion du joueur qui le joue (rouge/jaune) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 1 s\textquotesingle{}il y a un 4 la la suite, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonc2_8c_ae658c2ef8593ea9598088f785b171f55}\label{fonc2_8c_ae658c2ef8593ea9598088f785b171f55}} 
+\index{fonc2.c@{fonc2.c}!initGrille@{initGrille}}
+\index{initGrille@{initGrille}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{initGrille()}{initGrille()}}
+{\footnotesize\ttfamily void init\+Grille (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Remplit toutes les cases de la grille de puissance 4 avec la valeur \char`\"{}vide\char`\"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{fonc2_8c_a8c52611d6fc479eee02f3b64614baaf5}\label{fonc2_8c_a8c52611d6fc479eee02f3b64614baaf5}} 
+\index{fonc2.c@{fonc2.c}!quatreALaSuiteDiagonale1@{quatreALaSuiteDiagonale1}}
+\index{quatreALaSuiteDiagonale1@{quatreALaSuiteDiagonale1}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{quatreALaSuiteDiagonale1()}{quatreALaSuiteDiagonale1()}}
+{\footnotesize\ttfamily int quatre\+ALa\+Suite\+Diagonale1 (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{int}]{c,  }\item[{int}]{l,  }\item[{t\+\_\+pion}]{couleur }\end{DoxyParamCaption})}
+
+
+
+vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la gauche/haut 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em c} & indice de la colonne où le joueur à joué \\
+\hline
+{\em l} & indice de la ligne où le joueur à joué \\
+\hline
+{\em couleur} & la couleur du pion du joueur qui le joue (rouge/jaune) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 1 s\textquotesingle{}il y a un 4 la la suite, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonc2_8c_a210f97580eebc473669ddb4cc39a9245}\label{fonc2_8c_a210f97580eebc473669ddb4cc39a9245}} 
+\index{fonc2.c@{fonc2.c}!quatreALaSuiteDiagonale2@{quatreALaSuiteDiagonale2}}
+\index{quatreALaSuiteDiagonale2@{quatreALaSuiteDiagonale2}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{quatreALaSuiteDiagonale2()}{quatreALaSuiteDiagonale2()}}
+{\footnotesize\ttfamily int quatre\+ALa\+Suite\+Diagonale2 (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{int}]{c,  }\item[{int}]{l,  }\item[{t\+\_\+pion}]{couleur }\end{DoxyParamCaption})}
+
+
+
+vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la droite/haut 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em c} & indice de la colonne où le joueur à joué \\
+\hline
+{\em l} & indice de la ligne où le joueur à joué \\
+\hline
+{\em couleur} & la couleur du pion du joueur qui le joue (rouge/jaune) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 1 s\textquotesingle{}il y a un 4 la la suite, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonc2_8c_ad28f2b9a36c2a3026e39bb8fc320b6fa}\label{fonc2_8c_ad28f2b9a36c2a3026e39bb8fc320b6fa}} 
+\index{fonc2.c@{fonc2.c}!quatreALaSuiteHorizontal@{quatreALaSuiteHorizontal}}
+\index{quatreALaSuiteHorizontal@{quatreALaSuiteHorizontal}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{quatreALaSuiteHorizontal()}{quatreALaSuiteHorizontal()}}
+{\footnotesize\ttfamily int quatre\+ALa\+Suite\+Horizontal (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{int}]{c,  }\item[{int}]{l,  }\item[{t\+\_\+pion}]{couleur }\end{DoxyParamCaption})}
+
+
+
+vérifie si 4 pions de même couleur ou plus se trouvent sur la même LIGNE 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em c} & indice de la colonne où le joueur à joué \\
+\hline
+{\em l} & indice de la ligne où le joueur à joué \\
+\hline
+{\em couleur} & la couleur du pion du joueur qui le joue (rouge/jaune) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 1 s\textquotesingle{}il y a un 4 la la suite, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonc2_8c_aeb1de0b9d832cece94e005bf5ff42305}\label{fonc2_8c_aeb1de0b9d832cece94e005bf5ff42305}} 
+\index{fonc2.c@{fonc2.c}!quatreALaSuiteVertical@{quatreALaSuiteVertical}}
+\index{quatreALaSuiteVertical@{quatreALaSuiteVertical}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{quatreALaSuiteVertical()}{quatreALaSuiteVertical()}}
+{\footnotesize\ttfamily int quatre\+ALa\+Suite\+Vertical (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{int}]{c,  }\item[{t\+\_\+pion}]{couleur }\end{DoxyParamCaption})}
+
+
+
+vérifie si 4 pions de même couleur ou plus se trouvent sur la même COLONNE 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em c} & indice de la colonne où le joueur à joué \\
+\hline
+{\em couleur} & la couleur du pion du joueur qui le joue (rouge/jaune) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 1 s\textquotesingle{}il y a un 4 la la suite, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonc2_8c_ada7b82b9b7c01def5d2bdb20994b8c36}\label{fonc2_8c_ada7b82b9b7c01def5d2bdb20994b8c36}} 
+\index{fonc2.c@{fonc2.c}!sauvegardeAuto@{sauvegardeAuto}}
+\index{sauvegardeAuto@{sauvegardeAuto}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{sauvegardeAuto()}{sauvegardeAuto()}}
+{\footnotesize\ttfamily void sauvegarde\+Auto (\begin{DoxyParamCaption}\item[{t\+\_\+pion}]{grille\mbox{[}\+LIGNES\mbox{]}\mbox{[}\+COLONNES\mbox{]},  }\item[{t\+\_\+pion}]{couleur,  }\item[{int}]{nb\+Tours }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde la configuration de la partie actuelle. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & grille de puissance 4 \\
+\hline
+{\em couleur} & couleur du dernier joueur à avoir joué \\
+\hline
+{\em nb\+Tours} & nombre de tours effectués \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{fonc2_8c_ac906f1ec285e8f7f88fafa5b3ca3459a}\label{fonc2_8c_ac906f1ec285e8f7f88fafa5b3ca3459a}} 
+\index{fonc2.c@{fonc2.c}!cpt\_jaune\_bloquante@{cpt\_jaune\_bloquante}}
+\index{cpt\_jaune\_bloquante@{cpt\_jaune\_bloquante}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{cpt\_jaune\_bloquante}{cpt\_jaune\_bloquante}}
+{\footnotesize\ttfamily unsigned int cpt\+\_\+jaune\+\_\+bloquante = NB\+\_\+\+BLOQUANTE}
+
+Compteur de pieces bloquantes jaunes \mbox{\Hypertarget{fonc2_8c_a71a5c4036695a91b151acbe985f3be33}\label{fonc2_8c_a71a5c4036695a91b151acbe985f3be33}} 
+\index{fonc2.c@{fonc2.c}!cpt\_jaune\_creuse@{cpt\_jaune\_creuse}}
+\index{cpt\_jaune\_creuse@{cpt\_jaune\_creuse}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{cpt\_jaune\_creuse}{cpt\_jaune\_creuse}}
+{\footnotesize\ttfamily unsigned int cpt\+\_\+jaune\+\_\+creuse = NB\+\_\+\+CREUSE}
+
+Compteur de pieces creuses jaunes \mbox{\Hypertarget{fonc2_8c_a8f357234208bd3333f5e476985d30873}\label{fonc2_8c_a8f357234208bd3333f5e476985d30873}} 
+\index{fonc2.c@{fonc2.c}!cpt\_rouge\_bloquante@{cpt\_rouge\_bloquante}}
+\index{cpt\_rouge\_bloquante@{cpt\_rouge\_bloquante}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{cpt\_rouge\_bloquante}{cpt\_rouge\_bloquante}}
+{\footnotesize\ttfamily unsigned int cpt\+\_\+rouge\+\_\+bloquante = NB\+\_\+\+BLOQUANTE}
+
+Compteur de pieces bloquantes rouges \mbox{\Hypertarget{fonc2_8c_ac48d09bca5041bc555769a209bbfd20a}\label{fonc2_8c_ac48d09bca5041bc555769a209bbfd20a}} 
+\index{fonc2.c@{fonc2.c}!cpt\_rouge\_creuse@{cpt\_rouge\_creuse}}
+\index{cpt\_rouge\_creuse@{cpt\_rouge\_creuse}!fonc2.c@{fonc2.c}}
+\doxysubsubsection{\texorpdfstring{cpt\_rouge\_creuse}{cpt\_rouge\_creuse}}
+{\footnotesize\ttfamily unsigned int cpt\+\_\+rouge\+\_\+creuse = NB\+\_\+\+CREUSE}
+
+Compteur de pieces creuses rouges 

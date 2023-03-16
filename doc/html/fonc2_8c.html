@@ -1,0 +1,728 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>puissance4projetL2-AEC: Référence du fichier src/fonc2.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">puissance4projetL2-AEC<span id="projectnumber">&#160;1</span>
+   </div>
+   <div id="projectbrief">Un puissance 4 avec des pièces spéciales</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier fonc2.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Corps des fonctions.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../lib/fonc2.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae658c2ef8593ea9598088f785b171f55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#ae658c2ef8593ea9598088f785b171f55">initGrille</a> (t_pion grille[LIGNES][COLONNES])</td></tr>
+<tr class="memdesc:ae658c2ef8593ea9598088f785b171f55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplit toutes les cases de la grille de puissance 4 avec la valeur "vide".  <a href="fonc2_8c.html#ae658c2ef8593ea9598088f785b171f55">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae658c2ef8593ea9598088f785b171f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6655a1fc6f020b3092a018cf408632ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#a6655a1fc6f020b3092a018cf408632ef">estPleine</a> (t_pion grille[LIGNES][COLONNES], int c)</td></tr>
+<tr class="memdesc:a6655a1fc6f020b3092a018cf408632ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de savoir si une colonne est pleine, et donc on ne peut plus y ajouter de pions.  <a href="fonc2_8c.html#a6655a1fc6f020b3092a018cf408632ef">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6655a1fc6f020b3092a018cf408632ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09ab0ca5741593c36a08cfcf4b4f40d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#a09ab0ca5741593c36a08cfcf4b4f40d1">caseLibre</a> (t_pion grille[LIGNES][COLONNES], int c)</td></tr>
+<tr class="memdesc:a09ab0ca5741593c36a08cfcf4b4f40d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de savoir quelle case d'une colonne donnée est vide, et la plus basse.  <a href="fonc2_8c.html#a09ab0ca5741593c36a08cfcf4b4f40d1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a09ab0ca5741593c36a08cfcf4b4f40d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36f9ce92ef78a6347fca7d6e75862ed0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#a36f9ce92ef78a6347fca7d6e75862ed0">ajoutPion</a> (t_pion grille[LIGNES][COLONNES], int c, t_pion pion)</td></tr>
+<tr class="memdesc:a36f9ce92ef78a6347fca7d6e75862ed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'ajouter un pion à la grille de jeu.  <a href="fonc2_8c.html#a36f9ce92ef78a6347fca7d6e75862ed0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a36f9ce92ef78a6347fca7d6e75862ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad28f2b9a36c2a3026e39bb8fc320b6fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#ad28f2b9a36c2a3026e39bb8fc320b6fa">quatreALaSuiteHorizontal</a> (t_pion grille[LIGNES][COLONNES], int c, int l, t_pion pion)</td></tr>
+<tr class="memdesc:ad28f2b9a36c2a3026e39bb8fc320b6fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si 4 pions de même couleur ou plus se trouvent sur la même LIGNE  <a href="fonc2_8c.html#ad28f2b9a36c2a3026e39bb8fc320b6fa">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad28f2b9a36c2a3026e39bb8fc320b6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb1de0b9d832cece94e005bf5ff42305"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#aeb1de0b9d832cece94e005bf5ff42305">quatreALaSuiteVertical</a> (t_pion grille[LIGNES][COLONNES], int c, t_pion pion)</td></tr>
+<tr class="memdesc:aeb1de0b9d832cece94e005bf5ff42305"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si 4 pions de même couleur ou plus se trouvent sur la même COLONNE  <a href="fonc2_8c.html#aeb1de0b9d832cece94e005bf5ff42305">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aeb1de0b9d832cece94e005bf5ff42305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c52611d6fc479eee02f3b64614baaf5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#a8c52611d6fc479eee02f3b64614baaf5">quatreALaSuiteDiagonale1</a> (t_pion grille[LIGNES][COLONNES], int c, int l, t_pion pion)</td></tr>
+<tr class="memdesc:a8c52611d6fc479eee02f3b64614baaf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la gauche/haut  <a href="fonc2_8c.html#a8c52611d6fc479eee02f3b64614baaf5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8c52611d6fc479eee02f3b64614baaf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a210f97580eebc473669ddb4cc39a9245"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#a210f97580eebc473669ddb4cc39a9245">quatreALaSuiteDiagonale2</a> (t_pion grille[LIGNES][COLONNES], int c, int l, t_pion pion)</td></tr>
+<tr class="memdesc:a210f97580eebc473669ddb4cc39a9245"><td class="mdescLeft">&#160;</td><td class="mdescRight">vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la droite/haut  <a href="fonc2_8c.html#a210f97580eebc473669ddb4cc39a9245">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a210f97580eebc473669ddb4cc39a9245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafef57db9199d6e3e92b107674a30b1b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#aafef57db9199d6e3e92b107674a30b1b">estQuatreALaSuite</a> (t_pion grille[LIGNES][COLONNES], int c, t_pion pion)</td></tr>
+<tr class="memdesc:aafef57db9199d6e3e92b107674a30b1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">appelle les quatre fonctions pour vérifier s'il y a un 4 à la suite après le dernier coup joué  <a href="fonc2_8c.html#aafef57db9199d6e3e92b107674a30b1b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aafef57db9199d6e3e92b107674a30b1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e3b0d641b1cab2857258a169a212939"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#a5e3b0d641b1cab2857258a169a212939">afficherGrille</a> (t_pion grille[LIGNES][COLONNES])</td></tr>
+<tr class="memdesc:a5e3b0d641b1cab2857258a169a212939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la grille de jeu.  <a href="fonc2_8c.html#a5e3b0d641b1cab2857258a169a212939">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5e3b0d641b1cab2857258a169a212939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada7b82b9b7c01def5d2bdb20994b8c36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#ada7b82b9b7c01def5d2bdb20994b8c36">sauvegardeAuto</a> (t_pion grille[LIGNES][COLONNES], t_pion pion, int nbTours)</td></tr>
+<tr class="memdesc:ada7b82b9b7c01def5d2bdb20994b8c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde la configuration de la partie actuelle.  <a href="fonc2_8c.html#ada7b82b9b7c01def5d2bdb20994b8c36">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ada7b82b9b7c01def5d2bdb20994b8c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6e08f6eb80af03a7c4f4d719038458d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#ae6e08f6eb80af03a7c4f4d719038458d">chargerPartie</a> (t_pion grille[LIGNES][COLONNES], t_pion *pion, int *nbTours)</td></tr>
+<tr class="memdesc:ae6e08f6eb80af03a7c4f4d719038458d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge la configuration de la partie sauvegardée dans le fichier "partie.txt".  <a href="fonc2_8c.html#ae6e08f6eb80af03a7c4f4d719038458d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae6e08f6eb80af03a7c4f4d719038458d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e9bffae93e218015506d55dd1ecca1d"><td class="memItemLeft" align="right" valign="top"><a id="a1e9bffae93e218015506d55dd1ecca1d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#a1e9bffae93e218015506d55dd1ecca1d">supprimerPartie</a> ()</td></tr>
+<tr class="memdesc:a1e9bffae93e218015506d55dd1ecca1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime la partie sauvegardée dans le fichier "partie.txt", car la partie est finie. <br /></td></tr>
+<tr class="separator:a1e9bffae93e218015506d55dd1ecca1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcf469d712a17f3e1c7e39f3964f6ba1"><td class="memItemLeft" align="right" valign="top"><a id="afcf469d712a17f3e1c7e39f3964f6ba1"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#afcf469d712a17f3e1c7e39f3964f6ba1">mode_creux</a> ()</td></tr>
+<tr class="memdesc:afcf469d712a17f3e1c7e39f3964f6ba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance une partie en mode creux. <br /></td></tr>
+<tr class="separator:afcf469d712a17f3e1c7e39f3964f6ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4f6ea7e56deb7f787bdebbfa14c6b4b"><td class="memItemLeft" align="right" valign="top"><a id="ab4f6ea7e56deb7f787bdebbfa14c6b4b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#ab4f6ea7e56deb7f787bdebbfa14c6b4b">mode_normal</a> ()</td></tr>
+<tr class="memdesc:ab4f6ea7e56deb7f787bdebbfa14c6b4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance une partie en mode normal. <br /></td></tr>
+<tr class="separator:ab4f6ea7e56deb7f787bdebbfa14c6b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ac48d09bca5041bc555769a209bbfd20a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#ac48d09bca5041bc555769a209bbfd20a">cpt_rouge_creuse</a> = NB_CREUSE</td></tr>
+<tr class="separator:ac48d09bca5041bc555769a209bbfd20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f357234208bd3333f5e476985d30873"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#a8f357234208bd3333f5e476985d30873">cpt_rouge_bloquante</a> = NB_BLOQUANTE</td></tr>
+<tr class="separator:a8f357234208bd3333f5e476985d30873"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71a5c4036695a91b151acbe985f3be33"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#a71a5c4036695a91b151acbe985f3be33">cpt_jaune_creuse</a> = NB_CREUSE</td></tr>
+<tr class="separator:a71a5c4036695a91b151acbe985f3be33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac906f1ec285e8f7f88fafa5b3ca3459a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fonc2_8c.html#ac906f1ec285e8f7f88fafa5b3ca3459a">cpt_jaune_bloquante</a> = NB_BLOQUANTE</td></tr>
+<tr class="separator:ac906f1ec285e8f7f88fafa5b3ca3459a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p >Corps des fonctions. </p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>{9/02/2023} </dd></dl>
+<dl class="section author"><dt>Auteur</dt><dd>Abart Raphaël </dd>
+<dd>
+ElGhoumari Soumia </dd>
+<dd>
+Coupé Xavier </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a5e3b0d641b1cab2857258a169a212939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e3b0d641b1cab2857258a169a212939">&#9670;&nbsp;</a></span>afficherGrille()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficherGrille </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la grille de jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a36f9ce92ef78a6347fca7d6e75862ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36f9ce92ef78a6347fca7d6e75862ed0">&#9670;&nbsp;</a></span>ajoutPion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ajoutPion </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>couleur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'ajouter un pion à la grille de jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">c</td><td>indice de la colonne à vérifier </td></tr>
+    <tr><td class="paramname">couleur</td><td>la couleur du pion du joueur qui le joue (rouge/jaune) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 0 si le pion est bien ajouté à la grille, 1 sinon, avec un message d'erreur </dd></dl>
+
+</div>
+</div>
+<a id="a09ab0ca5741593c36a08cfcf4b4f40d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09ab0ca5741593c36a08cfcf4b4f40d1">&#9670;&nbsp;</a></span>caseLibre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int caseLibre </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de savoir quelle case d'une colonne donnée est vide, et la plus basse. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">c</td><td>indice de la colonne à vérifier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne l'indice de la ligne où la case est vide, ou -1 si la colonne est pleine </dd></dl>
+
+</div>
+</div>
+<a id="ae6e08f6eb80af03a7c4f4d719038458d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6e08f6eb80af03a7c4f4d719038458d">&#9670;&nbsp;</a></span>chargerPartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void chargerPartie </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pion *&#160;</td>
+          <td class="paramname"><em>couleur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nbTours</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge la configuration de la partie sauvegardée dans le fichier "partie.txt". </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">couleur</td><td>couleur du dernier joueur à avoir joué </td></tr>
+    <tr><td class="paramname">nbTours</td><td>nombre de tours effectués </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6655a1fc6f020b3092a018cf408632ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6655a1fc6f020b3092a018cf408632ef">&#9670;&nbsp;</a></span>estPleine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int estPleine </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de savoir si une colonne est pleine, et donc on ne peut plus y ajouter de pions. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">c</td><td>indice de la colonne à vérifier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 1 si on ne peut plus ajouter de pions à cette colonne, 0 sinon </dd></dl>
+
+</div>
+</div>
+<a id="aafef57db9199d6e3e92b107674a30b1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafef57db9199d6e3e92b107674a30b1b">&#9670;&nbsp;</a></span>estQuatreALaSuite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int estQuatreALaSuite </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>couleur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>appelle les quatre fonctions pour vérifier s'il y a un 4 à la suite après le dernier coup joué </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">c</td><td>indice de la colonne où le joueur à joué </td></tr>
+    <tr><td class="paramname">couleur</td><td>la couleur du pion du joueur qui le joue (rouge/jaune) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 1 s'il y a un 4 la la suite, 0 sinon </dd></dl>
+
+</div>
+</div>
+<a id="ae658c2ef8593ea9598088f785b171f55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae658c2ef8593ea9598088f785b171f55">&#9670;&nbsp;</a></span>initGrille()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initGrille </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remplit toutes les cases de la grille de puissance 4 avec la valeur "vide". </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8c52611d6fc479eee02f3b64614baaf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c52611d6fc479eee02f3b64614baaf5">&#9670;&nbsp;</a></span>quatreALaSuiteDiagonale1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quatreALaSuiteDiagonale1 </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>couleur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la gauche/haut </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">c</td><td>indice de la colonne où le joueur à joué </td></tr>
+    <tr><td class="paramname">l</td><td>indice de la ligne où le joueur à joué </td></tr>
+    <tr><td class="paramname">couleur</td><td>la couleur du pion du joueur qui le joue (rouge/jaune) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 1 s'il y a un 4 la la suite, 0 sinon </dd></dl>
+
+</div>
+</div>
+<a id="a210f97580eebc473669ddb4cc39a9245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a210f97580eebc473669ddb4cc39a9245">&#9670;&nbsp;</a></span>quatreALaSuiteDiagonale2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quatreALaSuiteDiagonale2 </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>couleur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la droite/haut </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">c</td><td>indice de la colonne où le joueur à joué </td></tr>
+    <tr><td class="paramname">l</td><td>indice de la ligne où le joueur à joué </td></tr>
+    <tr><td class="paramname">couleur</td><td>la couleur du pion du joueur qui le joue (rouge/jaune) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 1 s'il y a un 4 la la suite, 0 sinon </dd></dl>
+
+</div>
+</div>
+<a id="ad28f2b9a36c2a3026e39bb8fc320b6fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad28f2b9a36c2a3026e39bb8fc320b6fa">&#9670;&nbsp;</a></span>quatreALaSuiteHorizontal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quatreALaSuiteHorizontal </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>couleur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vérifie si 4 pions de même couleur ou plus se trouvent sur la même LIGNE </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">c</td><td>indice de la colonne où le joueur à joué </td></tr>
+    <tr><td class="paramname">l</td><td>indice de la ligne où le joueur à joué </td></tr>
+    <tr><td class="paramname">couleur</td><td>la couleur du pion du joueur qui le joue (rouge/jaune) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 1 s'il y a un 4 la la suite, 0 sinon </dd></dl>
+
+</div>
+</div>
+<a id="aeb1de0b9d832cece94e005bf5ff42305"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb1de0b9d832cece94e005bf5ff42305">&#9670;&nbsp;</a></span>quatreALaSuiteVertical()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quatreALaSuiteVertical </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>couleur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>vérifie si 4 pions de même couleur ou plus se trouvent sur la même COLONNE </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">c</td><td>indice de la colonne où le joueur à joué </td></tr>
+    <tr><td class="paramname">couleur</td><td>la couleur du pion du joueur qui le joue (rouge/jaune) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 1 s'il y a un 4 la la suite, 0 sinon </dd></dl>
+
+</div>
+</div>
+<a id="ada7b82b9b7c01def5d2bdb20994b8c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada7b82b9b7c01def5d2bdb20994b8c36">&#9670;&nbsp;</a></span>sauvegardeAuto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sauvegardeAuto </td>
+          <td>(</td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>grille</em>[LIGNES][COLONNES], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_pion&#160;</td>
+          <td class="paramname"><em>couleur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbTours</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde la configuration de la partie actuelle. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>grille de puissance 4 </td></tr>
+    <tr><td class="paramname">couleur</td><td>couleur du dernier joueur à avoir joué </td></tr>
+    <tr><td class="paramname">nbTours</td><td>nombre de tours effectués </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="ac906f1ec285e8f7f88fafa5b3ca3459a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac906f1ec285e8f7f88fafa5b3ca3459a">&#9670;&nbsp;</a></span>cpt_jaune_bloquante</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int cpt_jaune_bloquante = NB_BLOQUANTE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Compteur de pieces bloquantes jaunes </p>
+
+</div>
+</div>
+<a id="a71a5c4036695a91b151acbe985f3be33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71a5c4036695a91b151acbe985f3be33">&#9670;&nbsp;</a></span>cpt_jaune_creuse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int cpt_jaune_creuse = NB_CREUSE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Compteur de pieces creuses jaunes </p>
+
+</div>
+</div>
+<a id="a8f357234208bd3333f5e476985d30873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f357234208bd3333f5e476985d30873">&#9670;&nbsp;</a></span>cpt_rouge_bloquante</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int cpt_rouge_bloquante = NB_BLOQUANTE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Compteur de pieces bloquantes rouges </p>
+
+</div>
+</div>
+<a id="ac48d09bca5041bc555769a209bbfd20a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac48d09bca5041bc555769a209bbfd20a">&#9670;&nbsp;</a></span>cpt_rouge_creuse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int cpt_rouge_creuse = NB_CREUSE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Compteur de pieces creuses rouges </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

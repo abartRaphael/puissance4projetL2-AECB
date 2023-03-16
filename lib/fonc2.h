@@ -16,7 +16,15 @@ typedef struct{
 	t_type type;
 }t_pion;
 
-
+/**
+ * \file fonc2.h
+ * \brief En-tête des fonctions
+ * \version 0.1
+ * \date {9/02/2023}
+ * \author Abart Raphaël
+ * \author ElGhoumari Soumia
+ * \author Coupé Xavier
+*/
 
 
 

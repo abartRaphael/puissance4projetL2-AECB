@@ -4,9 +4,13 @@
 #include <stdlib.h>
 
 /**
- * \file puissance4.c
- * \brief tp de L1 de puissance4
+ * \file main2.c
+ * \brief Projet Puissance4++
+ * \version 0.1
  * \date {9/02/2023}
+ * \author Abart Raphaël
+ * \author ElGhoumari Soumia
+ * \author Coupé Xavier
 */
 
 
