@@ -161,26 +161,28 @@ int main(int argc, char** argv)
 	//Le pointeur vers la surface incluse dans la fenetre
 	SDL_Renderer *renderer=NULL;
 	SDL_Texture *texture=NULL;
+	SDL_Surface *surface = NULL;
 
 	// Une variables de couleur
-	SDL_Color noir = {0, 0, 0, 0};
-	SDL_Color blanc = {255, 255, 255, 255};
-    SDL_Color orange = {255, 127, 40, 255};
-	SDL_Surface *surface = NULL;
-	SDL_Rect damier[42];
+	SDL_Color	noir = {0, 0, 0, 0}, 
+				blanc = {255, 255, 255, 255}, 
+				orange = {255, 127, 40, 255};
+	SDL_Rect	damier[42], 
+				slots[6][7];
 	SDL_Event event;
 
 	SDL_bool quit = SDL_FALSE;
 
-	int n=42, 
-		nbLignes=6, 
+	int nbLignes=6, 
 		nbColonnes=7, 
-		largeur=10, 
-		hauteur=largeur, // carré
+		n = nbLignes*nbColonnes, // 42
+		largeurRectGrille=51, 
+		hauteur=largeurRectGrille, // carré
 		offsetGrille=10, 
 		espacementGrille=1, // les rectangles font 1 pixel d'épaisseur
-        offset = 0;
-
+        offset = 0, 
+		largeurPiece = 50, 
+		offsetJetons = offsetGrille+espacementGrille;
 
 	//valeur toujours retournée à la fin du programme
 	int statut = EXIT_FAILURE;
@@ -214,50 +216,39 @@ int main(int argc, char** argv)
 		{
 			SDL_SetRenderDrawColor(renderer, indice*3, 255, indice*3, 255);
 
-			//largeur * le nombre de rectangles précédents
-			//+ offsetGrille (décale l'ensemble de carrés par rapport au coin supérieur gauchede la fenêtre)
-			// - i/j (pour que les bordures des carrés se superposent)
-			damier[indice].x = largeur * j +offsetGrille - j;
+			//largeurRectGrille * le nombre de rectangles précédents
+			//+ offsetGrille (décale l'ensemble de carrés par rapport au coin supérieur gauche de la fenêtre)
+			// - i(ou j) (pour que les bordures des carrés se superposent)
+			damier[indice].x = largeurRectGrille * j +offsetGrille - j;
 			damier[indice].y = hauteur  * i +offsetGrille - i;
-			damier[indice].w = largeur;
+			damier[indice].w = largeurRectGrille;
 			damier[indice].h = hauteur;
 
-			SDL_RenderDrawRect( renderer, &damier[indice] );
+			//SDL_RenderDrawRect( renderer, &damier[indice] ); // dessine les carrés les uns après les autres
 		}
 	}
 
 //====
-	//SDL_RenderDrawRects(renderer, damier, n); // autre méthode pour afficher plusieurs carrés
+	SDL_RenderDrawRects(renderer, damier, n); // autre méthode pour afficher plusieurs carrés
+
+
 //====
 
-
-	
-
-//====
-	
-
-//====
-/*
-	texture = loadImage("<fichier>>.bmp",renderer);
+	//texture = loadImage("<fichier>>.bmp",renderer);
 		
 
-	SDL_Rect slots[6][7];
-	largeur = 50;
-	hauteur = largeur;
-	espacementGrille = 1;
-	int offsetJetons = offsetGrille+espacementGrille;
-
+	hauteur = largeurPiece;
 	//remplir matrice "slots" de rectangles ayant des coordonnées permettant de placer une texture de jeton facilement (les valeurs doivent correspondre à la grille de jeu)
 	for(int i=0 ; i<6 ; i++) {
 		for(int j=0 ; j<7 ; j++) {
 		
-			slots[i][j].x = espacementGrille * j + largeur * j + offsetJetons;
+			slots[i][j].x = espacementGrille * j + largeurPiece * j + offsetJetons;
 			slots[i][j].y = espacementGrille * i + hauteur * i + offsetJetons;
-			slots[i][j].w = largeur;
+			slots[i][j].w = largeurPiece;
 			slots[i][j].h = hauteur;
 		}
 	}
-*/
+
 
 /*
 	//affiche la texture sur tous les emplacements de slots
@@ -269,11 +260,11 @@ int main(int argc, char** argv)
 	}
 */
 
-/*
+
 	//affiche la texture à 2 endroits choisis
 	SDL_RenderCopy(renderer, texture, NULL, &slots[5][0]); 
 	SDL_RenderCopy(renderer, texture, NULL, &slots[5][2]); 
-*/
+
 
 //====
 
