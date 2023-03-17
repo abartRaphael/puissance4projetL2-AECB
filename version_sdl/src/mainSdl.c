@@ -7,9 +7,19 @@
 #include <SDL2/SDL_image.h>
 
 
+/**
+ * \file mainSdl.c
+ * \brief fichier main de la version SDL du projet Puissance4++
+ * \version 0.1
+ * \date {17/03/2023}
+ * \author Abart Raphaël
+ * \author ElGhoumari Soumia
+ * \author Coupé Xavier
+*/
 
 
 
+// fonctions SDL
 
 // Cette structure permet de représenter un carré par sa couleur et un SDL_Rect. 
 struct carre {
