@@ -1,5 +1,5 @@
 #Project name (generate executable with this name)
-TARGETS  = puissance4_console
+TARGETS  = main2
 
 CC       = gcc
 #Compiling flags here
