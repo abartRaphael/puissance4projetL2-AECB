@@ -1,5 +1,5 @@
 #Project name (generate executable with this name)
-TARGETS  = fonc2
+TARGETS  = puissance4_sdl
 
 CC       = gcc
 #Compiling flags here
@@ -17,6 +17,14 @@ LIBDIR = lib
 TRGS	 := $(TARGETS:%=$(BINDIR)/%)
 
 DIRS	 = $(OBJDIR) $(BINDIR) 
+
+#répertoires de SDL2
+SDL_DIR=${HOME}/SDL2
+SDL_LIB_DIR=${SDL_DIR}/lib
+SDL_INC_DIR=${SDL_DIR}/include/
+
+LIBS=-L${SDL_LIB_DIR} -lSDL2 -lSDL2_ttf -lSDL2_image
+INCLUDES=-I${SDL_INC_DIR} 
 
 .PHONY: DIRS
 all: $(DIRS) $(TRGS)
@@ -43,7 +51,7 @@ $(TRGS): $(OBJECTS)
 	@echo "Linking complete!"
 
 $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@ ${LIBS} ${INCLUDES}
 	@echo "Compiled "$<" successfully!"
 
 .PHONY: clean
