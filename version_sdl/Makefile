@@ -51,7 +51,7 @@ $(TRGS): $(OBJECTS)
 	@echo "Linking complete!"
 
 $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
+	@$(CC) $(CFLAGS) -c $< -o $@ 
 	@echo "Compiled "$<" successfully!"
 
 .PHONY: clean
