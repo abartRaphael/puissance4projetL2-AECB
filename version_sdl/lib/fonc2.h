@@ -160,7 +160,7 @@ int mode_creux();
  * \fn int mode_normal()
  * \brief Lance une partie en mode normal
  */
-int mode_normal();
+int mode_normal( SDL_Window* pWindow, SDL_Renderer *renderer );
 
 
 #endif /*H_FONC2_ */
