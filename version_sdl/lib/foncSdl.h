@@ -80,7 +80,7 @@ SDL_Texture* loadImage(char* path, SDL_Renderer* renderer) {
 
 /**
  * \fn int setWindowColor(SDL_Renderer *renderer, SDL_Color color)
- * \brief remplit la fenêtre avec une couleur de type SDL_Color
+ * \brief change la couleur (de type SDL_Color) utilisée pour dessiner
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param color couleur de type SDL_color {rouge, vert, bleu[, alpha]}
  * \return retourne 0 pour un succès, -1 pour une erreur
