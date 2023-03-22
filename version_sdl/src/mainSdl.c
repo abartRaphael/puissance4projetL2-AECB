@@ -48,9 +48,6 @@ int main(int argc, char** argv)
 
 // On agit sur la fenêtre ici 
 
-    // arrière-plan de la fenêtre tout noir
-	setWindowColor(renderer, noir);
-
 
 
 
