@@ -1,7 +1,7 @@
 #ifndef H_FONCSDL_
 #define H_FONCSDL_
 
-
+#include "../lib/fonc2.h"
 
 
 /**
@@ -65,6 +65,37 @@ void setPixel(SDL_Surface *surface, Uint8 r, Uint8 g, Uint8 b, Uint8 a, size_t x
 
 
 SDL_Surface *createSurfaceFromTexture(SDL_Texture* texture);
+
+
+
+/**
+ * \fn int initDamier( SDL_Rect* damier[LIGNES*COLONNES], SDL_Renderer* renderer, SDL_Color couleur, int largeurRectGrille, int offsetGrilleX, int offsetGrilleY )
+ * \brief remplit un tableau de SDL_Rect avec des coordonnées, qui représentent les 42 cases d'une grille de puissance4
+ * \param damier tableau 
+ * \param renderer pointeur de SDL_Renderer, nécessaire à setDrawColor
+ * \param couleur couleur des rectangles de la grille à afficher
+ * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
+ * \param offsetGrilleX décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal
+ * \param offsetGrilleY décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical
+ * \return retourne 0 pour un succès
+ */
+int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer, SDL_Color couleur, 
+				int largeurRectGrille, int offsetGrilleX, int offsetGrilleY );
+
+
+
+/**
+ * \fn int initCoordonneesPions(SDL_Rect* coordonneesPions[LIGNES][COLONNES], int offsetGrilleX, int offsetGrilleY, int largeurPiece)
+ * \brief remplit un tableau de SDL_Rect avec des coordonnées, qui représentent les emplacements des pièces de jeu, dans chaque cases d'une grille de puissance4
+ * \param coordonneesPions matrice des coordonnées des pions 
+ * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
+ * \param offsetGrilleX décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal
+ * \param offsetGrilleY décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical
+ * \return retourne 0 pour un succès
+ */
+int initCoordonneesPions(   SDL_Rect coordonneesPions[LIGNES][COLONNES], 
+							int largeurRectGrille, int offsetGrilleX, int offsetGrilleY);
+
 
 
 

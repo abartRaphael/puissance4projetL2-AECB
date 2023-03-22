@@ -89,7 +89,7 @@ SDL_Texture* loadImage(char* path, SDL_Renderer* renderer) {
 /**
  * \fn int setDrawColor(SDL_Renderer *renderer, SDL_Color color)
  * \brief change la couleur utilisée pour dessiner avec un SDL_Color
- * \param renderer pointeur de SDL_Renderer, nécessaire
+ * \param renderer pointeur de SDL_Renderer, nécessaire à SDL_SetRenderDrawColor
  * \param color couleur de type SDL_color {rouge, vert, bleu[, alpha]}
  * \return retourne 0 pour un succès, -1 pour une erreur
  */
@@ -104,42 +104,127 @@ int setDrawColor(SDL_Renderer *renderer, SDL_Color color) {
 
 
 void setPixel(SDL_Surface *surface, Uint8 r, Uint8 g, Uint8 b, Uint8 a, size_t x, size_t y) {
-    
+	
 	Uint32 *pixels = surface->pixels; // Nos pixels sont sur 32 bits 
-    Uint32 couleur = SDL_MapRGBA(surface->format, r, g, b, a);
-    pixels[y * surface->w + x] = couleur;
+	Uint32 couleur = SDL_MapRGBA(surface->format, r, g, b, a);
+	pixels[y * surface->w + x] = couleur;
 }
 
 
 
+/**
+ * \fn SDL_Surface *createSurfaceFromTexture(SDL_Texture* texture)
+ * \brief crée un SDL_Surface à partir d'un SDL_Texture du même format
+ * \param texture texture à utiliser pour en fait une Surface, nécessaire
+ * \return retourne un SDL_Surface pour un succès, NULL pour une erreur
+ */
 SDL_Surface *createSurfaceFromTexture(SDL_Texture* texture)
 {
-    Uint32 format_pixels;
-    SDL_Surface* surface = NULL;
-    void* pixels = NULL;
-    int pitch, w, h;
+	Uint32 format_pixels;
+	SDL_Surface* surface = NULL;
+	void* pixels = NULL;
+	int pitch, w, h;
 
-    if( SDL_QueryTexture(texture, &format_pixels, NULL, &w, &h) != 0 )
-    {
-        fprintf(stderr, "SDL_QueryTexture: %s.\n", SDL_GetError());
-        goto query_texture_fail;
-    }
+	if( SDL_QueryTexture(texture, &format_pixels, NULL, &w, &h) != 0 )
+	{
+		fprintf(stderr, "SDL_QueryTexture: %s.\n", SDL_GetError());
+		goto query_texture_fail;
+	}
 
-    if( SDL_LockTexture(texture, NULL, &pixels, &pitch) != 0 )
-    {
-        fprintf(stderr, "SDL_LockTexture: %s.\n", SDL_GetError());
-        goto lock_texture_fail;
-    }
+	if( SDL_LockTexture(texture, NULL, &pixels, &pitch) != 0 )
+	{
+		fprintf(stderr, "SDL_LockTexture: %s.\n", SDL_GetError());
+		goto lock_texture_fail;
+	}
 
-    surface = SDL_CreateRGBSurfaceWithFormatFrom(pixels, w, h, 32, w * sizeof(Uint32), 
-                                                 format_pixels);
-    if(NULL == surface)
-        fprintf(stderr, "Erreur SDL_CreateRGBSurfaceWithFormatFrom : %s.\n", SDL_GetError());
+	surface = SDL_CreateRGBSurfaceWithFormatFrom(pixels, w, h, 32, w * sizeof(Uint32), 
+												 format_pixels);
+	if(NULL == surface)
+		fprintf(stderr, "Erreur SDL_CreateRGBSurfaceWithFormatFrom : %s.\n", SDL_GetError());
 
-    SDL_UnlockTexture(texture);
+	SDL_UnlockTexture(texture);
 lock_texture_fail:
 query_texture_fail:
-    return surface;
+	return surface;
 }
 
 
+
+/**
+ * \fn int initDamier( SDL_Rect* damier[LIGNES*COLONNES], SDL_Renderer* renderer, SDL_Color couleur, int largeurRectGrille, int offsetGrilleX, int offsetGrilleY )
+ * \brief remplit un tableau de SDL_Rect avec des coordonnées, qui représentent les 42 cases d'une grille de puissance4
+ * \param damier tableau des coordonnées des rectangles de la grille
+ * \param renderer pointeur de SDL_Renderer, nécessaire à setDrawColor
+ * \param couleur couleur des rectangles de la grille à afficher
+ * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
+ * \param offsetGrilleX décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal
+ * \param offsetGrilleY décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical
+ * \return retourne 0 pour un succès
+ */
+int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer, SDL_Color couleur, 
+				int largeurRectGrille, int offsetGrilleX, int offsetGrilleY ) {
+
+
+	int hauteur=largeurRectGrille, // carré
+
+
+
+	// couleur de la grille
+	setDrawColor(renderer, couleur);
+
+
+	for(int i=0, indice=0 ; i<LIGNES ; i++)
+	{
+		for(int j=0 ; j<COLONNES ; j++, indice++) 
+		{
+			//largeurRectGrille * le nombre de rectangles précédents
+			//+ offsetGrille (décale l'ensemble de carrés par rapport au coin supérieur gauche de la fenêtre)
+			// - i(ou j) (pour que les bordures des carrés se superposent)
+			damier[indice].x = largeurRectGrille * j +offsetGrilleX - j;
+			damier[indice].y = hauteur  * i +offsetGrilleY - i;
+			damier[indice].w = largeurRectGrille;
+			damier[indice].h = hauteur;
+
+			//SDL_RenderDrawRect( renderer, &damier[indice] ); // dessine les carrés les uns après les autres
+		}
+	}
+
+	// SDL_RenderDrawRects(renderer, damier, n); // autre méthode pour afficher plusieurs carrés
+
+	return 0;
+}
+
+
+
+/**
+ * \fn int initCoordonneesPions(SDL_Rect* coordonneesPions[LIGNES][COLONNES], int offsetGrilleX, int offsetGrilleY, int largeurPiece)
+ * \brief remplit un tableau de SDL_Rect avec des coordonnées, qui représentent les emplacements des pièces de jeu, dans chaque cases d'une grille de puissance4
+ * \param coordonneesPions matrice des coordonnées des pions 
+ * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
+ * \param offsetGrilleX décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal
+ * \param offsetGrilleY décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical
+ * \return retourne 0 pour un succès
+ */
+int initCoordonneesPions(   SDL_Rect coordonneesPions[LIGNES][COLONNES], 
+							int largeurRectGrille, int offsetGrilleX, int offsetGrilleY) {
+
+	int espacementGrille = 1, // les rectangles font 1 pixel d'épaisseur (constante))
+		offsetJetonsX = offsetGrilleX+espacementGrille, // décalage du point en haut à gauche de la grille à afficher, mais pour les pièces, sur l'axe horizontal
+		offsetJetonsY = offsetGrilleY+espacementGrille, // décalage du point en haut à gauche de la grille à afficher, mais pour les pièces, sur l'axe vertical
+		largeurPiece = largeurRectGrille-2, // -1 pour la bordure gauche, -1 pour la bordure droite
+		hauteur = largeurPiece;
+
+
+	//remplir matrice "slots" de rectangles ayant des coordonnées permettant de placer une texture de jeton facilement (les valeurs doivent correspondre à la grille de jeu)
+	for(int i=0 ; i<6 ; i++) {
+		for(int j=0 ; j<7 ; j++) {
+		
+			coordonneesPions[i][j].x = espacementGrille * j + largeurPiece * j + offsetJetonsX;
+			coordonneesPions[i][j].y = espacementGrille * i + hauteur * i + offsetJetonsY;
+			coordonneesPions[i][j].w = largeurPiece;
+			coordonneesPions[i][j].h = hauteur;
+		}
+	}
+
+	return 0;
+}
