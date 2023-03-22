@@ -228,3 +228,112 @@ int initCoordonneesPions(   SDL_Rect coordonneesPions[LIGNES][COLONNES],
 
 	return 0;
 }
+
+
+
+/**
+ * \fn void afficherPions(t_pion grilleDeValeurs[LIGNES][COLONNES], SDL_Renderer* renderer)
+ * \brief Affiche les pions à l'écran
+ * \param renderer pointeur de SDL_Renderer, nécessaire
+ * \param grilleDeValeurs matrice contenant les pièces jouées (t_pion)
+ * \param coordonneesPions matrice contenant les coordonnées où placer l'image de pièce
+ * \param images structure contenant des pointeurs sur toutes les textures d'images de pions
+ * \param arrierePlan couleur de l'arrière-plan de la fenêtre
+ */
+void afficherPions( SDL_Renderer* renderer, 
+					t_pion grilleDeValeurs[LIGNES][COLONNES], 
+					SDL_Rect coordonneesPions[LIGNES][COLONNES], 
+					images_t* images, 
+					SDL_Color arrierePlan) {
+
+
+	for(int i=0 ; i<LIGNES ; i++) {
+		for(int j=0 ; j<COLONNES ; j++) {
+				
+			switch (grilleDeValeurs[i][j].couleur ) 
+			{
+				case rouge:
+
+					switch( grilleDeValeurs[i][j].type ) {
+						case pleine:
+							//remplir la case par la texture du pion de bonne couleur
+							SDL_RenderCopy(renderer, images->pionRougePlein, NULL, &coordonneesPions[i][j]); 
+							break;
+						case creuse:
+							SDL_RenderCopy(renderer, images->pionRougeCreux, NULL, &coordonneesPions[i][j]); 
+							break;
+						case bloquante:
+							SDL_RenderCopy(renderer, images->pionRougeBloquant, NULL, &coordonneesPions[i][j]); 
+							break;
+						default:
+							//no_type
+					}
+					break;
+
+				case jaune:
+
+					switch( grilleDeValeurs[i][j].type ) {
+						case pleine:
+							//remplir la case par la texture du pion de bonne couleur
+							SDL_RenderCopy(renderer, images->pionJaunePlein, NULL, &coordonneesPions[i][j]); 
+							break;
+						case creuse:
+							SDL_RenderCopy(renderer, images->pionJauneCreux, NULL, &coordonneesPions[i][j]); 
+							break;
+						case bloquante:
+							SDL_RenderCopy(renderer, images->pionJauneBloquant, NULL, &coordonneesPions[i][j]); 
+							break;
+						default:
+							//no_type
+					}
+					break;
+
+				case rougejaune:
+
+					//case bloquante:
+					SDL_RenderCopy(renderer, images->pionDoubleBloquant, NULL, &coordonneesPions[i][j]); 
+					break;
+
+				case vide:
+				default:
+					// remplir la case par un rectangle de la même couleur que l'arrière-plan
+					setDrawColor(renderer, arrierePlan);
+					SDL_RenderFillRect(renderer, &coordonneesPions[i][j]);
+			}
+
+		}
+	}
+
+
+	SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
+}
+
+
+
+int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images ) {
+	/** 
+	 * Les textures ne sont pas faites pour une modification pixels par pixels. 
+	 * Elles ont l’avantage d’êtres affichables rapidement, 
+	 * de pouvoir être redimensionnée à la volée et copiée rapidement
+	 */
+
+
+	// TODO initStructTexturesCreux()
+		// dans version bloquante : (pleine, creuse, bloquante) x (rouge et jaune)
+
+
+	// charger les images de pièces (rouge et jaune)
+
+	//IMG_Load();
+
+	//images->pionRougePlein = loadImage("pionRougePlein.bmp",renderer);
+	images->pionRougeCreux = NULL;
+	//images->pionJaunePlein = loadImage("pionJaunePlein.bmp",renderer);
+	images->pionJauneCreux = NULL
+	images->pionJauneBloquan = NULL
+	images->pionRougeBloquant = NULL
+	images->pionDoubleBloquant = NULL
+		
+
+	return 0;
+}

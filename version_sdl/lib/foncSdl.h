@@ -17,11 +17,18 @@
 
 // ces fonctions et structures ne seront peut-être pas toutes utilisées
 
-// Cette structure permet de représenter un carré par sa couleur et un SDL_Rect. 
-struct carre {
-   SDL_Rect rect;
-   Uint32 couleur;
-};
+/** \struct images_s
+ * \brief structure contenant des pointeurs sur toutes les textures d'images de pions
+ */
+typedef struct images_s {
+	SDL_Texture* pionRougePlein;
+	SDL_Texture* pionRougeCreux;
+	SDL_Texture* pionJaunePlein;
+	SDL_Texture* pionJauneCreux;
+	SDL_Texture* pionJauneBloquant;
+	SDL_Texture* pionRougeBloquant;
+	SDL_Texture* pionDoubleBloquant;
+} images_t;
 
 
 
@@ -95,6 +102,27 @@ int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer, SDL_Co
  */
 int initCoordonneesPions(   SDL_Rect coordonneesPions[LIGNES][COLONNES], 
 							int largeurRectGrille, int offsetGrilleX, int offsetGrilleY);
+
+
+
+/**
+ * \fn void afficherPions(t_pion grilleDeValeurs[LIGNES][COLONNES], SDL_Renderer* renderer)
+ * \brief Affiche les pions à l'écran
+ * \param renderer pointeur de SDL_Renderer, nécessaire
+ * \param grilleDeValeurs matrice contenant les pièces jouées (t_pion)
+ * \param coordonneesPions matrice contenant les coordonnées où placer l'image de pièce
+ * \param images structure contenant des pointeurs sur toutes les textures d'images de pions
+ * \param arrierePlan couleur de l'arrière-plan de la fenêtre
+ */
+void afficherPions( SDL_Renderer* renderer, 
+					t_pion grilleDeValeurs[LIGNES][COLONNES], 
+					SDL_Rect coordonneesPions[LIGNES][COLONNES], 
+					images_t* images, 
+					SDL_Color arrierePlan);
+
+
+
+int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images );
 
 
 

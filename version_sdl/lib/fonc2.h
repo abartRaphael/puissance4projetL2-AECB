@@ -9,7 +9,7 @@
 
 
 typedef enum{vide, rouge, jaune, rougejaune} t_couleur;
-typedef enum{no_type, creuse , pleine,bloquante} t_type;
+typedef enum{no_type, creuse, pleine, bloquante} t_type;
 
 typedef struct{
 	t_couleur couleur;
@@ -115,13 +115,6 @@ int quatreALaSuiteDiagonale2(t_pion grille[LIGNES][COLONNES], int c, int l, t_pi
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int estQuatreALaSuite(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur);
-
-/**
- * \fn void afficherGrille(t_pion grille[LIGNES][COLONNES])
- * \brief Affiche la grille de jeu
- * \param grille grille de puissance 4
- */
-void afficherGrille(t_pion grille[LIGNES][COLONNES]);
 
 /**
  * \fn void sauvegardeAuto(t_pion grille[LIGNES][COLONNES], t_pion couleur, int nbTours)
