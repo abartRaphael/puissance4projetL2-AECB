@@ -49,19 +49,11 @@ int main(int argc, char** argv)
 // On agit sur la fenêtre ici 
 
 
+	// menu principal
 
 
-
-
-
-
-
-
-
+	// lancement de partie normale
 	mode_normal(pWindow, renderer);
-
-	goto Quit;
-
 
 
 
@@ -72,17 +64,15 @@ int main(int argc, char** argv)
 
 // Quitter
 Quit:
-	if(texture) 
-        SDL_DestroyTexture(texture);
-	if(renderer) 
+
+	if(renderer) {
 		SDL_DestroyRenderer(renderer);
-	if(surface) 
-		SDL_FreeSurface(surface);
-	//if(format)
-		//SDL_FreeFormat(format);
-	if(pWindow) //Destruction de la fenetre
+	}
+	if(pWindow) {
+		// Destruction de la fenetre
 		SDL_DestroyWindow(pWindow);
-	
+	}
+
 	SDL_Quit();
 
 
