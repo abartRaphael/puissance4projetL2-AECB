@@ -79,18 +79,17 @@ SDL_Texture* loadImage(char* path, SDL_Renderer* renderer) {
 
 
 /**
- * \fn int setWindowColor(SDL_Renderer *renderer, SDL_Color color)
- * \brief change la couleur (de type SDL_Color) utilisée pour dessiner
+ * \fn int setDrawColor(SDL_Renderer *renderer, SDL_Color color)
+ * \brief change la couleur utilisée pour dessiner avec un SDL_Color
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param color couleur de type SDL_color {rouge, vert, bleu[, alpha]}
  * \return retourne 0 pour un succès, -1 pour une erreur
  */
-int setWindowColor(SDL_Renderer *renderer, SDL_Color color) {
+int setDrawColor(SDL_Renderer *renderer, SDL_Color color) {
 
 	if(SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a) < 0)
 		return -1;
-	if(SDL_RenderClear(renderer) < 0)
-		return -1;
+
 	return 0;  
 }
 
