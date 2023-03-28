@@ -666,7 +666,9 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 				play = SDL_FALSE; // vrai quand un joueur a joué (cliqué)
 
 
-	int largeurRectGrille=51, // largeur des rectangles (carrés) qui composent la grille à afficher (à définir dynamiquement)
+	int largeurWindow, 
+		hauteurWindow, 
+		largeurRectGrille=51, // largeur des rectangles (carrés) qui composent la grille à afficher (à définir dynamiquement)
 		offsetGrilleX=100, // décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal (à définir dynamiquement)
 		offsetGrilleY=50, // décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical (à définir dynamiquement)
 		
@@ -675,6 +677,15 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 
 	t_pion	grilleDeValeurs[LIGNES][COLONNES], // représentation de la grille de jeu dans le code (pour les fonctions) avec la structure t_pion
 			couleurJoueur;
+
+
+	// * récupérer les dimension de la fenêtre, pour ensuite créer la grille dynamiquement
+
+	SDL_GetWindowSize(pWindow, &largeurWindow, &hauteurWindow);
+
+	// TODO fonction qui, d'après les dimensions de la fênetre, calcule les valeurs de largeurRectGrille, offsetGrilleX et offsetGrilleY
+	dimensionGrilleDynamique(	largeurWindow, hauteurWindow, 
+								&largeurRectGrille, &offsetGrilleX, &offsetGrilleY);
 
 
 	// * initialisations
@@ -748,7 +759,7 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 
 					colonneCliquee = getColonneClick( damier, largeurRectGrille, event.button.x );
 
-					printf("colonneCliquee = %d\n", colonneCliquee);
+					//printf("colonneCliquee = %d\n", colonneCliquee);
 
 					if( colonneCliquee != -1 ) {
 						play = SDL_TRUE;

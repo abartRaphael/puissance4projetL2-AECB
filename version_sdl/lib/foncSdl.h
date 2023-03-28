@@ -162,4 +162,18 @@ void freeLesImages(images_t* images);
 
 
 
+/**
+ * \fn int dimensionGrilleDynamique( int largeurWindow, int hauteurWindow, int* largeurRectGrille, int* offsetGrilleX, int* offsetGrilleY )
+ * \brief calcule les valeurs de largeurRectGrille, offsetGrilleX et offsetGrilleY, d'après les dimensions de la fênetre, pour bien afficher la grille de jeu en prenant la place nécessaire
+ * \param largeurWindow largeur actuelle de la fenêtre
+ * \param hauteurWindow hauteur actuelle de la fenêtre
+ * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
+ * \param offsetGrilleX décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal
+ * \param offsetGrilleY décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical
+ */
+int dimensionGrilleDynamique( int largeurWindow, int hauteurWindow, int* largeurRectGrille, int* offsetGrilleX, int* offsetGrilleY );
+
+
+
+
 #endif /*H_FONCSDL_ */
