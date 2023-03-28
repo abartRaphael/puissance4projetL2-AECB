@@ -736,13 +736,16 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 				quit = SDL_TRUE;
 			else if(event.type == SDL_MOUSEBUTTONUP)
 			{
-				//if(event.button.button == SDL_BUTTON_LEFT && event.button.clicks >= 2)
-					//printf("Au moins un double clic gauche\n");
+				if(event.button.button == SDL_BUTTON_LEFT)
+					//printf("clic gauche\n");
 
-				colonneCliquee = 
-				
+					colonneCliquee = getColonneClick( damier, largeurRectGrille, event.button.x );
 
-				play = SDL_TRUE;
+					if( colonneCliquee != -1 ) {
+						play = SDL_TRUE;
+					}
+				}
+
 			}
 			
 

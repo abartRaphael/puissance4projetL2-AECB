@@ -312,6 +312,12 @@ void afficherPions( SDL_Renderer* renderer,
 
 
 
+/**
+ * \fn int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images )
+ * \brief crée (alloue) les images des pièces d'une partie normale et les affecte à une structure images_t
+ * \param renderer pointeur de SDL_Renderer, nécessaire
+ * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à remplir
+ */
 int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images ) {
 	/** 
 	 * Les textures ne sont pas faites pour une modification pixels par pixels. 
@@ -323,6 +329,7 @@ int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images ) {
 	// TODO initStructTexturesCreux()
 		// dans version bloquante : (pleine, creuse, bloquante) x (rouge et jaune)
 
+	
 
 	// charger les images de pièces (rouge et jaune)
 
@@ -338,4 +345,38 @@ int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images ) {
 		
 
 	return 0;
+}
+
+
+
+/**
+ * \fn int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x )
+ * \brief 
+ * \param damier tableau des coordonnées des rectangles de la grille
+ * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
+ * \param x position horizontale de la souris au moment du clic, par rapport à la fenêtre
+ */
+int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x ) {
+	// TODO fonction qui déduit dans quelle colonne le joueur a cliqué
+
+	if( x < damier[0].x
+	 || (damier[6].x + largeurRectGrille ) < x ) {
+		// hors de la grille
+		return -1;
+	}
+
+
+	for( int i=1 ; i<7 ; i++ ) {
+
+		if( x <= damier[i].x ) {
+			// colonne i
+			return i;
+		}
+	}
+
+	//if( x <= (damier[6].x + largeurRectGrille ) ) {
+		// colonne 7
+		// par élimination, à partir d'ici, ça ne peut être que la colonne 7
+		return 7;
+	//}
 }

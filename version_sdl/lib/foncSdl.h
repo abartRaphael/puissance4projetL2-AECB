@@ -122,8 +122,24 @@ void afficherPions( SDL_Renderer* renderer,
 
 
 
+/**
+ * \fn int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images )
+ * \brief crée (alloue) les images des pièces d'une partie normale et les affecte à une structure images_t
+ * \param renderer pointeur de SDL_Renderer, nécessaire
+ * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à remplir
+ */
 int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images );
 
+
+
+/**
+ * \fn int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x )
+ * \brief 
+ * \param damier tableau des coordonnées des rectangles de la grille
+ * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
+ * \param x position horizontale de la souris au moment du clic, par rapport à la fenêtre
+ */
+int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x );
 
 
 
