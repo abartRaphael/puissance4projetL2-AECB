@@ -241,6 +241,8 @@ void afficherPions( SDL_Renderer* renderer,
 					SDL_Color arrierePlan) {
 
 
+	int err;
+
 	for(int i=0 ; i<LIGNES ; i++) {
 		for(int j=0 ; j<COLONNES ; j++) {
 				
@@ -251,13 +253,13 @@ void afficherPions( SDL_Renderer* renderer,
 					switch( grilleDeValeurs[i][j].type ) {
 						case pleine:
 							//remplir la case par la texture du pion de bonne couleur
-							SDL_RenderCopy(renderer, images->pionRougePlein, NULL, &coordonneesPions[i][j]); 
+							err = SDL_RenderCopy(renderer, images->pionRougePlein, NULL, &coordonneesPions[i][j]); 
 							break;
 						case creuse:
-							SDL_RenderCopy(renderer, images->pionRougeCreux, NULL, &coordonneesPions[i][j]); 
+							err = SDL_RenderCopy(renderer, images->pionRougeCreux, NULL, &coordonneesPions[i][j]); 
 							break;
 						case bloquante:
-							SDL_RenderCopy(renderer, images->pionRougeBloquant, NULL, &coordonneesPions[i][j]); 
+							err = SDL_RenderCopy(renderer, images->pionRougeBloquant, NULL, &coordonneesPions[i][j]); 
 							break;
 						case no_type:
 						default:
@@ -270,13 +272,13 @@ void afficherPions( SDL_Renderer* renderer,
 					switch( grilleDeValeurs[i][j].type ) {
 						case pleine:
 							//remplir la case par la texture du pion de bonne couleur
-							SDL_RenderCopy(renderer, images->pionJaunePlein, NULL, &coordonneesPions[i][j]); 
+							err = SDL_RenderCopy(renderer, images->pionJaunePlein, NULL, &coordonneesPions[i][j]); 
 							break;
 						case creuse:
-							SDL_RenderCopy(renderer, images->pionJauneCreux, NULL, &coordonneesPions[i][j]); 
+							err = SDL_RenderCopy(renderer, images->pionJauneCreux, NULL, &coordonneesPions[i][j]); 
 							break;
 						case bloquante:
-							SDL_RenderCopy(renderer, images->pionJauneBloquant, NULL, &coordonneesPions[i][j]); 
+							err = SDL_RenderCopy(renderer, images->pionJauneBloquant, NULL, &coordonneesPions[i][j]); 
 							break;
 						case no_type:
 						default:
@@ -287,7 +289,7 @@ void afficherPions( SDL_Renderer* renderer,
 				case rougejaune:
 
 					//case bloquante:
-					SDL_RenderCopy(renderer, images->pionDoubleBloquant, NULL, &coordonneesPions[i][j]); 
+					err = SDL_RenderCopy(renderer, images->pionDoubleBloquant, NULL, &coordonneesPions[i][j]); 
 					break;
 
 				case vide:
@@ -295,6 +297,10 @@ void afficherPions( SDL_Renderer* renderer,
 					// remplir la case par un rectangle de la même couleur que l'arrière-plan
 					setDrawColor(renderer, arrierePlan);
 					SDL_RenderFillRect(renderer, &coordonneesPions[i][j]);
+			}
+
+			if(err == -1) {
+				fprintf(stderr, "Erreur SDL_RenderCopy, dans afficherPions : %s\n", SDL_GetError());
 			}
 
 		}
@@ -384,7 +390,7 @@ int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x ) {
 void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], SDL_Color couleur ) {
 
 	setDrawColor(renderer, couleur);
-	
+
 	if( SDL_RenderDrawRects( renderer, damier, 42 ) == -1 ) {
 		fprintf(stderr, "Erreur SDL_RenderDrawRects : %s\n", SDL_GetError());
 	}
