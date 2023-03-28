@@ -158,7 +158,7 @@ void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], SDL_Color coul
  * \brief free (désalloue) les images des pièces dans une structure images_t
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à désallouer
  */
-int freeLesImages(images_t* images);
+void freeLesImages(images_t* images);
 
 
 
