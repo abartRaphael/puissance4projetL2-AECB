@@ -653,8 +653,9 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 	SDL_Surface *surface = NULL;
 
 	// variables de couleur
-	SDL_Color	noir = {0, 0, 0, 0}, 
+	SDL_Color	noir = {0, 0, 0, 255}, 
 				blanc = {255, 255, 255, 255}, 
+				cyan = {0, 255, 255, 255}, 
 				arrierePlan = noir; // couleur d'arrière-plan de la fenêtre
 
 	SDL_Rect	damier[LIGNES*COLONNES], // rectangles qui forment la grille (visuel)
@@ -666,32 +667,35 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 
 
 	int largeurRectGrille=51, // largeur des rectangles (carrés) qui composent la grille à afficher (à définir dynamiquement)
-		offsetGrilleX=10, // décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal (à définir dynamiquement)
-		offsetGrilleY=10, // décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical (à définir dynamiquement)
+		offsetGrilleX=100, // décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal (à définir dynamiquement)
+		offsetGrilleY=50, // décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical (à définir dynamiquement)
 		
 		colonneCliquee, 
 		nbTours=0;
 
-	t_pion  grilleDeValeurs[LIGNES][COLONNES], // représentation de la grille de jeu dans le code (pour les fonctions) avec la structure t_pion
+	t_pion	grilleDeValeurs[LIGNES][COLONNES], // représentation de la grille de jeu dans le code (pour les fonctions) avec la structure t_pion
 			couleurJoueur;
 
 
 	// * initialisations
 
-	initDamier( damier, renderer, blanc, 
+	initDamier( damier, renderer, 
 				largeurRectGrille, offsetGrilleX, offsetGrilleY );
+
 
 	initCoordonneesPions(   coordonneesPions, 
 							largeurRectGrille, offsetGrilleX, offsetGrilleY);
 
-	initStructTexturesNormal( renderer, &images );
+	//initStructTexturesNormal( renderer, &images );
 	
+
+
 
 
 	// arrière-plan de la fenêtre
 	setDrawColor(renderer, arrierePlan);
 	SDL_RenderClear(renderer);
-
+	//SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
 
 
 /*
@@ -711,10 +715,13 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 
 
 
+	afficherDamier( renderer, damier, cyan );
+
+
 	do {
 
 		afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, arrierePlan);
-
+		SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
 
 		//alterne la couleur de pion du joueur
 		couleurJoueur.couleur = (couleurJoueur.couleur == rouge ? jaune : rouge);
@@ -740,6 +747,8 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 					//printf("clic gauche\n");
 
 					colonneCliquee = getColonneClick( damier, largeurRectGrille, event.button.x );
+
+					printf("colonneCliquee = %d\n", colonneCliquee);
 
 					if( colonneCliquee != -1 ) {
 						play = SDL_TRUE;

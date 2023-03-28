@@ -80,13 +80,12 @@ SDL_Surface *createSurfaceFromTexture(SDL_Texture* texture);
  * \brief remplit un tableau de SDL_Rect avec des coordonnées, qui représentent les 42 cases d'une grille de puissance4
  * \param damier tableau 
  * \param renderer pointeur de SDL_Renderer, nécessaire à setDrawColor
- * \param couleur couleur des rectangles de la grille à afficher
  * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
  * \param offsetGrilleX décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal
  * \param offsetGrilleY décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical
  * \return retourne 0 pour un succès
  */
-int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer, SDL_Color couleur, 
+int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer, 
 				int largeurRectGrille, int offsetGrilleX, int offsetGrilleY );
 
 
@@ -140,6 +139,17 @@ int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images );
  * \param x position horizontale de la souris au moment du clic, par rapport à la fenêtre
  */
 int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x );
+
+
+
+/**
+ * \fn void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], SDL_Color couleur )
+ * \brief dessine tous les rectangles contenu dans "damier", en "couleur", et l'affiche à l'écran
+ * \param renderer pointeur de SDL_Renderer, nécessaire
+ * \param damier tableau des coordonnées des rectangles de la grille
+ * \param couleur couleur des rectangles de la grille à afficher
+ */
+void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], SDL_Color couleur );
 
 
 

@@ -155,22 +155,16 @@ query_texture_fail:
  * \brief remplit un tableau de SDL_Rect avec des coordonnées, qui représentent les 42 cases d'une grille de puissance4
  * \param damier tableau des coordonnées des rectangles de la grille
  * \param renderer pointeur de SDL_Renderer, nécessaire à setDrawColor
- * \param couleur couleur des rectangles de la grille à afficher
  * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
  * \param offsetGrilleX décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal
  * \param offsetGrilleY décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical
  * \return retourne 0 pour un succès
  */
-int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer, SDL_Color couleur, 
+int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer, 
 				int largeurRectGrille, int offsetGrilleX, int offsetGrilleY ) {
 
 
 	int hauteur=largeurRectGrille; // carré
-
-
-
-	// couleur de la grille
-	setDrawColor(renderer, couleur);
 
 
 	for(int i=0, indice=0 ; i<LIGNES ; i++)
@@ -185,7 +179,7 @@ int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer, SDL_Co
 			damier[indice].w = largeurRectGrille;
 			damier[indice].h = hauteur;
 
-			//SDL_RenderDrawRect( renderer, &damier[indice] ); // dessine les carrés les uns après les autres
+			SDL_RenderDrawRect( renderer, &damier[indice] ); // dessine les carrés les uns après les autres
 		}
 	}
 
@@ -305,9 +299,6 @@ void afficherPions( SDL_Renderer* renderer,
 
 		}
 	}
-
-
-	SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
 }
 
 
@@ -380,3 +371,24 @@ int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x ) {
 		return 7;
 	//}
 }
+
+
+
+/**
+ * \fn void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], SDL_Color couleur )
+ * \brief dessine tous les rectangles contenu dans "damier", en "couleur", et l'affiche à l'écran
+ * \param renderer pointeur de SDL_Renderer, nécessaire
+ * \param damier tableau des coordonnées des rectangles de la grille
+ * \param couleur couleur des rectangles de la grille à afficher
+ */
+void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], SDL_Color couleur ) {
+
+	setDrawColor(renderer, couleur);
+	
+	if( SDL_RenderDrawRects( renderer, damier, 42 ) == -1 ) {
+		fprintf(stderr, "Erreur SDL_RenderDrawRects : %s\n", SDL_GetError());
+	}
+}
+
+
+

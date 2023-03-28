@@ -51,6 +51,12 @@ int main(int argc, char** argv)
 
 	// menu principal
 
+	SDL_Color	cyan = {0, 255, 255, 255};
+
+
+	// arrière-plan de la fenêtre
+	setDrawColor(renderer, cyan);
+	SDL_RenderClear(renderer);
 
 	// lancement de partie normale
 	mode_normal(pWindow, renderer);
@@ -75,7 +81,7 @@ Quit:
 
 	SDL_Quit();
 
-
+	printf("bonne fin de programme\n");
 
 
 	return statut;
