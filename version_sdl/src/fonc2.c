@@ -686,7 +686,7 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 	initCoordonneesPions(   coordonneesPions, 
 							largeurRectGrille, offsetGrilleX, offsetGrilleY);
 
-	//initStructTexturesNormal( renderer, &images );
+	initStructTexturesNormal( renderer, &images );
 	
 
 

@@ -68,6 +68,7 @@ SDL_Texture* loadImage(char* path, SDL_Renderer* renderer) {
 	tempSurface = SDL_LoadBMP(path);
 	if(!tempSurface)
 	{
+		fprintf(stderr, "Failed to load image at %s: %s\n", path, SDL_GetError());
 		fprintf(stderr, "Erreur SDL_LoadBMP : %s\n", SDL_GetError());
 		return NULL;
 	}
@@ -327,14 +328,13 @@ int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images ) {
 		// dans version bloquante : (pleine, creuse, bloquante) x (rouge et jaune)
 
 	
+	// autre solution -> IMG_Load();
+
 
 	// charger les images de pièces (rouge et jaune)
-
-	//IMG_Load();
-
-	//images->pionRougePlein = loadImage("pionRougePlein.bmp",renderer);
+	images->pionRougePlein = loadImage("img/pionRouge.bmp",renderer);
 	images->pionRougeCreux = NULL;
-	//images->pionJaunePlein = loadImage("pionJaunePlein.bmp",renderer);
+	images->pionJaunePlein = loadImage("img/pionJaune.bmp",renderer);
 	images->pionJauneCreux = NULL;
 	images->pionJauneBloquant = NULL;
 	images->pionRougeBloquant = NULL;
