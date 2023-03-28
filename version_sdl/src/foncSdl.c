@@ -347,6 +347,31 @@ int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images ) {
 
 
 /**
+ * \fn int freeLesImages(images_t* images)
+ * \brief free (désalloue) les images des pièces dans une structure images_t
+ * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à désallouer
+ */
+void freeLesImages(images_t* images) {
+
+	if( images->pionRougePlein != NULL )
+		SDL_DestroyTexture( images->pionRougePlein );
+	if( images->pionRougeCreux != NULL)
+		SDL_DestroyTexture( images->pionRougeCreux );
+	if( images->pionJaunePlein != NULL)
+		SDL_DestroyTexture( images->pionJaunePlein );
+	if( images->pionJauneCreux != NULL)
+		SDL_DestroyTexture( images->pionJauneCreux );
+	if( images->pionJauneBloquant != NULL)
+		SDL_DestroyTexture( images->pionJauneBloquant );
+	if( images->pionRougeBloquant != NULL)
+		SDL_DestroyTexture( images->pionRougeBloquant );
+	if( images->pionDoubleBloquant != NULL)
+		SDL_DestroyTexture( images->pionDoubleBloquant );
+}
+
+
+
+/**
  * \fn int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x )
  * \brief 
  * \param damier tableau des coordonnées des rectangles de la grille

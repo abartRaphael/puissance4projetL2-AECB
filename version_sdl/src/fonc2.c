@@ -801,16 +801,7 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 // Quitter
 Quit:
 	// 2 textures (partie normale)
-	// TODO fonction pour Free les textures de "images"
-	
-	/*
-	if(pionRouge) {
-		SDL_DestroyTexture(pionRouge);
-	}
-	if(pionJaune) {
-		SDL_DestroyTexture(pionJaune);
-	}
-	*/
+	freeLesImages(&images);
 
 	if(surface) {
 		SDL_FreeSurface(surface);
