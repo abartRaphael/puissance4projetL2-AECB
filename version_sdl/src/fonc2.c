@@ -715,7 +715,7 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 
 	do {
 
-		afficherPions(renderer, grilleDeValeurs, coordonneesPions, images, arrierePlan);
+		afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, arrierePlan);
 
 
 		//alterne la couleur de pion du joueur

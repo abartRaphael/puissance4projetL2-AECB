@@ -165,7 +165,7 @@ int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer, SDL_Co
 				int largeurRectGrille, int offsetGrilleX, int offsetGrilleY ) {
 
 
-	int hauteur=largeurRectGrille, // carré
+	int hauteur=largeurRectGrille; // carré
 
 
 
@@ -265,8 +265,9 @@ void afficherPions( SDL_Renderer* renderer,
 						case bloquante:
 							SDL_RenderCopy(renderer, images->pionRougeBloquant, NULL, &coordonneesPions[i][j]); 
 							break;
+						case no_type:
 						default:
-							//no_type
+							break;
 					}
 					break;
 
@@ -283,8 +284,9 @@ void afficherPions( SDL_Renderer* renderer,
 						case bloquante:
 							SDL_RenderCopy(renderer, images->pionJauneBloquant, NULL, &coordonneesPions[i][j]); 
 							break;
+						case no_type:
 						default:
-							//no_type
+							break;
 					}
 					break;
 
@@ -329,10 +331,10 @@ int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images ) {
 	//images->pionRougePlein = loadImage("pionRougePlein.bmp",renderer);
 	images->pionRougeCreux = NULL;
 	//images->pionJaunePlein = loadImage("pionJaunePlein.bmp",renderer);
-	images->pionJauneCreux = NULL
-	images->pionJauneBloquan = NULL
-	images->pionRougeBloquant = NULL
-	images->pionDoubleBloquant = NULL
+	images->pionJauneCreux = NULL;
+	images->pionJauneBloquant = NULL;
+	images->pionRougeBloquant = NULL;
+	images->pionDoubleBloquant = NULL;
 		
 
 	return 0;
