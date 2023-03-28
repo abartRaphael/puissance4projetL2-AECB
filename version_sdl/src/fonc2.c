@@ -655,7 +655,6 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 	// variables de couleur
 	SDL_Color	noir = {0, 0, 0, 0}, 
 				blanc = {255, 255, 255, 255}, 
-				orange = {255, 127, 40, 255}, 
 				arrierePlan = noir; // couleur d'arrière-plan de la fenêtre
 
 	SDL_Rect	damier[LIGNES*COLONNES], // rectangles qui forment la grille (visuel)
@@ -669,7 +668,6 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 	int largeurRectGrille=51, // largeur des rectangles (carrés) qui composent la grille à afficher (à définir dynamiquement)
 		offsetGrilleX=10, // décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal (à définir dynamiquement)
 		offsetGrilleY=10, // décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical (à définir dynamiquement)
-		offset = 0, // à définir dynamiquement
 		
 		colonneCliquee, 
 		nbTours=0;
@@ -732,11 +730,13 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 			SDL_WaitEventTimeout(&event, 50);
 
 			// Analyse_Évènements
-			if(event.type == SDL_QUIT)
+			if(event.type == SDL_QUIT) {
 				quit = SDL_TRUE;
+				goto Quit;
+			}
 			else if(event.type == SDL_MOUSEBUTTONUP)
 			{
-				if(event.button.button == SDL_BUTTON_LEFT)
+				if(event.button.button == SDL_BUTTON_LEFT) {
 					//printf("clic gauche\n");
 
 					colonneCliquee = getColonneClick( damier, largeurRectGrille, event.button.x );
@@ -745,14 +745,9 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 						play = SDL_TRUE;
 					}
 				}
-
 			}
-			
-
-
-
-
 			//SDL_Delay(50); // petite pause, pour les performances
+
 		}
 		// Fin Boucle
 		play = SDL_FALSE;
@@ -768,9 +763,9 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 		//sauvegardeAuto(grilleDeValeurs, couleurJoueur, nbTours);
 
 
-	// la partie s'arrête quand il y a un 4 à la suite, 
-	// quand les 42 pions ont été joués (tour n°42), 
-	// ou quand la fenêtre se ferme
+		// la partie s'arrête quand il y a un 4 à la suite, 
+		// quand les 42 pions ont été joués (tour n°42), 
+		// ou quand la fenêtre se ferme
 	}while(!quit
 		&& !estQuatreALaSuite(grilleDeValeurs, colonneCliquee-1, couleurJoueur) 
 		&& nbTours < (LIGNES*COLONNES));
