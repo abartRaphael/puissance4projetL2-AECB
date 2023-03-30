@@ -432,7 +432,32 @@ void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], SDL_Color coul
  * \param offsetGrilleX décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal
  * \param offsetGrilleY décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical
  */
-void dimensionGrilleDynamique( int largeurWindow, int hauteurWindow, int* largeurRectGrille, int* offsetGrilleX, int* offsetGrilleY ) {
+void dimensionGrilleDynamique( int largeurWindow, int hauteurWindow, int* largeurRectGrille, int* offsetGrilleX, int* offsetGrilleY ) 
+{
+	int hauteurGrille,largeurGrille, diff;
 
-	// TODO
+	if (largeurWindow > hauteurWindow)
+	{
+		(*largeurRectGrille) = (hauteurWindow) / 6 + 0.5 ;
+		largeurGrille = (*largeurRectGrille) * 7 ;
+		diff = largeurWindow - largeurGrille;
+		(*offsetGrilleX) = diff / 2;
+		(*offsetGrilleY) = 0;
+	} 
+	else if (largeurWindow < hauteurWindow)
+	{
+		(*largeurRectGrille) = (largeurWindow) / 7 + 0.5;
+		hauteurGrille = (*largeurRectGrille) * 6;
+		diff = hauteurWindow - hauteurGrille;
+		(*offsetGrilleX) = 0;
+		(*offsetGrilleY) = diff / 2;
+	} 
+	else {
+		(*largeurRectGrille) = (largeurWindow) / 7 + 0.5 ;
+		hauteurGrille = (*largeurRectGrille) * 6;
+		diff = hauteurWindow - hauteurGrille;
+		(*offsetGrilleX) = 0;
+		(*offsetGrilleY) = diff / 2;
+
+	}
 }
