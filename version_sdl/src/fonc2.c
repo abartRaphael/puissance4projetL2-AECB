@@ -133,7 +133,13 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
 				switch(grilleDeValeurs[l+1][c].type){
 					case creuse : 
 						if(grilleDeValeurs[l+1][c].couleur != pion.couleur){
-							grilleDeValeurs[l+1][c].couleur = rougejaune;
+							// pion creux jouée sur pion creux = pareil qu'une pion plein, elle devient bloquant à 2 couleurs (le pion joué a sa couleur au centre)
+							if(pion.couleur == rouge) {
+								grilleDeValeurs[l+1][c].couleur = jauneRouge;
+							}
+							else {
+								grilleDeValeurs[l+1][c].couleur = rougeJaune;
+							}
 						}
 						else{
 							grilleDeValeurs[l+1][c].couleur = pion.couleur;
@@ -142,14 +148,22 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
 						break;
 					case pleine : 
 						if(grilleDeValeurs[l+1][c].couleur != pion.couleur){
-							grilleDeValeurs[l+1][c].couleur = rougejaune;
+							// pion creux jouée sur pion plein = devient bloquant à 2 couleurs, avec le pion plein au centre
+							if(pion.couleur == rouge) {
+								grilleDeValeurs[l+1][c].couleur = rougeJaune;
+							}
+							else {
+								grilleDeValeurs[l+1][c].couleur = jauneRouge;
+							}
 						}
 						else{
+							// pion creux sur pion plein de même couleur
 							grilleDeValeurs[l+1][c].couleur = pion.couleur;
 						}
 						grilleDeValeurs[l+1][c].type = bloquante;
 						break;
 					case bloquante : 
+						// interraction classique, pion placée au dessus du précédent
 						grilleDeValeurs[l][c].couleur = pion.couleur;
 						grilleDeValeurs[l][c].type = pion.type;
 						break;
@@ -160,18 +174,27 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
 				switch(grilleDeValeurs[l+1][c].type){
 					case creuse : 
 						if(grilleDeValeurs[l+1][c].couleur != pion.couleur){
-							grilleDeValeurs[l+1][c].couleur = rougejaune;
+							// pion plein joué sur pion creux = devient bloquant à 2 couleurs, avec le pion plein au centre
+							if(pion.couleur == rouge) {
+								grilleDeValeurs[l+1][c].couleur = jauneRouge;
+							}
+							else {
+								grilleDeValeurs[l+1][c].couleur = rougeJaune;
+							}
 						}
 						else{
+							// pion creux sur pion plein de même couleur
 							grilleDeValeurs[l+1][c].couleur = pion.couleur;
 						}
 						grilleDeValeurs[l+1][c].type = bloquante;
 						break;
 					case pleine : 
+						// interraction classique, pion placé au dessus du précédent
 						grilleDeValeurs[l][c].couleur = pion.couleur;
 						grilleDeValeurs[l][c].type = pion.type;
 						break;
 					case bloquante : 
+						// interraction classique, pion placé au dessus du précédent
 						grilleDeValeurs[l][c].couleur = pion.couleur;
 						grilleDeValeurs[l][c].type = pion.type;
 						break;
@@ -181,14 +204,17 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
 			case bloquante :
 				switch(grilleDeValeurs[l+1][c].type){
 					case creuse : 
+						// interraction classique, pion placé au dessus du précédent
 						grilleDeValeurs[l][c].couleur = pion.couleur;
 						grilleDeValeurs[l][c].type = pion.type;
 						break;
 					case pleine : 
+						// interraction classique, pion placé au dessus du précédent
 						grilleDeValeurs[l][c].couleur = pion.couleur;
 						grilleDeValeurs[l][c].type = pion.type;
 						break;
 					case bloquante : 
+						// interraction classique, pion placé au dessus du précédent
 						grilleDeValeurs[l][c].couleur = pion.couleur;
 						grilleDeValeurs[l][c].type = pion.type;
 						break;
@@ -225,12 +251,12 @@ int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
 	int pionsALaSuite=0;
 
 	//est-ce que le pion du centre est de la même couleur que celle du joueur qui a joué, déjà
-	if(grilleDeValeurs[l][3].couleur == pion.couleur || grilleDeValeurs[l][3].couleur == rougejaune) {
+	if(grilleDeValeurs[l][3].couleur == pion.couleur || grilleDeValeurs[l][3].couleur == rougeJaune) {
 
 		//parcourir la ligne où le dernier pion a été joué
 		for(int i=0 ; i<COLONNES ; i++) {
 
-			if(grilleDeValeurs[l][i].couleur == pion.couleur || grilleDeValeurs[l][i].couleur == rougejaune ) {
+			if(grilleDeValeurs[l][i].couleur == pion.couleur || grilleDeValeurs[l][i].couleur == rougeJaune ) {
 				pionsALaSuite++;
 			}
 			else {
@@ -261,7 +287,7 @@ int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pi
 	//parcourir la ligne où le dernier pion a été joué
 	for(int i=0 ; i<LIGNES ; i++) {
 
-		if(grilleDeValeurs[i][c].couleur == pion.couleur || grilleDeValeurs[i][c].couleur == rougejaune) {
+		if(grilleDeValeurs[i][c].couleur == pion.couleur || grilleDeValeurs[i][c].couleur == rougeJaune) {
 			pionsALaSuite++;
 		}
 		else {
@@ -308,7 +334,7 @@ int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
 	//parcourir la diagonale où le dernier pion a été joué
 	while(x < COLONNES && y < LIGNES) {
 
-		if(grilleDeValeurs[y][x].couleur == pion.couleur || grilleDeValeurs[y][x].couleur == rougejaune) {
+		if(grilleDeValeurs[y][x].couleur == pion.couleur || grilleDeValeurs[y][x].couleur == rougeJaune) {
 			pionsALaSuite++;
 		}
 		else {
@@ -362,7 +388,7 @@ int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
 	//parcourir la diagonale où le dernier pion a été joué
 	while(x >= 0 && y < LIGNES) {
 
-		if(grilleDeValeurs[y][x].couleur == pion.couleur || grilleDeValeurs[y][x].couleur == rougejaune) {
+		if(grilleDeValeurs[y][x].couleur == pion.couleur || grilleDeValeurs[y][x].couleur == rougeJaune) {
 			pionsALaSuite++;
 		}
 		else {
@@ -467,7 +493,7 @@ void chargerPartie(t_pion grilleDeValeurs[LIGNES][COLONNES], t_pion* pion, int* 
 				case vide: grilleDeValeurs[i][j].couleur = vide; break;
 				case rouge: grilleDeValeurs[i][j].couleur = rouge; break;
 				case jaune: grilleDeValeurs[i][j].couleur = jaune; break;
-				case rougejaune : grilleDeValeurs[i][j].couleur = rougejaune; break;
+				case rougeJaune : grilleDeValeurs[i][j].couleur = rougeJaune; break;
 			}
 			switch(type){
 				case creuse : grilleDeValeurs[i][j].type = creuse; break;
@@ -736,7 +762,7 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 
 		//alterne la couleur de pion du joueur
 		couleurJoueur.couleur = (couleurJoueur.couleur == rouge ? jaune : rouge);
-		couleurJoueur.type = 2 ;// En mode normal, on joue que des pièces pleines
+		couleurJoueur.type = 2 ;// En mode normal, on ne joue que des pièces pleines
 
 
 
@@ -761,7 +787,9 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 
 					//printf("colonneCliquee = %d\n", colonneCliquee);
 
-					if( colonneCliquee != -1 ) {
+					if( colonneCliquee != -1 
+					&&	!estPleine(grilleDeValeurs, colonneCliquee-1) ) {
+						// * le coup ne compte pas si la colonne est pleine
 						play = SDL_TRUE;
 					}
 				}
@@ -798,9 +826,17 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 	if(!quit) {
 		if(nbTours == (LIGNES*COLONNES)) {
 			// quand match nul
+			printf("match nul\n");
 		}
 		else {
 			// quand un gagnant
+			printf("les ");
+			switch(couleurJoueur.couleur) {
+					case rouge: printf("rouges(X)"); break;
+					case jaune: printf("jaunes(O)"); break;
+					default : printf("Impossible de voir ce message\n");
+				}
+			printf(" ont gagnés\n\n");
 		}
 
 		//supprimerPartie();

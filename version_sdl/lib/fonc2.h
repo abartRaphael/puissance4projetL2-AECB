@@ -7,8 +7,9 @@
 #define NB_CREUSE 3
 #define NB_BLOQUANTE 3
 
-
-typedef enum{vide, rouge, jaune, rougejaune} t_couleur;
+// rougeJaune : pièce rouge creuse (extérieur) sur pièce jaune pleine (intérieur)
+// jauneRouge : pièce jaune creuse (extérieur) sur pièce rouge pleine (intérieur)
+typedef enum{vide, rouge, jaune, rougeJaune, jauneRouge} t_couleur;
 typedef enum{no_type, creuse, pleine, bloquante} t_type;
 
 typedef struct{
