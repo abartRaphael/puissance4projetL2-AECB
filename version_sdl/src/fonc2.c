@@ -24,23 +24,23 @@
 
 
 /**
-	* Compteur de pieces creuses rouges
-	*/
+ * Compteur de pieces creuses rouges
+ */
 unsigned int cpt_rouge_creuse = NB_CREUSE;
 
 /**
-	* Compteur de pieces bloquantes rouges
-	*/
+ * Compteur de pieces bloquantes rouges
+ */
 unsigned int cpt_rouge_bloquante = NB_BLOQUANTE;
 
 /**
-	* Compteur de pieces creuses jaunes
-	*/
+ * Compteur de pieces creuses jaunes
+ */
 unsigned int cpt_jaune_creuse = NB_CREUSE;
 
 /**
-	* Compteur de pieces bloquantes jaunes
-	*/
+ * Compteur de pieces bloquantes jaunes
+ */
 unsigned int cpt_jaune_bloquante = NB_BLOQUANTE;
 
 
@@ -711,7 +711,7 @@ int mode_creux() {
 
 
 /**
- * \fn int demarrer_partie(SDL_Window* pWindow, SDL_Renderer *renderer)
+ * \fn int demarrer_partie(SDL_Window* pWindow, SDL_Renderer *renderer, t_partie typeDePartie )
  * \brief Lance une partie en mode normal
  * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
  * \param renderer pointeur de SDL_Renderer, nécessaire pour les fonctions SDL d'affichage
@@ -768,7 +768,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 	initCoordonneesPions(   coordonneesPions, 
 							largeurRectGrille, offsetGrilleX, offsetGrilleY);
 
-	initStructTexturesNormal( renderer, &images );
+	initStructTextures( renderer, &images, typeDePartie );
 	
 
 

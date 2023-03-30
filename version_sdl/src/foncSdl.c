@@ -317,37 +317,34 @@ void afficherPions( SDL_Renderer* renderer,
 
 
 /**
- * \fn int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images )
+ * \fn int initStructTextures( SDL_Renderer* renderer, images_t* images, t_partie typeDePartie )
  * \brief crée (alloue) les images des pièces d'une partie normale et les affecte à une structure images_t
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à remplir
+ * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
  */
-int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images ) {
+int initStructTextures( SDL_Renderer* renderer, images_t* images, t_partie typeDePartie ) {
 	/** 
 	 * Les textures ne sont pas faites pour une modification pixels par pixels. 
 	 * Elles ont l’avantage d’êtres affichables rapidement, 
 	 * de pouvoir être redimensionnée à la volée et copiée rapidement
 	 */
-
-
-	// TODO initStructTexturesCreux()
-		// dans version bloquante : (pleine, creuse, bloquante) x (rouge et jaune)
-
 	
 	// autre solution -> IMG_Load();
 
-
-	// charger les images de pièces (rouge et jaune)
+	// charger les images de pièces pleines (rouge et jaune)
 	images->pionRougePlein = loadImage("img/pionRouge.bmp",renderer);
-	images->pionRougeCreux = NULL;
 	images->pionJaunePlein = loadImage("img/pionJaune.bmp",renderer);
-	images->pionJauneCreux = NULL;
-	images->pionJauneBloquant = NULL;
-	images->pionRougeBloquant = NULL;
-	images->pionRougeJauneBloquant = NULL;
-	images->pionJauneRougeBloquant = NULL;
-		
 
+	if( typeDePartie == modeCreux ) {
+		images->pionRougeCreux = loadImage("img/pieceRougeCreuse.bmp",renderer);
+		images->pionJauneCreux = loadImage("img/pieceJauneCreuse.bmp",renderer);
+		images->pionRougeBloquant = loadImage("img/pionRougeBloquante.bmp",renderer);
+		images->pionJauneBloquant = loadImage("img/pionJauneBloquante.bmp",renderer);
+		images->pionRougeJauneBloquant = loadImage("img/pionRougeDouble.bmp",renderer);
+		images->pionJauneRougeBloquant = loadImage("img/pionJauneDouble.bmp",renderer);
+	}
+		
 	return 0;
 }
 
