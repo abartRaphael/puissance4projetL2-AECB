@@ -740,14 +740,11 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 	initDamier( damier, renderer, 
 				largeurRectGrille, offsetGrilleX, offsetGrilleY );
 
-
 	initCoordonneesPions(   coordonneesPions, 
 							largeurRectGrille, offsetGrilleX, offsetGrilleY);
 
 	initStructTexturesNormal( renderer, &images );
 	
-
-
 
 
 	// arrière-plan de la fenêtre
@@ -792,14 +789,41 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 		while(!quit && !play)
 		{
 			// Gestion_Évènements
-			SDL_WaitEventTimeout(&event, 50);
+			SDL_WaitEventTimeout(&event, 200);
 
 			// Analyse_Évènements
 			if(event.type == SDL_QUIT) {
 				quit = SDL_TRUE;
 				goto Quit;
 			}
-			else if(event.type == SDL_MOUSEBUTTONUP)
+			else if(event.window.event == SDL_WINDOWEVENT_RESIZED) {
+				// la fenêtre a été redimensionnée
+
+				//printf("event.window.data1 = %d\nevent.window.data2 = %d",event.window.data1,event.window.data2);
+
+				// recalculer les dimensions de la grille
+				dimensionGrilleDynamique( event.window.data1, event.window.data2, &largeurRectGrille, &offsetGrilleX, &offsetGrilleY);
+
+				// réinitialiser les valeurs de la grille dans le damier
+				initDamier( damier, renderer, 
+				largeurRectGrille, offsetGrilleX, offsetGrilleY );
+
+				initCoordonneesPions(   coordonneesPions, 
+							largeurRectGrille, offsetGrilleX, offsetGrilleY);
+
+				
+				// réafficher arrière-plan de la fenêtre
+				setDrawColor(renderer, arrierePlan);
+				SDL_RenderClear(renderer);
+				// réafficher damier
+				afficherDamier( renderer, damier, cyan );
+				// réafficher les pions
+				afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, arrierePlan);
+
+
+				SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
+			}
+			else if(event.button.type == SDL_MOUSEBUTTONUP)
 			{
 				if(event.button.button == SDL_BUTTON_LEFT) {
 					//printf("clic gauche\n");
