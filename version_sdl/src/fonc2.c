@@ -771,14 +771,14 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 		while(!quit && !play)
 		{
 			// Gestion_Évènements
-			SDL_WaitEventTimeout(&event, 50);
+			SDL_WaitEventTimeout(&event, 200);
 
 			// Analyse_Évènements
 			if(event.type == SDL_QUIT) {
 				quit = SDL_TRUE;
 				goto Quit;
 			}
-			else if(event.type == SDL_MOUSEBUTTONUP)
+			else if(event.type == SDL_MOUSEBUTTONDOWN)
 			{
 				if(event.button.button == SDL_BUTTON_LEFT) {
 					//printf("clic gauche\n");
