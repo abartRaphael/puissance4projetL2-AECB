@@ -143,9 +143,6 @@ void chargerPartie(t_pion grille[LIGNES][COLONNES], t_pion* couleur, int* nbTour
  */
 void supprimerPartie();
 
-
-
-
 /**
  * \fn int mode_creux()
  * \brief Lance une partie en mode creux
@@ -160,6 +157,15 @@ int mode_creux();
  * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
  */
 int demarrer_partie( SDL_Window* pWindow, SDL_Renderer *renderer, t_partie typeDePartie );
+
+/**
+ * \fn void decrementer_pion_special( t_couleur couleur, t_type type )
+ * \brief Décrémente le compteur de pion spécial quand un pion spécial est joué
+ * \param pion le dernier pion à avoir été joué
+ * \return 1 si le pion peut être joué (le joueur possède encore de ce type de pion), 0 s'il n'en possède plus aucun
+ */
+int decrementer_pion_special( t_pion pion );
+
 
 
 #endif /*H_FONC2_ */
