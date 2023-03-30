@@ -171,7 +171,7 @@ void freeLesImages(images_t* images);
  * \param offsetGrilleX décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal
  * \param offsetGrilleY décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical
  */
-int dimensionGrilleDynamique( int largeurWindow, int hauteurWindow, int* largeurRectGrille, int* offsetGrilleX, int* offsetGrilleY );
+void dimensionGrilleDynamique( int largeurWindow, int hauteurWindow, int* largeurRectGrille, int* offsetGrilleX, int* offsetGrilleY );
 
 
 
