@@ -528,7 +528,7 @@ void supprimerPartie() {
 	FILE* f;
 	f = fopen("partie.txt", "w");
 	fclose(f);
-	/*Fonction remove*/
+	//Fonction remove
 }
 
 
@@ -536,13 +536,42 @@ void supprimerPartie() {
 /**
  * \fn void decrementer_pion_special( t_couleur couleur, t_type type )
  * \brief Décrémente le compteur de pion spécial quand un pion spécial est joué
- * \param couleur couleur du dernier joueur à avoir joué
+ * \param pion le dernier pion à avoir été joué
+ * \return 1 si le pion peut être joué (le joueur possède encore de ce type de pion), 0 s'il n'en possède plus aucun
  */
-void decrementer_pion_special( t_pion pion ) {
+int decrementer_pion_special( t_pion pion ) {
 
 	switch( pion.couleur ) {
+		case rouge:
 
+			switch( pion.type ) {
+				case creux:
+					if(cpt_rouge_creuse-- == 0)
+						return(0);
+					break;
+				case bloquante:
+					if(cpt_rouge_bloquante-- == 0)
+						return(0);
+					break;
+			}
+			break;
+
+		case jaune:
+
+			switch( pion.type ) {
+				case creux:
+					if(cpt_jaune_creuse-- == 0)
+						return(0);
+					break;
+				case bloquante:
+					if(cpt_jaune_bloquante-- == 0)
+						return(0);
+					break;
+			}
+			break;
 	}
+
+	return(1);
 }
 
 
@@ -560,7 +589,7 @@ int mode_creux() {
 	int c, nbTours=0;
 
 	t_pion grilleDeValeurs[LIGNES][COLONNES], 
-			couleurJoueur;
+			pionJoueur;
 
 
 
@@ -568,11 +597,11 @@ int mode_creux() {
 	scanf("%i", &c);
 
 	if(c != 0) {
-		chargerPartie(grilleDeValeurs, &couleurJoueur, &nbTours);
+		chargerPartie(grilleDeValeurs, &pionJoueur, &nbTours);
 	}
 	else {
 		//joueur rouge commence
-		couleurJoueur.couleur = jaune;
+		pionJoueur.couleur = jaune;
 		
 		initGrille(grilleDeValeurs);
 	}
@@ -584,13 +613,13 @@ int mode_creux() {
 		//afficherPions(renderer, grilleDeValeurs, coordonneesPions, images, arrierePlan);
 
 		//alterne la couleur de pion du joueur
-		couleurJoueur.couleur = (couleurJoueur.couleur == rouge ? jaune : rouge);
+		pionJoueur.couleur = (pionJoueur.couleur == rouge ? jaune : rouge);
 
 
 		do{
 			
 			printf("==== Tour des ");
-			switch(couleurJoueur.couleur) {
+			switch(pionJoueur.couleur) {
 				case rouge: printf("rouges(X)"); break;
 				case jaune: printf("jaunes(O)"); break;
 				default : printf("Impossible de voir ce message\n");
@@ -609,12 +638,12 @@ int mode_creux() {
   			  printf("3 : bloquante\n");
  			  	scanf("%i", &types);
   			  if(types == 1){
-  			  	couleurJoueur.type = creuse;
+  			  	pionJoueur.type = creuse;
   			  	
   			  	// Mets à jour le nombre de pièces spéciales
-  			  	if (couleurJoueur.couleur == rouge && cpt_rouge_creuse != 0){
+  			  	if (pionJoueur.couleur == rouge && cpt_rouge_creuse != 0){
   			  		cpt_rouge_creuse--;
-  			  	}else if(couleurJoueur.couleur == jaune && cpt_jaune_creuse != 0){
+  			  	}else if(pionJoueur.couleur == jaune && cpt_jaune_creuse != 0){
   			  		cpt_jaune_creuse--;
   			  	}else{
   			  		printf("Vous n'avez plus de pièce creuse \n");
@@ -622,15 +651,15 @@ int mode_creux() {
   			  	}
   			  }
   			  else if(types == 2){
-  			  	couleurJoueur.type = pleine;
+  			  	pionJoueur.type = pleine;
   			  }
   			  else if(types == 3){
-  			  	couleurJoueur.type = bloquante;
+  			  	pionJoueur.type = bloquante;
 
   			  	// Mets à jour le nombre de pièces spéciales
-  			  	if (couleurJoueur.couleur == rouge && cpt_rouge_bloquante != 0){
+  			  	if (pionJoueur.couleur == rouge && cpt_rouge_bloquante != 0){
   			  		cpt_rouge_bloquante--;
-  			  	}else if(couleurJoueur.couleur == jaune && cpt_jaune_bloquante != 0){
+  			  	}else if(pionJoueur.couleur == jaune && cpt_jaune_bloquante != 0){
   			  		cpt_jaune_bloquante--;
   			  	}else{
   			  		printf("Vous n'avez plus de pièce bloquante \n");
@@ -645,16 +674,16 @@ int mode_creux() {
 			
 			
 				
-		}while(ajoutPion(grilleDeValeurs, c-1, couleurJoueur));
+		}while(ajoutPion(grilleDeValeurs, c-1, pionJoueur));
 
 		nbTours++;
 		
 
-		sauvegardeAuto(grilleDeValeurs, couleurJoueur, nbTours);
+		sauvegardeAuto(grilleDeValeurs, pionJoueur, nbTours);
 
 
 	//la partie s'arrête quand il y a un 4 à la suite, ou quand les 42 pions ont été joués (tour n°42)
-	}while(!estQuatreALaSuite(grilleDeValeurs, c-1, couleurJoueur) 
+	}while(!estQuatreALaSuite(grilleDeValeurs, c-1, pionJoueur) 
 		&& nbTours < (LIGNES*COLONNES));
 
 
@@ -668,7 +697,7 @@ int mode_creux() {
 	}
 	else {
 		printf("les ");
-		switch(couleurJoueur.couleur) {
+		switch(pionJoueur.couleur) {
 				case rouge: printf("rouges(X)"); break;
 				case jaune: printf("jaunes(O)"); break;
 				default : printf("Impossible de voir ce message\n");
@@ -721,10 +750,11 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 		offsetGrilleY=50, // décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical (à définir dynamiquement)
 		
 		colonneCliquee, 
-		nbTours=0;
+		nbTours=0, 
+		plusAucunPion=1;
 
 	t_pion	grilleDeValeurs[LIGNES][COLONNES], // représentation de la grille de jeu dans le code (pour les fonctions) avec la structure t_pion
-			couleurJoueur;
+			pionJoueur;
 
 
 	// * récupérer les dimension de la fenêtre, pour ensuite créer la grille dynamiquement
@@ -759,11 +789,11 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 	scanf("%i", &colonneCliquee);
 
 	if(colonneCliquee != 0) {
-		chargerPartie(grilleDeValeurs, &couleurJoueur, &nbTours);
+		chargerPartie(grilleDeValeurs, &pionJoueur, &nbTours);
 	}
 	else {*/
-		//joueur rouge commence
-		couleurJoueur.couleur = jaune;
+		// * joueur rouge commence
+		pionJoueur.couleur = jaune;
 		
 		initGrille(grilleDeValeurs);
 	//}
@@ -778,33 +808,33 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 		afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, arrierePlan);
 		SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
 
-		//alterne la couleur de pion du joueur
-		couleurJoueur.couleur = (couleurJoueur.couleur == rouge ? jaune : rouge);
-		couleurJoueur.type = 2 ;// En mode normal, on ne joue que des pièces pleines
+		// * alterne la couleur de pion du joueur
+		pionJoueur.couleur = (pionJoueur.couleur == rouge ? jaune : rouge);
+		//pionJoueur.type = 2 ;// En mode normal, on ne joue que des pièces pleines
 
 
 
 
-		// Boucle d'attente d'action d'utilisateur
+		// * Boucle d'attente d'action d'utilisateur
 		while(!quit && !play)
 		{
-			// Gestion_Évènements
+			// * Gestion_Évènements
 			SDL_WaitEventTimeout(&event, 200);
 
-			// Analyse_Évènements
+			// * Analyse_Évènements
 			if(event.type == SDL_QUIT) {
 				quit = SDL_TRUE;
 				goto Quit;
 			}
 			else if(event.window.event == SDL_WINDOWEVENT_RESIZED) {
-				// la fenêtre a été redimensionnée
+				// * la fenêtre a été redimensionnée
 
 				//printf("event.window.data1 = %d\nevent.window.data2 = %d",event.window.data1,event.window.data2);
 
-				// recalculer les dimensions de la grille
+				// * recalculer les dimensions de la grille
 				dimensionGrilleDynamique( event.window.data1, event.window.data2, &largeurRectGrille, &offsetGrilleX, &offsetGrilleY);
 
-				// réinitialiser les valeurs de la grille dans le damier
+				// * réinitialiser les valeurs de la grille dans le damier
 				initDamier( damier, renderer, 
 				largeurRectGrille, offsetGrilleX, offsetGrilleY );
 
@@ -812,12 +842,12 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 							largeurRectGrille, offsetGrilleX, offsetGrilleY);
 
 				
-				// réafficher arrière-plan de la fenêtre
+				// * réafficher arrière-plan de la fenêtre
 				setDrawColor(renderer, arrierePlan);
 				SDL_RenderClear(renderer);
-				// réafficher damier
+				// * réafficher damier
 				afficherDamier( renderer, damier, cyan );
-				// réafficher les pions
+				// * réafficher les pions
 				afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, arrierePlan);
 
 
@@ -827,22 +857,56 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 			{
 				while( event.button.type != SDL_MOUSEBUTTONUP)
 				{
-					// attendre que le clic soit relaché
+					// * attendre que le clic soit relaché
 					SDL_WaitEvent(&event);
 				} 
 
-				if(event.button.button == SDL_BUTTON_LEFT
-				&& event.button.clicks < 3) {
+				colonneCliquee = -1;
+				colonneCliquee = getColonneClick( damier, largeurRectGrille, event.button.x );
+				//printf("colonneCliquee = %d\n", colonneCliquee);
+
+				if(event.button.button == SDL_BUTTON_LEFT) {
 					//printf("clic gauche\n");
 
-					colonneCliquee = getColonneClick( damier, largeurRectGrille, event.button.x );
+					// * click gauche = pion plein
+					pionJoueur.type = pleine;
+				}
+				else if(typeDePartie == creux
+					&&	event.button.button == SDL_BUTTON_RIGHT) {
+					//printf("clic droit\n");
 
-					//printf("colonneCliquee = %d\n", colonneCliquee);
+					// * click droit = pion creux
+					pionJoueur.type = plein;
 
-					if( colonneCliquee != -1 
-					&&	!estPleine(grilleDeValeurs, colonneCliquee-1) ) {
-						// * le coup ne compte pas si la colonne est pleine
-						play = SDL_TRUE;
+					// * vérifier si le joueur possède encore le pion qu'il veut jouer
+				}
+				else if(typeDePartie == creux
+					&&	event.button.button == SDL_BUTTON_MIDDLE) {
+					//printf("clic molette\n");
+
+					// * click molette = pion bloquant
+
+				}
+
+				plusAucunPion = decrementer_pion_special(pionJoueur);
+
+				if( colonneCliquee != -1	// * si le joueur a bien cliqué dans la grille
+				&&	!estPleine(grilleDeValeurs, colonneCliquee-1)	// * si la colonne cliquée n'est pas déjà pleine
+				&&	plusAucunPion )	// * si le joueur possède encore le pion qu'il veut jouer
+				{
+					// * le coup est bon et peut être joué
+					play = SDL_TRUE;
+				}
+				
+				if( plusAucunPion ) {
+					printf("Vous n'avez plus de pion ");
+					if(pionJoueur.type == creux) 
+					{
+						printf("creux\n");
+					}
+					else //if(pionJoueur.type == bloquant) 
+					{
+						printf("bloquant\n");
 					}
 				}
 			}
@@ -855,35 +919,35 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 
 		if(!quit) {
 			
-			ajoutPion(grilleDeValeurs, colonneCliquee-1, couleurJoueur);
+			ajoutPion(grilleDeValeurs, colonneCliquee-1, pionJoueur);
 
 			nbTours++;
 		}
 
-		//sauvegardeAuto(grilleDeValeurs, couleurJoueur, nbTours);
+		//sauvegardeAuto(grilleDeValeurs, pionJoueur, nbTours);
 
 
-		// la partie s'arrête quand il y a un 4 à la suite, 
-		// quand les 42 pions ont été joués (tour n°42), 
-		// ou quand la fenêtre se ferme
+		// * la partie s'arrête quand il y a un 4 à la suite, 
+		// * quand les 42 pions ont été joués (tour n°42), 
+		// * ou quand la fenêtre se ferme
 	}while(!quit
-		&& !estQuatreALaSuite(grilleDeValeurs, colonneCliquee-1, couleurJoueur) 
+		&& !estQuatreALaSuite(grilleDeValeurs, colonneCliquee-1, pionJoueur) 
 		&& nbTours < (LIGNES*COLONNES));
 
 
 
-	//fin de partie
+	// * fin de partie
 	//afficherPions(renderer, grilleDeValeurs, coordonneesPions, images, arrierePlan);
 	
 	if(!quit) {
 		if(nbTours == (LIGNES*COLONNES)) {
-			// quand match nul
+			// * quand match nul
 			printf("match nul\n");
 		}
 		else {
-			// quand un gagnant
+			// * quand un gagnant
 			printf("les ");
-			switch(couleurJoueur.couleur) {
+			switch(pionJoueur.couleur) {
 					case rouge: printf("rouges(X)"); break;
 					case jaune: printf("jaunes(O)"); break;
 					default : printf("Impossible de voir ce message\n");
@@ -901,9 +965,8 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 	
 
 
-// Quitter
+// * Quitter
 Quit:
-	// 2 textures (partie normale)
 	freeLesImages(&images);
 
 	if(surface) {
