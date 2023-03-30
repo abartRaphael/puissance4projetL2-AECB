@@ -60,7 +60,7 @@ int main(int argc, char** argv)
 
 	// lancement de partie normale
 
-	typeDePartie = normale;
+	typeDePartie = modeNormal;
 
 	demarrer_partie(pWindow, renderer, typeDePartie);
 

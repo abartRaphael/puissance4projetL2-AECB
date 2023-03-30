@@ -541,35 +541,30 @@ void supprimerPartie() {
  */
 int decrementer_pion_special( t_pion pion ) {
 
-	switch( pion.couleur ) {
-		case rouge:
+	if( pion.couleur == rouge ) {
 
-			switch( pion.type ) {
-				case creux:
-					if(cpt_rouge_creuse-- == 0)
-						return(0);
-					break;
-				case bloquante:
-					if(cpt_rouge_bloquante-- == 0)
-						return(0);
-					break;
-			}
-			break;
-
-		case jaune:
-
-			switch( pion.type ) {
-				case creux:
-					if(cpt_jaune_creuse-- == 0)
-						return(0);
-					break;
-				case bloquante:
-					if(cpt_jaune_bloquante-- == 0)
-						return(0);
-					break;
-			}
-			break;
+		if( pion.type == creuse ) {
+			if(cpt_rouge_creuse-- == 0)
+				return(0);
+		}
+		else if( pion.type == bloquante){
+				
+			if(cpt_rouge_bloquante-- == 0)
+				return(0);
+		}
 	}
+	else if( pion.couleur == jaune) {
+
+		if( pion.type == creuse ) {
+			if(cpt_jaune_creuse-- == 0)
+				return(0);
+		}
+		else if( pion.type == bloquante ){
+			if(cpt_jaune_bloquante-- == 0)
+				return(0);
+		}
+	}
+	
 
 	return(1);
 }
@@ -720,7 +715,7 @@ int mode_creux() {
  * \brief Lance une partie en mode normal
  * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
  * \param renderer pointeur de SDL_Renderer, nécessaire pour les fonctions SDL d'affichage
- * \param typeDePartie type enum, vaut soit normale (1), soit creux (2)
+ * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
  */
 int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeDePartie ) {
 
@@ -751,7 +746,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 		
 		colonneCliquee, 
 		nbTours=0, 
-		plusAucunPion=1;
+		restePionSpecial=1;
 
 	t_pion	grilleDeValeurs[LIGNES][COLONNES], // représentation de la grille de jeu dans le code (pour les fonctions) avec la structure t_pion
 			pionJoueur;
@@ -871,36 +866,36 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 					// * click gauche = pion plein
 					pionJoueur.type = pleine;
 				}
-				else if(typeDePartie == creux
+				else if(typeDePartie == modeCreux
 					&&	event.button.button == SDL_BUTTON_RIGHT) {
 					//printf("clic droit\n");
 
 					// * click droit = pion creux
-					pionJoueur.type = plein;
+					pionJoueur.type = creuse;
 
 					// * vérifier si le joueur possède encore le pion qu'il veut jouer
 				}
-				else if(typeDePartie == creux
+				else if(typeDePartie == modeCreux
 					&&	event.button.button == SDL_BUTTON_MIDDLE) {
 					//printf("clic molette\n");
 
 					// * click molette = pion bloquant
-
+					pionJoueur.type = bloquante;
 				}
 
-				plusAucunPion = decrementer_pion_special(pionJoueur);
+				restePionSpecial = decrementer_pion_special(pionJoueur);
 
 				if( colonneCliquee != -1	// * si le joueur a bien cliqué dans la grille
 				&&	!estPleine(grilleDeValeurs, colonneCliquee-1)	// * si la colonne cliquée n'est pas déjà pleine
-				&&	plusAucunPion )	// * si le joueur possède encore le pion qu'il veut jouer
+				&&	restePionSpecial )	// * si le joueur possède encore le pion qu'il veut jouer
 				{
 					// * le coup est bon et peut être joué
 					play = SDL_TRUE;
 				}
 				
-				if( plusAucunPion ) {
+				if( restePionSpecial == 0 ) {
 					printf("Vous n'avez plus de pion ");
-					if(pionJoueur.type == creux) 
+					if(pionJoueur.type == creuse) 
 					{
 						printf("creux\n");
 					}

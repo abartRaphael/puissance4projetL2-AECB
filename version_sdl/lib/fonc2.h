@@ -12,7 +12,7 @@
 typedef enum{vide, rouge, jaune, rougeJaune, jauneRouge} t_couleur;
 typedef enum{no_type, creuse, pleine, bloquante} t_type;
 
-typedef enum{normale=1, creux} t_partie;
+typedef enum{modeNormal=1, modeCreux} t_partie;
 
 typedef struct{
 	t_couleur couleur;
@@ -157,7 +157,7 @@ int mode_creux();
  * \brief Lance une partie en mode normal
  * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
  * \param renderer pointeur de SDL_Renderer, nécessaire pour les fonctions SDL d'affichage
- * \param typeDePartie type enum, vaut soit normale (1), soit creux (2)
+ * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
  */
 int demarrer_partie( SDL_Window* pWindow, SDL_Renderer *renderer, t_partie typeDePartie );
 
