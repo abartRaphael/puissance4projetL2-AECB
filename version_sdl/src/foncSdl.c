@@ -287,10 +287,16 @@ void afficherPions( SDL_Renderer* renderer,
 					}
 					break;
 
-				case rougejaune:
+				case rougeJaune:
 
 					//case bloquante:
-					err = SDL_RenderCopy(renderer, images->pionDoubleBloquant, NULL, &coordonneesPions[i][j]); 
+					err = SDL_RenderCopy(renderer, images->pionRougeJauneBloquant, NULL, &coordonneesPions[i][j]); 
+					break;
+
+				case jauneRouge:
+
+					//case bloquante:
+					err = SDL_RenderCopy(renderer, images->pionJauneRougeBloquant, NULL, &coordonneesPions[i][j]); 
 					break;
 
 				case vide:
@@ -338,7 +344,8 @@ int initStructTexturesNormal( SDL_Renderer* renderer, images_t* images ) {
 	images->pionJauneCreux = NULL;
 	images->pionJauneBloquant = NULL;
 	images->pionRougeBloquant = NULL;
-	images->pionDoubleBloquant = NULL;
+	images->pionRougeJauneBloquant = NULL;
+	images->pionJauneRougeBloquant = NULL;
 		
 
 	return 0;
@@ -365,8 +372,10 @@ void freeLesImages(images_t* images) {
 		SDL_DestroyTexture( images->pionJauneBloquant );
 	if( images->pionRougeBloquant != NULL)
 		SDL_DestroyTexture( images->pionRougeBloquant );
-	if( images->pionDoubleBloquant != NULL)
-		SDL_DestroyTexture( images->pionDoubleBloquant );
+	if( images->pionRougeJauneBloquant != NULL)
+		SDL_DestroyTexture( images->pionRougeJauneBloquant );
+	if( images->pionJauneRougeBloquant != NULL)
+		SDL_DestroyTexture( images->pionJauneRougeBloquant );
 }
 
 

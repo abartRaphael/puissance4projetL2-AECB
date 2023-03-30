@@ -27,7 +27,8 @@ typedef struct images_s {
 	SDL_Texture* pionJauneCreux;
 	SDL_Texture* pionJauneBloquant;
 	SDL_Texture* pionRougeBloquant;
-	SDL_Texture* pionDoubleBloquant;
+	SDL_Texture* pionRougeJauneBloquant;
+	SDL_Texture* pionJauneRougeBloquant;
 } images_t;
 
 
