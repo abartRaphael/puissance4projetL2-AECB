@@ -494,6 +494,7 @@ void chargerPartie(t_pion grilleDeValeurs[LIGNES][COLONNES], t_pion* pion, int* 
 				case rouge: grilleDeValeurs[i][j].couleur = rouge; break;
 				case jaune: grilleDeValeurs[i][j].couleur = jaune; break;
 				case rougeJaune : grilleDeValeurs[i][j].couleur = rougeJaune; break;
+				case jauneRouge : grilleDeValeurs[i][j].couleur = jauneRouge; break;
 			}
 			switch(type){
 				case creuse : grilleDeValeurs[i][j].type = creuse; break;
