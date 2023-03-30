@@ -291,7 +291,7 @@ int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pi
 
 		if(grilleDeValeurs[i][c].couleur == pion.couleur 
 		|| grilleDeValeurs[i][c].couleur == rougeJaune
-		|| grilleDeValeurs[l][i].couleur == jauneRouge ) {
+		|| grilleDeValeurs[i][c].couleur == jauneRouge ) {
 			pionsALaSuite++;
 		}
 		else {
@@ -340,7 +340,7 @@ int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
 
 		if(grilleDeValeurs[y][x].couleur == pion.couleur 
 		|| grilleDeValeurs[y][x].couleur == rougeJaune
-		|| grilleDeValeurs[l][i].couleur == jauneRouge ) {
+		|| grilleDeValeurs[y][x].couleur == jauneRouge ) {
 			pionsALaSuite++;
 		}
 		else {
@@ -396,7 +396,7 @@ int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
 
 		if(grilleDeValeurs[y][x].couleur == pion.couleur 
 		|| grilleDeValeurs[y][x].couleur == rougeJaune 
-		|| grilleDeValeurs[l][i].couleur == jauneRouge ) {
+		|| grilleDeValeurs[y][x].couleur == jauneRouge ) {
 			pionsALaSuite++;
 		}
 		else {
