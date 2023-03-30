@@ -256,7 +256,9 @@ int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
 		//parcourir la ligne où le dernier pion a été joué
 		for(int i=0 ; i<COLONNES ; i++) {
 
-			if(grilleDeValeurs[l][i].couleur == pion.couleur || grilleDeValeurs[l][i].couleur == rougeJaune ) {
+			if(grilleDeValeurs[l][i].couleur == pion.couleur 
+			|| grilleDeValeurs[l][i].couleur == rougeJaune 
+			|| grilleDeValeurs[l][i].couleur == jauneRouge ) {
 				pionsALaSuite++;
 			}
 			else {
@@ -287,7 +289,9 @@ int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pi
 	//parcourir la ligne où le dernier pion a été joué
 	for(int i=0 ; i<LIGNES ; i++) {
 
-		if(grilleDeValeurs[i][c].couleur == pion.couleur || grilleDeValeurs[i][c].couleur == rougeJaune) {
+		if(grilleDeValeurs[i][c].couleur == pion.couleur 
+		|| grilleDeValeurs[i][c].couleur == rougeJaune
+		|| grilleDeValeurs[l][i].couleur == jauneRouge ) {
 			pionsALaSuite++;
 		}
 		else {
@@ -334,7 +338,9 @@ int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
 	//parcourir la diagonale où le dernier pion a été joué
 	while(x < COLONNES && y < LIGNES) {
 
-		if(grilleDeValeurs[y][x].couleur == pion.couleur || grilleDeValeurs[y][x].couleur == rougeJaune) {
+		if(grilleDeValeurs[y][x].couleur == pion.couleur 
+		|| grilleDeValeurs[y][x].couleur == rougeJaune
+		|| grilleDeValeurs[l][i].couleur == jauneRouge ) {
 			pionsALaSuite++;
 		}
 		else {
@@ -388,7 +394,9 @@ int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
 	//parcourir la diagonale où le dernier pion a été joué
 	while(x >= 0 && y < LIGNES) {
 
-		if(grilleDeValeurs[y][x].couleur == pion.couleur || grilleDeValeurs[y][x].couleur == rougeJaune) {
+		if(grilleDeValeurs[y][x].couleur == pion.couleur 
+		|| grilleDeValeurs[y][x].couleur == rougeJaune 
+		|| grilleDeValeurs[l][i].couleur == jauneRouge ) {
 			pionsALaSuite++;
 		}
 		else {
