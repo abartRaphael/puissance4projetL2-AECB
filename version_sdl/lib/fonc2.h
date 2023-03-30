@@ -153,10 +153,13 @@ void supprimerPartie();
 int mode_creux();
 
 /**
- * \fn int demarrer_partie()
+ * \fn int demarrer_partie(SDL_Window* pWindow, SDL_Renderer *renderer)
  * \brief Lance une partie en mode normal
+ * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
+ * \param renderer pointeur de SDL_Renderer, nécessaire pour les fonctions SDL d'affichage
+ * \param typeDePartie type enum, vaut soit normale (1), soit creux (2)
  */
-int demarrer_partie( SDL_Window* pWindow, SDL_Renderer *renderer );
+int demarrer_partie( SDL_Window* pWindow, SDL_Renderer *renderer, t_partie typeDePartie );
 
 
 #endif /*H_FONC2_ */
