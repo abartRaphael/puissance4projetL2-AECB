@@ -823,9 +823,16 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 
 				SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
 			}
-			else if(event.button.type == SDL_MOUSEBUTTONUP)
+			else if(event.button.type == SDL_MOUSEBUTTONDOWN)
 			{
-				if(event.button.button == SDL_BUTTON_LEFT) {
+				while( event.button.type != SDL_MOUSEBUTTONUP)
+				{
+					// attendre que le clic soit relaché
+					SDL_WaitEvent(&event);
+				} 
+
+				if(event.button.button == SDL_BUTTON_LEFT
+				&& event.button.clicks < 3) {
 					//printf("clic gauche\n");
 
 					colonneCliquee = getColonneClick( damier, largeurRectGrille, event.button.x );
