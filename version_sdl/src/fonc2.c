@@ -114,7 +114,7 @@ int caseLibre(t_pion grilleDeValeurs[LIGNES][COLONNES], int c) {
  * \brief Permet d'ajouter un pion à la grille de jeu
  * \param grilleDeValeurs grille de puissance 4
  * \param c indice de la colonne à vérifier
- * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \param pion le pion joué
  * \return retourne 0 si le pion est bien ajouté à la grille, 1 sinon, avec un message d'erreur
  */
 int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
@@ -243,7 +243,7 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
  * \param grilleDeValeurs grille de puissance 4
  * \param c indice de la colonne où le joueur à joué
  * \param l indice de la ligne où le joueur à joué
- * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion pion) {
@@ -277,7 +277,7 @@ int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
  * \brief vérifie si 4 pions de même couleur ou plus se trouvent sur la même COLONNE
  * \param grilleDeValeurs grille de puissance 4
  * \param c indice de la colonne où le joueur à joué
- * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion) {
@@ -308,7 +308,7 @@ int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pi
  * \param grilleDeValeurs grille de puissance 4
  * \param c indice de la colonne où le joueur à joué
  * \param l indice de la ligne où le joueur à joué
- * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion pion) {
@@ -360,7 +360,7 @@ int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
  * \param grilleDeValeurs grille de puissance 4
  * \param c indice de la colonne où le joueur à joué
  * \param l indice de la ligne où le joueur à joué
- * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion pion) {
@@ -413,7 +413,7 @@ int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
  * \brief appelle les quatre fonctions pour vérifier s'il y a un 4 à la suite après le dernier coup joué
  * \param grilleDeValeurs grille de puissance 4
  * \param c indice de la colonne où le joueur à joué
- * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
+ * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
 int estQuatreALaSuite(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion) {
@@ -440,7 +440,7 @@ int estQuatreALaSuite(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pi
  * \fn void sauvegardeAuto(t_pion grilleDeValeurs[LIGNES][COLONNES], t_pion couleur, int nbTours)
  * \brief Sauvegarde la configuration de la partie actuelle
  * \param grilleDeValeurs grille de puissance 4
- * \param couleur couleur du dernier joueur à avoir joué
+ * \param pion le dernier pion joué
  * \param nbTours nombre de tours effectués
  */
 void sauvegardeAuto(t_pion grilleDeValeurs[LIGNES][COLONNES], t_pion pion, int nbTours) {
@@ -472,7 +472,7 @@ void sauvegardeAuto(t_pion grilleDeValeurs[LIGNES][COLONNES], t_pion pion, int n
  * \fn void chargerPartie(t_pion grilleDeValeurs[LIGNES][COLONNES], t_pion* couleur, int* nbTours)
  * \brief Charge la configuration de la partie sauvegardée dans le fichier "partie.txt"
  * \param grilleDeValeurs grille de puissance 4
- * \param couleur couleur du dernier joueur à avoir joué
+ * \param pion le dernier pion à avoir été joué
  * \param nbTours nombre de tours effectués
  */
 void chargerPartie(t_pion grilleDeValeurs[LIGNES][COLONNES], t_pion* pion, int* nbTours) {
@@ -533,12 +533,29 @@ void supprimerPartie() {
 
 
 
+/**
+ * \fn void decrementer_pion_special( t_couleur couleur, t_type type )
+ * \brief Décrémente le compteur de pion spécial quand un pion spécial est joué
+ * \param couleur couleur du dernier joueur à avoir joué
+ */
+void decrementer_pion_special( t_pion pion ) {
+
+	switch( pion.couleur ) {
+
+	}
+}
+
+
 
 /**
  * \fn int mode_creux()
  * \brief Lance une partie en mode creux
  */
 int mode_creux() {
+
+	// va être fusionné
+
+	
 	  int types;
 	int c, nbTours=0;
 
@@ -559,7 +576,7 @@ int mode_creux() {
 		
 		initGrille(grilleDeValeurs);
 	}
-
+	
 
 
 	do {
@@ -571,6 +588,7 @@ int mode_creux() {
 
 
 		do{
+			
 			printf("==== Tour des ");
 			switch(couleurJoueur.couleur) {
 				case rouge: printf("rouges(X)"); break;
@@ -578,7 +596,7 @@ int mode_creux() {
 				default : printf("Impossible de voir ce message\n");
 			}
 			printf(" ====\n");
-
+			
 			printf("Placer un pion dans quelle colonne? : ");
 			scanf("%i", &c);
 			
@@ -593,7 +611,7 @@ int mode_creux() {
   			  if(types == 1){
   			  	couleurJoueur.type = creuse;
   			  	
-  			  	/*Mets à jour le nombre de pièces spéciales*/
+  			  	// Mets à jour le nombre de pièces spéciales
   			  	if (couleurJoueur.couleur == rouge && cpt_rouge_creuse != 0){
   			  		cpt_rouge_creuse--;
   			  	}else if(couleurJoueur.couleur == jaune && cpt_jaune_creuse != 0){
@@ -608,11 +626,8 @@ int mode_creux() {
   			  }
   			  else if(types == 3){
   			  	couleurJoueur.type = bloquante;
-  			  }
-  			  else{
-  			  	printf("Erreur lors de la saisie veuillez ressaisir \n");
-  			  	
-  			  	/*Mets à jour le nombre de pièces spéciales*/
+
+  			  	// Mets à jour le nombre de pièces spéciales
   			  	if (couleurJoueur.couleur == rouge && cpt_rouge_bloquante != 0){
   			  		cpt_rouge_bloquante--;
   			  	}else if(couleurJoueur.couleur == jaune && cpt_jaune_bloquante != 0){
@@ -621,6 +636,10 @@ int mode_creux() {
   			  		printf("Vous n'avez plus de pièce bloquante \n");
   			  		types = -1;
   			  	}
+  			  }
+  			  else{
+  			  	printf("Erreur lors de la saisie veuillez ressaisir \n");
+  			  	
   			  } 
 			}while(types <1 ||types > 3);
 			
@@ -668,10 +687,13 @@ int mode_creux() {
 
 
 /**
- * \fn int mode_normal(SDL_Window* pWindow, SDL_Renderer *renderer)
+ * \fn int demarrer_partie(SDL_Window* pWindow, SDL_Renderer *renderer)
  * \brief Lance une partie en mode normal
+ * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
+ * \param renderer pointeur de SDL_Renderer, nécessaire pour les fonctions SDL d'affichage
+ * \param typeDePartie type enum, vaut soit normale (1), soit creux (2)
  */
-int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
+int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeDePartie ) {
 
 	// variables sdl
 
@@ -706,7 +728,6 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 
 
 	// * récupérer les dimension de la fenêtre, pour ensuite créer la grille dynamiquement
-
 	SDL_GetWindowSize(pWindow, &largeurWindow, &hauteurWindow);
 
 	// TODO fonction qui, d'après les dimensions de la fênetre, calcule les valeurs de largeurRectGrille, offsetGrilleX et offsetGrilleY
@@ -840,6 +861,10 @@ int mode_normal( SDL_Window* pWindow, SDL_Renderer* renderer ) {
 		}
 
 		//supprimerPartie();
+		cpt_rouge_creuse = NB_CREUSE;
+		cpt_rouge_bloquante = NB_BLOQUANTE;
+		cpt_jaune_creuse = NB_CREUSE;
+		cpt_jaune_bloquante = NB_BLOQUANTE;
 	}
 
 	

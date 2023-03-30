@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 	//valeur toujours retournée à la fin du programme
 	int statut = EXIT_FAILURE;
 
-
+	t_partie typeDePartie;
 	
 
 	//créer fenêtre ET renderer en même temps
@@ -59,7 +59,10 @@ int main(int argc, char** argv)
 	SDL_RenderClear(renderer);
 
 	// lancement de partie normale
-	mode_normal(pWindow, renderer);
+
+	typeDePartie = normale;
+
+	demarrer_partie(pWindow, renderer, typeDePartie);
 
 
 
