@@ -438,7 +438,7 @@ void dimensionGrilleDynamique( int largeurWindow, int hauteurWindow, int* largeu
 
 	if (largeurWindow > hauteurWindow)
 	{
-		(*largeurRectGrille) = (hauteurWindow) / 6 + 1 ;
+		(*largeurRectGrille) = (hauteurWindow) / 6 + 0.5 ;
 		largeurGrille = (*largeurRectGrille) * 7 ;
 		diff = largeurWindow - largeurGrille;
 		(*offsetGrilleX) = diff / 2;
@@ -446,7 +446,7 @@ void dimensionGrilleDynamique( int largeurWindow, int hauteurWindow, int* largeu
 	} 
 	else if (largeurWindow < hauteurWindow)
 	{
-		(*largeurRectGrille) = (largeurWindow) / 7 + 1;
+		(*largeurRectGrille) = (largeurWindow) / 7 + 0.5;
 		hauteurGrille = (*largeurRectGrille) * 6;
 		diff = hauteurWindow - hauteurGrille;
 		(*offsetGrilleX) = 0;
