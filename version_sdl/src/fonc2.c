@@ -727,7 +727,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 	// variables de couleur
 	SDL_Color	noir = {0, 0, 0, 255}, 
 				blanc = {255, 255, 255, 255}, 
-				cyan = {0, 255, 255, 255}, 
+				couleurDamier = blanc, 
 				arrierePlan = noir; // couleur d'arrière-plan de la fenêtre
 
 	SDL_Rect	damier[LIGNES*COLONNES], // rectangles qui forment la grille (visuel)
@@ -795,7 +795,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 
 
 
-	afficherDamier( renderer, damier, cyan );
+	afficherDamier( renderer, damier, couleurDamier );
 
 
 	do {
@@ -841,7 +841,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 				setDrawColor(renderer, arrierePlan);
 				SDL_RenderClear(renderer);
 				// * réafficher damier
-				afficherDamier( renderer, damier, cyan );
+				afficherDamier( renderer, damier, couleurDamier );
 				// * réafficher les pions
 				afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, arrierePlan);
 
