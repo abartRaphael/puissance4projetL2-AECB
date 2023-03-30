@@ -12,6 +12,8 @@
 typedef enum{vide, rouge, jaune, rougeJaune, jauneRouge} t_couleur;
 typedef enum{no_type, creuse, pleine, bloquante} t_type;
 
+typedef enum{normale=1, creux} t_partie;
+
 typedef struct{
 	t_couleur couleur;
 	t_type type;
@@ -151,10 +153,10 @@ void supprimerPartie();
 int mode_creux();
 
 /**
- * \fn int mode_normal()
+ * \fn int demarrer_partie()
  * \brief Lance une partie en mode normal
  */
-int mode_normal( SDL_Window* pWindow, SDL_Renderer *renderer );
+int demarrer_partie( SDL_Window* pWindow, SDL_Renderer *renderer );
 
 
 #endif /*H_FONC2_ */
