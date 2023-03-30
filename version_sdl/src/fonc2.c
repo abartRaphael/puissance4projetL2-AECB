@@ -573,7 +573,7 @@ int decrementer_pion_special( t_pion pion ) {
 
 /**
  * \fn int mode_creux()
- * \brief Lance une partie en mode creux
+ * \brief Lance une partie en mode creux (à supprimer)
  */
 int mode_creux() {
 
