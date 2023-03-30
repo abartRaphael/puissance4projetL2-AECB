@@ -11,7 +11,7 @@
 	#include "../lib/foncSdl.h"
 #endif /*H_FONCSDL_ */
 
-
+ 
 /**
  * \file fonc2.c
  * \brief Corps des fonctions
