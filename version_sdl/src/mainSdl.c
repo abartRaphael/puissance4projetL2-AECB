@@ -85,7 +85,7 @@ Quit:
 
 	SDL_Quit();
 
-	printf("bonne fin de programme\n");
+	//printf("bonne fin de programme\n");
 
 
 	return statut;
