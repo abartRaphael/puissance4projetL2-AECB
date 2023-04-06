@@ -56,7 +56,7 @@ void initGrille(t_pion grilleDeValeurs[LIGNES][COLONNES]) {
 		for(int j=0 ; j<COLONNES ; j++) {
 
 			grilleDeValeurs[i][j].couleur = vide;
-			grilleDeValeurs[i][j].type = vide;
+			grilleDeValeurs[i][j].type = no_type;
 		}
 	}
 }
