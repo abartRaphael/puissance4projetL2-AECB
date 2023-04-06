@@ -10,7 +10,7 @@
 
 
 /**
- * \file foncSdl.h
+ * \file foncSdl.c
  * \brief Corps des fonctions SDL
  * \version 0.1
  * \date {22/03/2023}
