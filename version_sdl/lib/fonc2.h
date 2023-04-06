@@ -30,6 +30,10 @@ typedef struct{
 */
 
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
+
 
 /**
  * \fn void initGrille(t_pion grille[LIGNES][COLONNES])
