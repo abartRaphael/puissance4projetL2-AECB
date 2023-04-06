@@ -9,21 +9,26 @@ LINKER   = gcc
 #Linking flags here
 LFLAGS   = -Wall -I. -lm $(INCLUDE_SDL) $(LIBS)
 
+
+#Test linking flags here
+TFLAGS	 = -Wall -I$HOME/local/include -L$HOME/local/lib -lcunit $(LIBS) -I$(LIBDIR)
+
 #Change these to proper directories where each file should be
 SRCDIR   = src
 OBJDIR   = obj
 BINDIR   = bin
 LIBDIR	 = lib
+TESTDIR	 = test
 TRGS	 := $(TARGETS:%=$(BINDIR)/%)
 
 DIRS	 = $(OBJDIR) $(BINDIR) 
 
 #répertoires de SDL2
-SDL_DIR=$(HOME)/SDL2
+SDL_DIR=$HOME/SDL2
 SDL_LIB_DIR=$(SDL_DIR)/lib
 SDL_INC_DIR=$(SDL_DIR)/include/
 
-LIBS=-L$(SDL_LIB_DIR) -lSDL2 -lSDL2_ttf -lSDL2_image
+LIBS=-L$(SDL_LIB_DIR) -lSDL2 -lSDL2_ttf -lSDL2_image 
 INCLUDE_SDL=-I$(SDL_INC_DIR) 
 
 .PHONY: DIRS
@@ -38,6 +43,7 @@ SOURCES  := $(wildcard $(SRCDIR)/*.c)
 INCLUDES := $(wildcard $(LIBDIR)/*.h) 
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 MAINS	 := $(TARGETS:%=$(OBJDIR)/%.o)
+TESTSS	 := $(wildcard $(TESTDIR)/*.c)
 
 
 #Liste des fichiers .o sans ceux contenant un main
@@ -46,13 +52,22 @@ rm       = rm -f
 
 
 #$(BINDIR)/$(TARGET): $(OBJECTS)
-$(TRGS): $(OBJECTS)
+$(TRGS): $(OBJECTS) 
 	@$(LINKER) $(subst $(BINDIR),$(OBJDIR),$@).o $(OBJS) $(LFLAGS) -o $@
 	@echo "Linking complete!"
 
 $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@ 
 	@echo "Compiled "$<" successfully!"
+
+.PHONY: test
+test: $(TESTDIR)/tests
+
+
+$(TESTDIR)/tests: $(TESTSS)
+	@$(CC) $< $(TFLAGS) -o $@ 
+	@echo "Compiled "$<" successfully!"
+
 
 .PHONY: clean
 clean:
