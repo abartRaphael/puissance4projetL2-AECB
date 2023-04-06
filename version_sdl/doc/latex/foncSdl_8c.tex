@@ -1,0 +1,240 @@
+\hypertarget{foncSdl_8c}{}\doxysection{Référence du fichier src/fonc\+Sdl.c}
+\label{foncSdl_8c}\index{src/foncSdl.c@{src/foncSdl.c}}
+
+
+Corps des fonctions SDL.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../lib/fonc\+Sdl.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{foncSdl_8c_ae541d45311ba6f5fa0d79d877b9c7e22}{init}} (SDL\+\_\+\+Window $\ast$$\ast$window, SDL\+\_\+\+Renderer $\ast$$\ast$renderer, int width, int height)
+\begin{DoxyCompactList}\small\item\em initialise les systèmes de SDL, crée le pointeur sur fenêtre et le renderer \end{DoxyCompactList}\item 
+SDL\+\_\+\+Texture $\ast$ \mbox{\hyperlink{foncSdl_8c_a18acbef7dbd99a94b93352d7592d9f74}{load\+Image}} (char $\ast$path, SDL\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em charge une image depuis un chemin donné, retourne une texture créée à partir de cette image \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{foncSdl_8c_a2609ddea83b240e09a5b1d7065804ed0}{set\+Draw\+Color}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Color color)
+\begin{DoxyCompactList}\small\item\em change la couleur utilisée pour dessiner avec un SDL\+\_\+\+Color \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{foncSdl_8c_a48c56405e6e10f263f37ee49561b4b92}\label{foncSdl_8c_a48c56405e6e10f263f37ee49561b4b92}} 
+void {\bfseries set\+Pixel} (SDL\+\_\+\+Surface $\ast$surface, Uint8 r, Uint8 g, Uint8 b, Uint8 a, size\+\_\+t x, size\+\_\+t y)
+\item 
+SDL\+\_\+\+Surface $\ast$ \mbox{\hyperlink{foncSdl_8c_a22884fdfda1408bbfad6d97f6073021e}{create\+Surface\+From\+Texture}} (SDL\+\_\+\+Texture $\ast$texture)
+\begin{DoxyCompactList}\small\item\em crée un SDL\+\_\+\+Surface à partir d\textquotesingle{}un SDL\+\_\+\+Texture du même format \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{foncSdl_8c_a15b5714bf82da0b4500c9835154e6979}\label{foncSdl_8c_a15b5714bf82da0b4500c9835154e6979}} 
+int {\bfseries init\+Damier} (SDL\+\_\+\+Rect damier\mbox{[}LIGNES $\ast$COLONNES\mbox{]}, SDL\+\_\+\+Renderer $\ast$renderer, int largeur\+Rect\+Grille, int offset\+GrilleX, int offset\+GrilleY)
+\item 
+\mbox{\Hypertarget{foncSdl_8c_aabfff9959f1575886bb7492faa8d998a}\label{foncSdl_8c_aabfff9959f1575886bb7492faa8d998a}} 
+int {\bfseries init\+Coordonnees\+Pions} (SDL\+\_\+\+Rect coordonnees\+Pions\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int largeur\+Rect\+Grille, int offset\+GrilleX, int offset\+GrilleY)
+\item 
+\mbox{\Hypertarget{foncSdl_8c_a59057a566670e84529d59bec85b46ace}\label{foncSdl_8c_a59057a566670e84529d59bec85b46ace}} 
+void {\bfseries afficher\+Pions} (SDL\+\_\+\+Renderer $\ast$renderer, t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, SDL\+\_\+\+Rect coordonnees\+Pions\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, images\+\_\+t $\ast$images, SDL\+\_\+\+Color arriere\+Plan)
+\item 
+int \mbox{\hyperlink{foncSdl_8c_ae8817f60c260dbee3f0cf0764f5c8172}{init\+Struct\+Textures}} (SDL\+\_\+\+Renderer $\ast$renderer, images\+\_\+t $\ast$images, t\+\_\+partie type\+De\+Partie)
+\begin{DoxyCompactList}\small\item\em crée (alloue) les images des pièces d\textquotesingle{}une partie normale et les affecte à une structure images\+\_\+t \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{foncSdl_8c_ac3e1526ff919da1f7638eb0ba584a4f5}{free\+Les\+Images}} (images\+\_\+t $\ast$images)
+\begin{DoxyCompactList}\small\item\em free (désalloue) les images des pièces dans une structure images\+\_\+t \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{foncSdl_8c_a8e95a75d6f3ecadd37b7a9afebfc4afb}{get\+Colonne\+Click}} (SDL\+\_\+\+Rect damier\mbox{[}7\mbox{]}, int largeur\+Rect\+Grille, Sint32 x)
+\item 
+void \mbox{\hyperlink{foncSdl_8c_addf4327b0b19eacd9021ef8c8947948b}{afficher\+Damier}} (SDL\+\_\+\+Renderer $\ast$renderer, SDL\+\_\+\+Rect damier\mbox{[}42\mbox{]}, SDL\+\_\+\+Color couleur)
+\begin{DoxyCompactList}\small\item\em dessine tous les rectangles contenu dans \char`\"{}damier\char`\"{}, en \char`\"{}couleur\char`\"{}, et l\textquotesingle{}affiche à l\textquotesingle{}écran \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{foncSdl_8c_ad5b452fdbfd44112a07cbf8fd4c765c9}{dimension\+Grille\+Dynamique}} (int largeur\+Window, int hauteur\+Window, int $\ast$largeur\+Rect\+Grille, int $\ast$offset\+GrilleX, int $\ast$offset\+GrilleY)
+\begin{DoxyCompactList}\small\item\em calcule les valeurs de largeur\+Rect\+Grille, offset\+GrilleX et offset\+GrilleY, d\textquotesingle{}après les dimensions de la fênetre, pour bien afficher la grille de jeu en prenant la place nécessaire \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Corps des fonctions SDL. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+\{22/03/2023\} 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Auteur}
+Abart Raphaël 
+
+El\+Ghoumari Soumia 
+
+Coupé Xavier 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{foncSdl_8c_addf4327b0b19eacd9021ef8c8947948b}\label{foncSdl_8c_addf4327b0b19eacd9021ef8c8947948b}} 
+\index{foncSdl.c@{foncSdl.c}!afficherDamier@{afficherDamier}}
+\index{afficherDamier@{afficherDamier}!foncSdl.c@{foncSdl.c}}
+\doxysubsubsection{\texorpdfstring{afficherDamier()}{afficherDamier()}}
+{\footnotesize\ttfamily void afficher\+Damier (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Rect}]{damier\mbox{[}42\mbox{]},  }\item[{SDL\+\_\+\+Color}]{couleur }\end{DoxyParamCaption})}
+
+
+
+dessine tous les rectangles contenu dans \char`\"{}damier\char`\"{}, en \char`\"{}couleur\char`\"{}, et l\textquotesingle{}affiche à l\textquotesingle{}écran 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & pointeur de SDL\+\_\+\+Renderer, nécessaire \\
+\hline
+{\em damier} & tableau des coordonnées des rectangles de la grille \\
+\hline
+{\em couleur} & couleur des rectangles de la grille à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{foncSdl_8c_a22884fdfda1408bbfad6d97f6073021e}\label{foncSdl_8c_a22884fdfda1408bbfad6d97f6073021e}} 
+\index{foncSdl.c@{foncSdl.c}!createSurfaceFromTexture@{createSurfaceFromTexture}}
+\index{createSurfaceFromTexture@{createSurfaceFromTexture}!foncSdl.c@{foncSdl.c}}
+\doxysubsubsection{\texorpdfstring{createSurfaceFromTexture()}{createSurfaceFromTexture()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Surface $\ast$ create\+Surface\+From\+Texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Texture $\ast$}]{texture }\end{DoxyParamCaption})}
+
+
+
+crée un SDL\+\_\+\+Surface à partir d\textquotesingle{}un SDL\+\_\+\+Texture du même format 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em texture} & texture à utiliser pour en fait une Surface, nécessaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne un SDL\+\_\+\+Surface pour un succès, NULL pour une erreur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{foncSdl_8c_ad5b452fdbfd44112a07cbf8fd4c765c9}\label{foncSdl_8c_ad5b452fdbfd44112a07cbf8fd4c765c9}} 
+\index{foncSdl.c@{foncSdl.c}!dimensionGrilleDynamique@{dimensionGrilleDynamique}}
+\index{dimensionGrilleDynamique@{dimensionGrilleDynamique}!foncSdl.c@{foncSdl.c}}
+\doxysubsubsection{\texorpdfstring{dimensionGrilleDynamique()}{dimensionGrilleDynamique()}}
+{\footnotesize\ttfamily int dimension\+Grille\+Dynamique (\begin{DoxyParamCaption}\item[{int}]{largeur\+Window,  }\item[{int}]{hauteur\+Window,  }\item[{int $\ast$}]{largeur\+Rect\+Grille,  }\item[{int $\ast$}]{offset\+GrilleX,  }\item[{int $\ast$}]{offset\+GrilleY }\end{DoxyParamCaption})}
+
+
+
+calcule les valeurs de largeur\+Rect\+Grille, offset\+GrilleX et offset\+GrilleY, d\textquotesingle{}après les dimensions de la fênetre, pour bien afficher la grille de jeu en prenant la place nécessaire 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em largeur\+Window} & largeur actuelle de la fenêtre \\
+\hline
+{\em hauteur\+Window} & hauteur actuelle de la fenêtre \\
+\hline
+{\em largeur\+Rect\+Grille} & largeur des rectangles (carrés) qui composent la grille à afficher \\
+\hline
+{\em offset\+GrilleX} & décalage du point en haut à gauche de la grille à afficher, sur l\textquotesingle{}axe horizontal \\
+\hline
+{\em offset\+GrilleY} & décalage du point en haut à gauche de la grille à afficher, sur l\textquotesingle{}axe vertical \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{foncSdl_8c_ac3e1526ff919da1f7638eb0ba584a4f5}\label{foncSdl_8c_ac3e1526ff919da1f7638eb0ba584a4f5}} 
+\index{foncSdl.c@{foncSdl.c}!freeLesImages@{freeLesImages}}
+\index{freeLesImages@{freeLesImages}!foncSdl.c@{foncSdl.c}}
+\doxysubsubsection{\texorpdfstring{freeLesImages()}{freeLesImages()}}
+{\footnotesize\ttfamily int free\+Les\+Images (\begin{DoxyParamCaption}\item[{images\+\_\+t $\ast$}]{images }\end{DoxyParamCaption})}
+
+
+
+free (désalloue) les images des pièces dans une structure images\+\_\+t 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em images} & structure contenant des pointeurs sur toutes les textures d\textquotesingle{}images de pions, à désallouer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{foncSdl_8c_a8e95a75d6f3ecadd37b7a9afebfc4afb}\label{foncSdl_8c_a8e95a75d6f3ecadd37b7a9afebfc4afb}} 
+\index{foncSdl.c@{foncSdl.c}!getColonneClick@{getColonneClick}}
+\index{getColonneClick@{getColonneClick}!foncSdl.c@{foncSdl.c}}
+\doxysubsubsection{\texorpdfstring{getColonneClick()}{getColonneClick()}}
+{\footnotesize\ttfamily int get\+Colonne\+Click (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect}]{damier\mbox{[}7\mbox{]},  }\item[{int}]{largeur\+Rect\+Grille,  }\item[{Sint32}]{x }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em damier} & tableau des coordonnées des rectangles de la grille \\
+\hline
+{\em largeur\+Rect\+Grille} & largeur des rectangles (carrés) qui composent la grille à afficher \\
+\hline
+{\em x} & position horizontale de la souris au moment du clic, par rapport à la fenêtre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{foncSdl_8c_ae541d45311ba6f5fa0d79d877b9c7e22}\label{foncSdl_8c_ae541d45311ba6f5fa0d79d877b9c7e22}} 
+\index{foncSdl.c@{foncSdl.c}!init@{init}}
+\index{init@{init}!foncSdl.c@{foncSdl.c}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily int init (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Window $\ast$$\ast$}]{window,  }\item[{SDL\+\_\+\+Renderer $\ast$$\ast$}]{renderer,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+initialise les systèmes de SDL, crée le pointeur sur fenêtre et le renderer 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em window} & pointeur sur pointeur de SDL\+\_\+\+Window, va être rempli (à free avec SDL\+\_\+\+Destroy\+Renderer() ) \\
+\hline
+{\em renderer} & pointeur sur pointeur de SDL\+\_\+\+Renderer, va être rempli (à free avec SDL\+\_\+\+Destroy\+Window() ) \\
+\hline
+{\em width} & la largeur de la fenêtre \\
+\hline
+{\em height} & la hauteur de la fenêtre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 0 en cas de succès, -\/1 en cas d\textquotesingle{}échec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{foncSdl_8c_ae8817f60c260dbee3f0cf0764f5c8172}\label{foncSdl_8c_ae8817f60c260dbee3f0cf0764f5c8172}} 
+\index{foncSdl.c@{foncSdl.c}!initStructTextures@{initStructTextures}}
+\index{initStructTextures@{initStructTextures}!foncSdl.c@{foncSdl.c}}
+\doxysubsubsection{\texorpdfstring{initStructTextures()}{initStructTextures()}}
+{\footnotesize\ttfamily int init\+Struct\+Textures (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{images\+\_\+t $\ast$}]{images,  }\item[{t\+\_\+partie}]{type\+De\+Partie }\end{DoxyParamCaption})}
+
+
+
+crée (alloue) les images des pièces d\textquotesingle{}une partie normale et les affecte à une structure images\+\_\+t 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & pointeur de SDL\+\_\+\+Renderer, nécessaire \\
+\hline
+{\em images} & structure contenant des pointeurs sur toutes les textures d\textquotesingle{}images de pions, à remplir \\
+\hline
+{\em type\+De\+Partie} & type enum, vaut soit mode\+Normal (1), soit mode\+Creux (2) \\
+\hline
+\end{DoxyParams}
+Les textures ne sont pas faites pour une modification pixels par pixels. Elles ont l’avantage d’êtres affichables rapidement, de pouvoir être redimensionnée à la volée et copiée rapidement\mbox{\Hypertarget{foncSdl_8c_a18acbef7dbd99a94b93352d7592d9f74}\label{foncSdl_8c_a18acbef7dbd99a94b93352d7592d9f74}} 
+\index{foncSdl.c@{foncSdl.c}!loadImage@{loadImage}}
+\index{loadImage@{loadImage}!foncSdl.c@{foncSdl.c}}
+\doxysubsubsection{\texorpdfstring{loadImage()}{loadImage()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Texture $\ast$ load\+Image (\begin{DoxyParamCaption}\item[{char $\ast$}]{path,  }\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+charge une image depuis un chemin donné, retourne une texture créée à partir de cette image 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em path} & chemin d\textquotesingle{}accès, relatif ou absolu, vers le fichier BITMAP UNIQUEMENT (.bmp) à ouvrir \\
+\hline
+{\em renderer} & pointeur de SDL\+\_\+\+Renderer, nécessaire pour créer une texture depuis une surface \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne l\textquotesingle{}adresse d\textquotesingle{}une SDL\+\_\+\+Texture dynamique créée à partir de cette image (à free avec SDL\+\_\+\+Destroy\+Texture() ), ou NULL en cas d\textquotesingle{}échec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{foncSdl_8c_a2609ddea83b240e09a5b1d7065804ed0}\label{foncSdl_8c_a2609ddea83b240e09a5b1d7065804ed0}} 
+\index{foncSdl.c@{foncSdl.c}!setDrawColor@{setDrawColor}}
+\index{setDrawColor@{setDrawColor}!foncSdl.c@{foncSdl.c}}
+\doxysubsubsection{\texorpdfstring{setDrawColor()}{setDrawColor()}}
+{\footnotesize\ttfamily int set\+Draw\+Color (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{SDL\+\_\+\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+change la couleur utilisée pour dessiner avec un SDL\+\_\+\+Color 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & pointeur de SDL\+\_\+\+Renderer, nécessaire à SDL\+\_\+\+Set\+Render\+Draw\+Color \\
+\hline
+{\em color} & couleur de type SDL\+\_\+color \{rouge, vert, bleu\mbox{[}, alpha\mbox{]}\} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+retourne 0 pour un succès, -\/1 pour une erreur 
+\end{DoxyReturn}

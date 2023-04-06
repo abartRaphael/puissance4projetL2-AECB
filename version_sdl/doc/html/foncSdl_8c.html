@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>puissance4projetL2-AEC: Référence du fichier src/foncSdl.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">puissance4projetL2-AEC<span id="projectnumber">&#160;1</span>
+   </div>
+   <div id="projectbrief">Un puissance 4 avec des pièces spéciales</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier foncSdl.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Corps des fonctions SDL.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &quot;../lib/foncSdl.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae541d45311ba6f5fa0d79d877b9c7e22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#ae541d45311ba6f5fa0d79d877b9c7e22">init</a> (SDL_Window **window, SDL_Renderer **renderer, int width, int height)</td></tr>
+<tr class="memdesc:ae541d45311ba6f5fa0d79d877b9c7e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise les systèmes de SDL, crée le pointeur sur fenêtre et le renderer  <a href="foncSdl_8c.html#ae541d45311ba6f5fa0d79d877b9c7e22">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae541d45311ba6f5fa0d79d877b9c7e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18acbef7dbd99a94b93352d7592d9f74"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#a18acbef7dbd99a94b93352d7592d9f74">loadImage</a> (char *path, SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a18acbef7dbd99a94b93352d7592d9f74"><td class="mdescLeft">&#160;</td><td class="mdescRight">charge une image depuis un chemin donné, retourne une texture créée à partir de cette image  <a href="foncSdl_8c.html#a18acbef7dbd99a94b93352d7592d9f74">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a18acbef7dbd99a94b93352d7592d9f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2609ddea83b240e09a5b1d7065804ed0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#a2609ddea83b240e09a5b1d7065804ed0">setDrawColor</a> (SDL_Renderer *renderer, SDL_Color color)</td></tr>
+<tr class="memdesc:a2609ddea83b240e09a5b1d7065804ed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">change la couleur utilisée pour dessiner avec un SDL_Color  <a href="foncSdl_8c.html#a2609ddea83b240e09a5b1d7065804ed0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2609ddea83b240e09a5b1d7065804ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c56405e6e10f263f37ee49561b4b92"><td class="memItemLeft" align="right" valign="top"><a id="a48c56405e6e10f263f37ee49561b4b92" name="a48c56405e6e10f263f37ee49561b4b92"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setPixel</b> (SDL_Surface *surface, Uint8 r, Uint8 g, Uint8 b, Uint8 a, size_t x, size_t y)</td></tr>
+<tr class="separator:a48c56405e6e10f263f37ee49561b4b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22884fdfda1408bbfad6d97f6073021e"><td class="memItemLeft" align="right" valign="top">SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#a22884fdfda1408bbfad6d97f6073021e">createSurfaceFromTexture</a> (SDL_Texture *texture)</td></tr>
+<tr class="memdesc:a22884fdfda1408bbfad6d97f6073021e"><td class="mdescLeft">&#160;</td><td class="mdescRight">crée un SDL_Surface à partir d'un SDL_Texture du même format  <a href="foncSdl_8c.html#a22884fdfda1408bbfad6d97f6073021e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a22884fdfda1408bbfad6d97f6073021e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15b5714bf82da0b4500c9835154e6979"><td class="memItemLeft" align="right" valign="top"><a id="a15b5714bf82da0b4500c9835154e6979" name="a15b5714bf82da0b4500c9835154e6979"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>initDamier</b> (SDL_Rect damier[LIGNES *COLONNES], SDL_Renderer *renderer, int largeurRectGrille, int offsetGrilleX, int offsetGrilleY)</td></tr>
+<tr class="separator:a15b5714bf82da0b4500c9835154e6979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabfff9959f1575886bb7492faa8d998a"><td class="memItemLeft" align="right" valign="top"><a id="aabfff9959f1575886bb7492faa8d998a" name="aabfff9959f1575886bb7492faa8d998a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>initCoordonneesPions</b> (SDL_Rect coordonneesPions[LIGNES][COLONNES], int largeurRectGrille, int offsetGrilleX, int offsetGrilleY)</td></tr>
+<tr class="separator:aabfff9959f1575886bb7492faa8d998a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59057a566670e84529d59bec85b46ace"><td class="memItemLeft" align="right" valign="top"><a id="a59057a566670e84529d59bec85b46ace" name="a59057a566670e84529d59bec85b46ace"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>afficherPions</b> (SDL_Renderer *renderer, t_pion grilleDeValeurs[LIGNES][COLONNES], SDL_Rect coordonneesPions[LIGNES][COLONNES], images_t *images, SDL_Color arrierePlan)</td></tr>
+<tr class="separator:a59057a566670e84529d59bec85b46ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8817f60c260dbee3f0cf0764f5c8172"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#ae8817f60c260dbee3f0cf0764f5c8172">initStructTextures</a> (SDL_Renderer *renderer, images_t *images, t_partie typeDePartie)</td></tr>
+<tr class="memdesc:ae8817f60c260dbee3f0cf0764f5c8172"><td class="mdescLeft">&#160;</td><td class="mdescRight">crée (alloue) les images des pièces d'une partie normale et les affecte à une structure images_t  <a href="foncSdl_8c.html#ae8817f60c260dbee3f0cf0764f5c8172">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae8817f60c260dbee3f0cf0764f5c8172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3e1526ff919da1f7638eb0ba584a4f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#ac3e1526ff919da1f7638eb0ba584a4f5">freeLesImages</a> (images_t *images)</td></tr>
+<tr class="memdesc:ac3e1526ff919da1f7638eb0ba584a4f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">free (désalloue) les images des pièces dans une structure images_t  <a href="foncSdl_8c.html#ac3e1526ff919da1f7638eb0ba584a4f5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac3e1526ff919da1f7638eb0ba584a4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e95a75d6f3ecadd37b7a9afebfc4afb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#a8e95a75d6f3ecadd37b7a9afebfc4afb">getColonneClick</a> (SDL_Rect damier[7], int largeurRectGrille, Sint32 x)</td></tr>
+<tr class="separator:a8e95a75d6f3ecadd37b7a9afebfc4afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf4327b0b19eacd9021ef8c8947948b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#addf4327b0b19eacd9021ef8c8947948b">afficherDamier</a> (SDL_Renderer *renderer, SDL_Rect damier[42], SDL_Color couleur)</td></tr>
+<tr class="memdesc:addf4327b0b19eacd9021ef8c8947948b"><td class="mdescLeft">&#160;</td><td class="mdescRight">dessine tous les rectangles contenu dans "damier", en "couleur", et l'affiche à l'écran  <a href="foncSdl_8c.html#addf4327b0b19eacd9021ef8c8947948b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:addf4327b0b19eacd9021ef8c8947948b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5b452fdbfd44112a07cbf8fd4c765c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#ad5b452fdbfd44112a07cbf8fd4c765c9">dimensionGrilleDynamique</a> (int largeurWindow, int hauteurWindow, int *largeurRectGrille, int *offsetGrilleX, int *offsetGrilleY)</td></tr>
+<tr class="memdesc:ad5b452fdbfd44112a07cbf8fd4c765c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">calcule les valeurs de largeurRectGrille, offsetGrilleX et offsetGrilleY, d'après les dimensions de la fênetre, pour bien afficher la grille de jeu en prenant la place nécessaire  <a href="foncSdl_8c.html#ad5b452fdbfd44112a07cbf8fd4c765c9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad5b452fdbfd44112a07cbf8fd4c765c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p >Corps des fonctions SDL. </p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>{22/03/2023} </dd></dl>
+<dl class="section author"><dt>Auteur</dt><dd>Abart Raphaël </dd>
+<dd>
+ElGhoumari Soumia </dd>
+<dd>
+Coupé Xavier </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="addf4327b0b19eacd9021ef8c8947948b" name="addf4327b0b19eacd9021ef8c8947948b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addf4327b0b19eacd9021ef8c8947948b">&#9670;&nbsp;</a></span>afficherDamier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficherDamier </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>damier</em>[42], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>couleur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>dessine tous les rectangles contenu dans "damier", en "couleur", et l'affiche à l'écran </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>pointeur de SDL_Renderer, nécessaire </td></tr>
+    <tr><td class="paramname">damier</td><td>tableau des coordonnées des rectangles de la grille </td></tr>
+    <tr><td class="paramname">couleur</td><td>couleur des rectangles de la grille à afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a22884fdfda1408bbfad6d97f6073021e" name="a22884fdfda1408bbfad6d97f6073021e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22884fdfda1408bbfad6d97f6073021e">&#9670;&nbsp;</a></span>createSurfaceFromTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Surface * createSurfaceFromTexture </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>texture</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>crée un SDL_Surface à partir d'un SDL_Texture du même format </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texture</td><td>texture à utiliser pour en fait une Surface, nécessaire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne un SDL_Surface pour un succès, NULL pour une erreur </dd></dl>
+
+</div>
+</div>
+<a id="ad5b452fdbfd44112a07cbf8fd4c765c9" name="ad5b452fdbfd44112a07cbf8fd4c765c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5b452fdbfd44112a07cbf8fd4c765c9">&#9670;&nbsp;</a></span>dimensionGrilleDynamique()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int dimensionGrilleDynamique </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>largeurWindow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hauteurWindow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>largeurRectGrille</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>offsetGrilleX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>offsetGrilleY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>calcule les valeurs de largeurRectGrille, offsetGrilleX et offsetGrilleY, d'après les dimensions de la fênetre, pour bien afficher la grille de jeu en prenant la place nécessaire </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">largeurWindow</td><td>largeur actuelle de la fenêtre </td></tr>
+    <tr><td class="paramname">hauteurWindow</td><td>hauteur actuelle de la fenêtre </td></tr>
+    <tr><td class="paramname">largeurRectGrille</td><td>largeur des rectangles (carrés) qui composent la grille à afficher </td></tr>
+    <tr><td class="paramname">offsetGrilleX</td><td>décalage du point en haut à gauche de la grille à afficher, sur l'axe horizontal </td></tr>
+    <tr><td class="paramname">offsetGrilleY</td><td>décalage du point en haut à gauche de la grille à afficher, sur l'axe vertical </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac3e1526ff919da1f7638eb0ba584a4f5" name="ac3e1526ff919da1f7638eb0ba584a4f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3e1526ff919da1f7638eb0ba584a4f5">&#9670;&nbsp;</a></span>freeLesImages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int freeLesImages </td>
+          <td>(</td>
+          <td class="paramtype">images_t *&#160;</td>
+          <td class="paramname"><em>images</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>free (désalloue) les images des pièces dans une structure images_t </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">images</td><td>structure contenant des pointeurs sur toutes les textures d'images de pions, à désallouer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8e95a75d6f3ecadd37b7a9afebfc4afb" name="a8e95a75d6f3ecadd37b7a9afebfc4afb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e95a75d6f3ecadd37b7a9afebfc4afb">&#9670;&nbsp;</a></span>getColonneClick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getColonneClick </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Rect&#160;</td>
+          <td class="paramname"><em>damier</em>[7], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>largeurRectGrille</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Sint32&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">damier</td><td>tableau des coordonnées des rectangles de la grille </td></tr>
+    <tr><td class="paramname">largeurRectGrille</td><td>largeur des rectangles (carrés) qui composent la grille à afficher </td></tr>
+    <tr><td class="paramname">x</td><td>position horizontale de la souris au moment du clic, par rapport à la fenêtre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae541d45311ba6f5fa0d79d877b9c7e22" name="ae541d45311ba6f5fa0d79d877b9c7e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae541d45311ba6f5fa0d79d877b9c7e22">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Window **&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer **&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialise les systèmes de SDL, crée le pointeur sur fenêtre et le renderer </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>pointeur sur pointeur de SDL_Window, va être rempli (à free avec SDL_DestroyRenderer() ) </td></tr>
+    <tr><td class="paramname">renderer</td><td>pointeur sur pointeur de SDL_Renderer, va être rempli (à free avec SDL_DestroyWindow() ) </td></tr>
+    <tr><td class="paramname">width</td><td>la largeur de la fenêtre </td></tr>
+    <tr><td class="paramname">height</td><td>la hauteur de la fenêtre </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 0 en cas de succès, -1 en cas d'échec </dd></dl>
+
+</div>
+</div>
+<a id="ae8817f60c260dbee3f0cf0764f5c8172" name="ae8817f60c260dbee3f0cf0764f5c8172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8817f60c260dbee3f0cf0764f5c8172">&#9670;&nbsp;</a></span>initStructTextures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int initStructTextures </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">images_t *&#160;</td>
+          <td class="paramname"><em>images</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">t_partie&#160;</td>
+          <td class="paramname"><em>typeDePartie</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>crée (alloue) les images des pièces d'une partie normale et les affecte à une structure images_t </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>pointeur de SDL_Renderer, nécessaire </td></tr>
+    <tr><td class="paramname">images</td><td>structure contenant des pointeurs sur toutes les textures d'images de pions, à remplir </td></tr>
+    <tr><td class="paramname">typeDePartie</td><td>type enum, vaut soit modeNormal (1), soit modeCreux (2) </td></tr>
+  </table>
+  </dd>
+</dl>
+<p >Les textures ne sont pas faites pour une modification pixels par pixels. Elles ont l’avantage d’êtres affichables rapidement, de pouvoir être redimensionnée à la volée et copiée rapidement</p>
+
+</div>
+</div>
+<a id="a18acbef7dbd99a94b93352d7592d9f74" name="a18acbef7dbd99a94b93352d7592d9f74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18acbef7dbd99a94b93352d7592d9f74">&#9670;&nbsp;</a></span>loadImage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Texture * loadImage </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>charge une image depuis un chemin donné, retourne une texture créée à partir de cette image </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>chemin d'accès, relatif ou absolu, vers le fichier BITMAP UNIQUEMENT (.bmp) à ouvrir </td></tr>
+    <tr><td class="paramname">renderer</td><td>pointeur de SDL_Renderer, nécessaire pour créer une texture depuis une surface </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne l'adresse d'une SDL_Texture dynamique créée à partir de cette image (à free avec SDL_DestroyTexture() ), ou NULL en cas d'échec </dd></dl>
+
+</div>
+</div>
+<a id="a2609ddea83b240e09a5b1d7065804ed0" name="a2609ddea83b240e09a5b1d7065804ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2609ddea83b240e09a5b1d7065804ed0">&#9670;&nbsp;</a></span>setDrawColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int setDrawColor </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Color&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>change la couleur utilisée pour dessiner avec un SDL_Color </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>pointeur de SDL_Renderer, nécessaire à SDL_SetRenderDrawColor </td></tr>
+    <tr><td class="paramname">color</td><td>couleur de type SDL_color {rouge, vert, bleu[, alpha]} </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>retourne 0 pour un succès, -1 pour une erreur </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>
