@@ -64,7 +64,7 @@ $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 test: $(TESTDIR)/tests
 
 
-$(TESTDIR)/tests: $(TESTSS)
+$(TESTDIR)/tests: $(TESTSS) src/fonc2.c src/foncSdl.c
 	@$(CC) $< src/fonc2.c src/foncSdl.c $(TFLAGS) -o $@ 
 	@echo "Compiled "$<" successfully!"
 
