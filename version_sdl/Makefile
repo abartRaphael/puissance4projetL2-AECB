@@ -24,9 +24,8 @@ TRGS	 := $(TARGETS:%=$(BINDIR)/%)
 DIRS	 = $(OBJDIR) $(BINDIR) 
 
 #répertoires de SDL2
-SDL_DIR=$HOME/SDL2
-SDL_LIB_DIR=$(SDL_DIR)/lib
-SDL_INC_DIR=$(SDL_DIR)/include/
+SDL_LIB_DIR=/usr/lib/x86_64-linux-gnu
+SDL_INC_DIR=/usr/include/
 
 LIBS=-L$(SDL_LIB_DIR) -lSDL2 -lSDL2_ttf -lSDL2_image 
 INCLUDE_SDL=-I$(SDL_INC_DIR) 
