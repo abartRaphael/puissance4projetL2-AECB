@@ -222,7 +222,7 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
 		}
 		return 0;
 	}
-	else{
+	else if( l == LIGNES-1 ){
 		grilleDeValeurs[l][c].couleur = pion.couleur;
 		grilleDeValeurs[l][c].type = pion.type;
 		return 0;
