@@ -11,7 +11,7 @@ LFLAGS   = -Wall -I. -lm $(INCLUDE_SDL) $(LIBS)
 
 
 #Test linking flags here
-TFLAGS	 = -Wall -lcunit $(LIBS) -I$(LIBDIR) $(INCLUDE_SDL)
+TFLAGS	 = -Wall -I. -lcunit $(LIBS) $(INCLUDE_SDL) -I$(LIBDIR)
 
 #Change these to proper directories where each file should be
 SRCDIR   = src
@@ -65,7 +65,7 @@ test: $(TESTDIR)/tests
 
 
 $(TESTDIR)/tests: $(TESTSS)
-	@$(CC) $< $(TFLAGS) src/fonc2.c src/foncSdl.c -o $@ 
+	@$(CC) $< src/fonc2.c src/foncSdl.c $(TFLAGS) -o $@ 
 	@echo "Compiled "$<" successfully!"
 
 
