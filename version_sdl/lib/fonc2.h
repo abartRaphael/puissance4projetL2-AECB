@@ -1,19 +1,33 @@
 #ifndef H_FONC2_
 #define H_FONC2_
 
-#define LIGNES 6
-#define COLONNES 7
+#define LIGNES 6	//!< nombre de lignes de la grille de puissance 4 (par défaut 6)
+#define COLONNES 7	//!< nombre de colonnes de la grille de puissance 4 (par défaut 7)
 
-#define NB_CREUSE 3
-#define NB_BLOQUANTE 3
+#define NB_CREUSE 3		//!< nombre de pièces creuses que chaque joueur peut utiliser
+#define NB_BLOQUANTE 3	//!< nombre de pièces bloquantes que chaque joueur peut utiliser
 
 // rougeJaune : pièce rouge creuse (extérieur) sur pièce jaune pleine (intérieur)
 // jauneRouge : pièce jaune creuse (extérieur) sur pièce rouge pleine (intérieur)
-typedef enum{vide, rouge, jaune, rougeJaune, jauneRouge} t_couleur;
+typedef enum{
+	vide, 		//!< case vide de la grille
+	rouge, 		//!< pièce rouge
+	jaune, 		//!< pièce jaune
+	rougeJaune,	//!< pièce rouge creuse à l'extérieur, jaune à l'intérieur
+	jauneRouge	//!< pièce jaune creuse à l'extérieur, rouge à l'intérieur
+} t_couleur;
 typedef enum{no_type, creuse, pleine, bloquante} t_type;
 
-typedef enum{modeNormal=1, modeCreux} t_partie;
+typedef enum{
+	modeNormal=1, 	//!< pour une partie de puissance 4 classique (un seul type de pièce)
+	modeCreux		//!< pour une partie de puissance 4 avec des pièces creuses et bloquantes
+} t_partie;
 
+/**
+ * \struct t_pion fonc2.h 
+ * \brief Objet représentant un pion/pièce du jeu
+ * avec sa couleur
+ */
 typedef struct{
 	t_couleur couleur;
 	t_type type;
