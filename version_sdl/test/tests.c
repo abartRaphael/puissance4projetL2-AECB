@@ -90,26 +90,231 @@ void test_estPleine(void)
 
 	initGrille(grille);
 
-	grille[5][0].couleur = vide;
-
-	grille[5][1].couleur = rouge;
-
-	grille[5][2].couleur = jaune;
-	grille[4][2].couleur = rouge;
-
-	grille[5][3].couleur = rouge;
-	grille[4][3].couleur = rouge;
-	grille[3][3].couleur = rouge;
-	grille[2][3].couleur = jaune;
-	grille[1][3].couleur = rouge;
-	grille[0][3].couleur = rouge;
+	//cas avec une colonne vide
+	grille[LIGNES-1][0].couleur = vide;
+	//cas avec une pièce
+	grille[LIGNES-1][1].couleur = rouge;
+	//cas avec deux pièces
+	grille[LIGNES-1][2].couleur = jaune;
+	grille[LIGNES-2][2].couleur = rouge;
+	//cas avec une colonne pleine
+	grille[LIGNES-1][3].couleur = rouge;
+	grille[LIGNES-2][3].couleur = rouge;
+	grille[LIGNES-3][3].couleur = rouge;
+	grille[LIGNES-4][3].couleur = jaune;
+	grille[LIGNES-5][3].couleur = rouge;
+	grille[LIGNES-6][3].couleur = rouge;
 
 	if (NULL != temp_file) {
-		initGrille(grille);
 		CU_ASSERT_FALSE(estPleine(grille, 0));
 		CU_ASSERT_FALSE(estPleine(grille, 1));
 		CU_ASSERT_FALSE(estPleine(grille, 2));
 		CU_ASSERT_TRUE(estPleine(grille, 3));
+	}	
+}
+
+
+void test_caseLibre(void) 
+{
+	t_pion grille[LIGNES][COLONNES];
+
+	initGrille(grille);
+
+	//cas avec une colonne vide
+	grille[LIGNES-1][0].couleur = vide;
+	//cas avec une pièce
+	grille[LIGNES-1][1].couleur = rouge;
+	//cas avec deux pièces
+	grille[LIGNES-1][2].couleur = jaune;
+	grille[LIGNES-2][2].couleur = rouge;
+	//cas avec une colonne pleine
+	grille[LIGNES-1][3].couleur = rouge;
+	grille[LIGNES-2][3].couleur = rouge;
+	grille[LIGNES-3][3].couleur = rouge;
+	grille[LIGNES-4][3].couleur = jaune;
+	grille[LIGNES-5][3].couleur = rouge;
+	grille[LIGNES-6][3].couleur = rouge;
+
+	if (NULL != temp_file) {
+		CU_ASSERT_EQUAL(caseLibre(grille, 0),5);
+		CU_ASSERT_EQUAL(caseLibre(grille, 1),4);
+		CU_ASSERT_EQUAL(caseLibre(grille, 2),3);
+		CU_ASSERT_EQUAL(caseLibre(grille, 3),-1);
+	}	
+}
+
+
+void test_ajoutPion(void) 
+{
+	t_pion grille[LIGNES][COLONNES], 
+		piece;
+
+	initGrille(grille);
+
+	if (NULL != temp_file) {
+
+		//cas avec le type t_type no_type pour la pièce à ajouter
+		grille[LIGNES-1][0].couleur = rouge;
+		grille[LIGNES-1][0].type = pleine;
+		piece.couleur = vide;
+		piece.type = no_type;
+		CU_ASSERT_TRUE(ajoutPion(grille, 0, piece));
+			//vérifier que la pièce n'a pas été ajoutée
+		CU_ASSERT_EQUAL(grille[LIGNES-2][0].couleur, vide);
+		CU_ASSERT_EQUAL(grille[LIGNES-2][0].type, no_type);
+
+		//cas avec une colonne vide
+		grille[LIGNES-1][0].couleur = vide;
+		grille[LIGNES-1][0].type = no_type;
+		piece.couleur = rouge;
+		piece.type = pleine;
+		CU_ASSERT_FALSE(ajoutPion(grille, 0, piece));
+			//vérifier que la pièce a bien été ajoutée au bon endroit
+		CU_ASSERT_EQUAL(grille[LIGNES-1][0].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][0].type, piece.type);
+
+
+		//cas (plusieurs) où on joue une pièce CREUSE,
+		piece.type = creuse;
+		//... sur une pièce creuse,
+		//...... de couleur différente
+		piece.couleur = rouge;
+		grille[LIGNES-1][1].couleur = jaune;
+		grille[LIGNES-1][1].type = creuse;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].couleur, jauneRouge);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].type, bloquante);
+		//...... de couleur différente (inverse)
+		piece.couleur = jaune;
+		grille[LIGNES-1][1].couleur = rouge;
+		grille[LIGNES-1][1].type = creuse;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].couleur, rougeJaune);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].type, bloquante);
+		//...... de même couleur
+		piece.couleur = rouge;
+		grille[LIGNES-1][1].couleur = rouge;
+		grille[LIGNES-1][1].type = creuse;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].type, bloquante);
+
+		//... sur une pièce pleine,
+		//...... de couleur différente
+		piece.couleur = rouge;
+		grille[LIGNES-1][1].couleur = jaune;
+		grille[LIGNES-1][1].type = pleine;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].couleur, rougeJaune);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].type, bloquante);
+		//...... de couleur différente (inverse)
+		piece.couleur = jaune;
+		grille[LIGNES-1][1].couleur = rouge;
+		grille[LIGNES-1][1].type = pleine;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].couleur, jauneRouge);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].type, bloquante);
+		//...... de même couleur
+		piece.couleur = rouge;
+		grille[LIGNES-1][1].couleur = rouge;
+		grille[LIGNES-1][1].type = pleine;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].type, bloquante);
+
+		//... sur une pièce bloquante,
+		piece.couleur = rouge;
+		grille[LIGNES-1][1].type = bloquante;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].type, piece.type);
+			grille[LIGNES-2][1].couleur = vide;
+			grille[LIGNES-2][1].type = no_type;
+
+		//====
+
+		//cas (plusieurs) où on joue une pièce PLEINE,
+		piece.type = pleine;
+		//... sur une pièce creuse,
+		//...... de couleur différente
+		piece.couleur = rouge;
+		grille[LIGNES-1][1].couleur = jaune;
+		grille[LIGNES-1][1].type = creuse;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].couleur, jauneRouge);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].type, bloquante);
+		//...... de couleur différente (inverse)
+		piece.couleur = jaune;
+		grille[LIGNES-1][1].couleur = rouge;
+		grille[LIGNES-1][1].type = creuse;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].couleur, rougeJaune);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].type, bloquante);
+		//...... de même couleur
+		piece.couleur = rouge;
+		grille[LIGNES-1][1].couleur = rouge;
+		grille[LIGNES-1][1].type = creuse;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-1][1].type, bloquante);
+
+		//... sur une pièce pleine,
+		piece.couleur = rouge;
+		grille[LIGNES-1][1].type = pleine;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].type, piece.type);
+			grille[LIGNES-2][1].couleur = vide;
+			grille[LIGNES-2][1].type = no_type;
+
+		//... sur une pièce bloquante,
+		grille[LIGNES-1][1].type = bloquante;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].type, piece.type);
+			grille[LIGNES-2][1].couleur = vide;
+			grille[LIGNES-2][1].type = no_type;
+
+		//====
+
+		//cas (plusieurs) où on joue une pièce BLOQUANTE,
+		piece.type = bloquante;
+		piece.couleur = jaune;
+		//... sur une pièce creuse,
+		grille[LIGNES-1][1].couleur = rouge;
+		grille[LIGNES-1][1].type = creuse;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].type, piece.type);
+			grille[LIGNES-2][1].couleur = vide;
+			grille[LIGNES-2][1].type = no_type;
+
+		//... sur une pièce pleine,
+		grille[LIGNES-1][1].type = pleine;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].type, piece.type);
+			grille[LIGNES-2][1].couleur = vide;
+			grille[LIGNES-2][1].type = no_type;
+
+		//... sur une pièce bloquante,
+		grille[LIGNES-1][1].type = bloquante;
+		CU_ASSERT_FALSE(ajoutPion(grille, 1, piece));
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].couleur, piece.couleur);
+		CU_ASSERT_EQUAL(grille[LIGNES-2][1].type, piece.type);
+			grille[LIGNES-2][1].couleur = vide;
+			grille[LIGNES-2][1].type = no_type;
+			
+
+
+		//cas avec une colonne pleine
+		grille[LIGNES-1][3].couleur = rouge;
+		grille[LIGNES-2][3].couleur = rouge;
+		grille[LIGNES-3][3].couleur = rouge;
+		grille[LIGNES-4][3].couleur = jaune;
+		grille[LIGNES-5][3].couleur = rouge;
+		grille[LIGNES-6][3].couleur = rouge;
+		CU_ASSERT_TRUE(ajoutPion(grille, 3, piece));
 	}	
 }
 
@@ -135,7 +340,10 @@ int main()
 
 	// add the tests to the suite
 	// NOTE - ORDER IS IMPORTANT(?)
-	if ((NULL == CU_add_test(pSuite, "test of initGrille()", test_initGrille)))
+	if ((NULL == CU_add_test(pSuite, "test of initGrille()", test_initGrille))
+	|| (NULL == CU_add_test(pSuite, "test of estPleine()", test_estPleine))
+	|| (NULL == CU_add_test(pSuite, "test of caseLibre()", test_caseLibre))
+	|| (NULL == CU_add_test(pSuite, "test of ajoutPion()", test_ajoutPion)))
 	{
 	  CU_cleanup_registry();
 	  return CU_get_error();
