@@ -238,12 +238,12 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
  * \fn int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion couleur) 
  * \brief vérifie si 4 pions de même couleur ou plus se trouvent sur la même LIGNE
  * \param grilleDeValeurs grille de puissance 4
- * \param c indice de la colonne où le joueur à joué
  * \param l indice de la ligne où le joueur à joué
+ * \param c indice de la colonne où le joueur à joué
  * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion pion) {
+int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, int c, t_pion pion) {
 
 	int pionsALaSuite=0;
 
@@ -307,12 +307,12 @@ int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pi
  * \fn int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion couleur)
  * \brief vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la gauche/haut
  * \param grilleDeValeurs grille de puissance 4
- * \param c indice de la colonne où le joueur à joué
  * \param l indice de la ligne où le joueur à joué
+ * \param c indice de la colonne où le joueur à joué
  * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion pion) {
+int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, int c, t_pion pion) {
 
 	int pionsALaSuite=0, 
 		x=l,
@@ -361,12 +361,12 @@ int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
  * \fn int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion couleur)
  * \brief vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la droite/haut
  * \param grilleDeValeurs grille de puissance 4
- * \param c indice de la colonne où le joueur à joué
  * \param l indice de la ligne où le joueur à joué
+ * \param c indice de la colonne où le joueur à joué
  * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion pion) {
+int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, int c, t_pion pion) {
 
 	int pionsALaSuite=0, 
 		x=l,
@@ -433,10 +433,10 @@ int estQuatreALaSuite(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pi
 	}
 
 
-	return quatreALaSuiteHorizontal(grilleDeValeurs, c, l, pion)
+	return quatreALaSuiteHorizontal(grilleDeValeurs, l, c, pion)
 	|| quatreALaSuiteVertical(grilleDeValeurs, c, pion)
-	|| quatreALaSuiteDiagonale1(grilleDeValeurs, c, l, pion)
-	|| quatreALaSuiteDiagonale2(grilleDeValeurs, c, l, pion);
+	|| quatreALaSuiteDiagonale1(grilleDeValeurs, l, c, pion)
+	|| quatreALaSuiteDiagonale2(grilleDeValeurs, l, c, pion);
 }
 
 
