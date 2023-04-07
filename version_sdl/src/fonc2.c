@@ -218,7 +218,7 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
 				}
 				break;
 			default : printf("Impossible de voir ce message ajout_pion\n");
-		
+				return 1;
 		}
 		return 0;
 	}
