@@ -1,28 +1,8 @@
 /*
  *  Simple example of a CUnit unit test.
  *
- *  This program (crudely) demonstrates a very simple "black box"
- *  test of the standard library functions fprintf() and fread().
- *  It uses suite initialization and cleanup functions to open
- *  and close a common temporary file used by the test functions.
- *  The test functions then write to and read from the temporary
- *  file in the course of testing the library functions.
- *
- *  The 2 test functions are added to a single CUnit suite, and
- *  then run using the CUnit Basic interface.  The output of the
- *  program (on CUnit version 2.0-2) is:
- *
- *           CUnit : A Unit testing framework for C.
- *           http://cunit.sourceforge.net/
- *
- *       Suite: Suite_1
- *         Test: test of fprintf() ... passed
- *         Test: test of fread() ... passed
- *
- *       --Run Summary: Type      Total     Ran  Passed  Failed
- *                      suites        1       1     n/a       0
- *                      tests         2       2       2       0
- *                      asserts       5       5       5       0
+ *  The test functions are added to a single CUnit suite, and
+ *  then run using the CUnit Basic interface. 
  */
 
 #include <stdio.h>
@@ -345,6 +325,10 @@ void test_quatreALaSuiteDiagonale1(void)
 	t_pion grille[LIGNES][COLONNES], 
 		piece;
 
+	int x1, x2, x3, x4,
+		y1, y2, y3, y4;
+	
+
 	initGrille(grille);
 
 	piece.couleur = rouge;
@@ -358,14 +342,18 @@ void test_quatreALaSuiteDiagonale1(void)
 		 * 	- - - - - - -
 		 * 	- - - - - - -
 		 */
-		grille[LIGNES-6][0].couleur = rouge;
-		grille[LIGNES-5][1].couleur = rouge;
-		grille[LIGNES-4][2].couleur = rouge;
-		grille[LIGNES-3][3].couleur = rouge;
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-6, 0, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-5, 1, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-4, 2, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-3, 3, piece));
+		x1 = LIGNES-6; y1 = 0;
+		x2 = LIGNES-5; y2 = 1;
+		x3 = LIGNES-4; y3 = 2;
+		x4 = LIGNES-3; y4 = 3;
+		grille[x1][y1].couleur = rouge;
+		grille[x2][y2].couleur = rouge;
+		grille[x3][y3].couleur = rouge;
+		grille[x4][y4].couleur = rouge;
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x1, y1, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x2, y2, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x3, y3, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x4, y4, piece));
 
 		initGrille(grille);
 
@@ -376,14 +364,18 @@ void test_quatreALaSuiteDiagonale1(void)
 		 * 	- - X - - - -
 		 * 	- - - X - - -
 		 */
-		grille[LIGNES-4][0].couleur = rouge;
-		grille[LIGNES-3][1].couleur = rouge;
-		grille[LIGNES-2][2].couleur = rouge;
-		grille[LIGNES-1][3].couleur = rouge;
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-4, 0, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-3, 1, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-2, 2, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-1, 3, piece));
+		x1 = LIGNES-4; y1 = 0;
+		x2 = LIGNES-3; y2 = 1;
+		x3 = LIGNES-2; y3 = 2;
+		x4 = LIGNES-1; y4 = 3;
+		grille[x1][y1].couleur = rouge;
+		grille[x2][y2].couleur = rouge;
+		grille[x3][y3].couleur = rouge;
+		grille[x4][y4].couleur = rouge;
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x1, y1, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x2, y2, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x3, y3, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x4, y4, piece));
 
 		initGrille(grille);
 
@@ -394,14 +386,18 @@ void test_quatreALaSuiteDiagonale1(void)
 		 * 	- - - - - - -
 		 * 	- - - - - - -
 		 */
-		grille[LIGNES-6][3].couleur = rouge;
-		grille[LIGNES-5][4].couleur = rouge;
-		grille[LIGNES-4][5].couleur = rouge;
-		grille[LIGNES-3][6].couleur = rouge;
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-6, 3, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-5, 4, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-4, 5, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-3, 6, piece));
+		x1 = LIGNES-6; y1 = 3;
+		x2 = LIGNES-5; y2 = 4;
+		x3 = LIGNES-4; y3 = 5;
+		x4 = LIGNES-3; y4 = 6;
+		grille[x1][y1].couleur = rouge;
+		grille[x2][y2].couleur = rouge;
+		grille[x3][y3].couleur = rouge;
+		grille[x4][y4].couleur = rouge;
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x1, y1, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x2, y2, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x3, y3, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x4, y4, piece));
 
 		initGrille(grille);
 
@@ -412,14 +408,18 @@ void test_quatreALaSuiteDiagonale1(void)
 		 * 	- - - - - X -
 		 * 	- - - - - - -
 		 */
-		grille[LIGNES-5][2].couleur = rouge;
-		grille[LIGNES-4][3].couleur = rouge;
-		grille[LIGNES-3][4].couleur = rouge;
-		grille[LIGNES-2][5].couleur = rouge;
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-5, 2, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-4, 3, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-3, 4, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-2, 5, piece));
+		x1 = LIGNES-5; y1 = 2;
+		x2 = LIGNES-4; y2 = 3;
+		x3 = LIGNES-3; y3 = 4;
+		x4 = LIGNES-2; y4 = 5;
+		grille[x1][y1].couleur = rouge;
+		grille[x2][y2].couleur = rouge;
+		grille[x3][y3].couleur = rouge;
+		grille[x4][y4].couleur = rouge;
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x1, y1, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x2, y2, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x3, y3, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x4, y4, piece));
 
 		initGrille(grille);
 
@@ -430,14 +430,18 @@ void test_quatreALaSuiteDiagonale1(void)
 		 * 	- - - - - X -
 		 * 	- - - - - - X
 		 */
-		grille[LIGNES-5][2].couleur = rouge;
-		grille[LIGNES-4][3].couleur = rouge;
-		grille[LIGNES-2][5].couleur = rouge;
-		grille[LIGNES-1][6].couleur = rouge;
-		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, LIGNES-5, 2, piece));
-		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, LIGNES-4, 3, piece));
-		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, LIGNES-2, 5, piece));
-		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, LIGNES-1, 6, piece));
+		x1 = LIGNES-5; y1 = 2;
+		x2 = LIGNES-4; y2 = 3;
+		x3 = LIGNES-2; y3 = 5;
+		x4 = LIGNES-1; y4 = 6;
+		grille[x1][y1].couleur = rouge;
+		grille[x2][y2].couleur = rouge;
+		grille[x3][y3].couleur = rouge;
+		grille[x4][y4].couleur = rouge;
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, x1, y1, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, x2, y2, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, x3, y3, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, x4, y4, piece));
 
 		initGrille(grille);
 
@@ -448,14 +452,18 @@ void test_quatreALaSuiteDiagonale1(void)
 		 * 	- - - - - X -
 		 * 	- - - - - - -
 		 */
-		grille[LIGNES-5][2].couleur = rougeJaune;
-		grille[LIGNES-4][3].couleur = rouge;
-		grille[LIGNES-3][4].couleur = jauneRouge;
-		grille[LIGNES-2][5].couleur = rouge;
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-5, 2, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-4, 3, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-3, 4, piece));
-		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, LIGNES-2, 5, piece));
+		x1 = LIGNES-5; y1 = 2;
+		x2 = LIGNES-4; y2 = 3;
+		x3 = LIGNES-3; y3 = 4;
+		x4 = LIGNES-2; y4 = 5;
+		grille[x1][y1].couleur = rougeJaune;
+		grille[x2][y2].couleur = rouge;
+		grille[x3][y3].couleur = jauneRouge;
+		grille[x4][y4].couleur = rouge;
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x1, y1, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x2, y2, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x3, y3, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, x4, y4, piece));
 	}	
 }
 
