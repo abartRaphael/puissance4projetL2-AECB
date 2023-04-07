@@ -315,29 +315,29 @@ int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pi
 int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion pion) {
 
 	int pionsALaSuite=0, 
-		x=c, 
-		y=l;
+		x=l,
+		y=c;
 
 	//décaler les "coordonnées" jusqu'à atteindre le bord (gauche ou haut) de la grille
-	while(x > 0 && y > 0) {
+	while(x > 0 && y > 0 ) {
 		x--;
 		y--;
 	}
 	
 	//coordonnées où un puissance 4 est impossible:
-	//y = 3 4 5
-	//x = 4 5 6
-	if(x >= 4 || y >= 3) {
+	//x = 3 4 5 OU
+	//y = 4 5 6
+	if(x >= 3 || y >= 4) {
 		return 0;
 	}
 
 
 	//parcourir la diagonale où le dernier pion a été joué
-	while(x < COLONNES && y < LIGNES) {
+	while(x < LIGNES && y < COLONNES) {
 
-		if(grilleDeValeurs[y][x].couleur == pion.couleur 
-		|| grilleDeValeurs[y][x].couleur == rougeJaune
-		|| grilleDeValeurs[y][x].couleur == jauneRouge ) {
+		if(grilleDeValeurs[x][y].couleur == pion.couleur 
+		|| grilleDeValeurs[x][y].couleur == rougeJaune
+		|| grilleDeValeurs[x][y].couleur == jauneRouge ) {
 			pionsALaSuite++;
 		}
 		else {
@@ -369,39 +369,39 @@ int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, in
 int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, int l, t_pion pion) {
 
 	int pionsALaSuite=0, 
-		x=c, 
-		y=l;
+		x=l,
+		y=c; 
 
-	//printf("x=%i\ny=%i\n", x, y);
+	//printf("y=%i\nx=%i\n", y, x);
 
 	//décaler les "coordonnées" jusqu'à atteindre le bord (droit ou haut) de la grille
-	while(x < (COLONNES-1) && y > 0) {
-		x++;
-		y--;
+	while(x > 0 && y < (COLONNES-1)) {
+		x--;
+		y++;
 	}
 	
 	//coordonnées où un puissance 4 est impossible:
-	//y = 3 4 5
-	//x = 2 1 0
-	if(x <= 2 || y >= 3) {
+	//x = 3 4 5
+	//y = 2 1 0
+	if(x >= 3 || y <= 2) {
 		return 0;
 	}
 
 
 	//parcourir la diagonale où le dernier pion a été joué
-	while(x >= 0 && y < LIGNES) {
+	while(x < LIGNES && y >= 0) {
 
-		if(grilleDeValeurs[y][x].couleur == pion.couleur 
-		|| grilleDeValeurs[y][x].couleur == rougeJaune 
-		|| grilleDeValeurs[y][x].couleur == jauneRouge ) {
+		if(grilleDeValeurs[x][y].couleur == pion.couleur 
+		|| grilleDeValeurs[x][y].couleur == rougeJaune 
+		|| grilleDeValeurs[x][y].couleur == jauneRouge ) {
 			pionsALaSuite++;
 		}
 		else {
 			pionsALaSuite = 0;
 		}
 
-		x--;
-		y++;
+		x++;
+		y--;
 
 		if(pionsALaSuite > 3) {
 			return 1;
