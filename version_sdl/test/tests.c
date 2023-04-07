@@ -450,12 +450,12 @@ void test_quatreALaSuiteDiagonale1(void)
 		 */
 		grille[LIGNES-5][2].couleur = rougeJaune;
 		grille[LIGNES-4][3].couleur = rouge;
+		grille[LIGNES-3][4].couleur = jauneRouge;
 		grille[LIGNES-2][5].couleur = rouge;
-		grille[LIGNES-1][6].couleur = jauneRouge;
 		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, LIGNES-5, 2, piece));
 		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, LIGNES-4, 3, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, LIGNES-3, 4, piece));
 		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, LIGNES-2, 5, piece));
-		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, LIGNES-1, 6, piece));
 	}	
 }
 
