@@ -319,6 +319,147 @@ void test_ajoutPion(void)
 }
 
 
+void test_quatreALaSuiteHorizontal(void) 
+{
+	t_pion grille[LIGNES][COLONNES], 
+		piece;
+
+	initGrille(grille);
+
+	grille[LIGNES-1][0].couleur = rouge;
+	grille[LIGNES-1][1].couleur = rouge;
+	grille[LIGNES-1][2].couleur = rouge;
+	grille[LIGNES-1][3].couleur = rouge;
+
+	piece.couleur = rouge;
+
+	if (NULL != temp_file) {
+		CU_ASSERT_TRUE(quatreALaSuiteHorizontal(grille, 0, LIGNES-1, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteHorizontal(grille, 3, LIGNES-1, piece));
+	}	
+}
+
+
+void test_quatreALaSuiteDiagonale1(void) 
+{
+	t_pion grille[LIGNES][COLONNES], 
+		piece;
+
+	initGrille(grille);
+
+	piece.couleur = rouge;
+
+	if (NULL != temp_file) {
+
+		/*	X - - - - - -
+		 * 	- X - - - - -
+		 * 	- - X - - - -
+		 * 	- - - X - - -
+		 * 	- - - - - - -
+		 * 	- - - - - - -
+		 */
+		grille[LIGNES-6][0].couleur = rouge;
+		grille[LIGNES-5][1].couleur = rouge;
+		grille[LIGNES-4][2].couleur = rouge;
+		grille[LIGNES-3][3].couleur = rouge;
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 0, LIGNES-6, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 1, LIGNES-5, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 2, LIGNES-4, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 3, LIGNES-3, piece));
+
+		initGrille(grille);
+
+		/*	- - - - - - -
+		 * 	- - - - - - -
+		 * 	X - - - - - -
+		 * 	- X - - - - -
+		 * 	- - X - - - -
+		 * 	- - - X - - -
+		 */
+		grille[LIGNES-4][0].couleur = rouge;
+		grille[LIGNES-3][1].couleur = rouge;
+		grille[LIGNES-2][2].couleur = rouge;
+		grille[LIGNES-1][3].couleur = rouge;
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 0, LIGNES-4, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 1, LIGNES-3, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 2, LIGNES-2, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 3, LIGNES-1, piece));
+
+		initGrille(grille);
+
+		/*	- - - X - - -
+		 * 	- - - - X - -
+		 * 	- - - - - X -
+		 * 	- - - - - - X
+		 * 	- - - - - - -
+		 * 	- - - - - - -
+		 */
+		grille[LIGNES-6][3].couleur = rouge;
+		grille[LIGNES-5][4].couleur = rouge;
+		grille[LIGNES-4][5].couleur = rouge;
+		grille[LIGNES-3][6].couleur = rouge;
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 3, LIGNES-6, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 4, LIGNES-5, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 5, LIGNES-4, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 6, LIGNES-3, piece));
+
+		initGrille(grille);
+
+		/*	- - - - - - -
+		 * 	- - X - - - -
+		 * 	- - - X - - -
+		 * 	- - - - X - -
+		 * 	- - - - - X -
+		 * 	- - - - - - -
+		 */
+		grille[LIGNES-5][2].couleur = rouge;
+		grille[LIGNES-4][3].couleur = rouge;
+		grille[LIGNES-3][4].couleur = rouge;
+		grille[LIGNES-2][5].couleur = rouge;
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 2, LIGNES-5, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 3, LIGNES-4, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 4, LIGNES-3, piece));
+		CU_ASSERT_TRUE(quatreALaSuiteDiagonale1(grille, 5, LIGNES-2, piece));
+
+		initGrille(grille);
+
+		/*	- - - - - - -
+		 * 	- - X - - - -
+		 * 	- - - X - - -
+		 * 	- - - - - - -
+		 * 	- - - - - X -
+		 * 	- - - - - - X
+		 */
+		grille[LIGNES-5][2].couleur = rouge;
+		grille[LIGNES-4][3].couleur = rouge;
+		grille[LIGNES-2][5].couleur = rouge;
+		grille[LIGNES-1][6].couleur = rouge;
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, 2, LIGNES-5, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, 3, LIGNES-4, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, 5, LIGNES-2, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, 6, LIGNES-1, piece));
+
+		initGrille(grille);
+
+		/*	- - - - - - -
+		 * 	- - @ - - - -
+		 * 	- - - X - - -
+		 * 	- - - - @ - -
+		 * 	- - - - - X -
+		 * 	- - - - - - -
+		 */
+		grille[LIGNES-5][2].couleur = rougeJaune;
+		grille[LIGNES-4][3].couleur = rouge;
+		grille[LIGNES-2][5].couleur = rouge;
+		grille[LIGNES-1][6].couleur = jauneRouge;
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, 2, LIGNES-5, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, 3, LIGNES-4, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, 5, LIGNES-2, piece));
+		CU_ASSERT_FALSE(quatreALaSuiteDiagonale1(grille, 6, LIGNES-1, piece));
+	}	
+}
+
+
 /* The main() function for setting up and running the tests.
  * Returns a CUE_SUCCESS on successful running, another
  * CUnit error code on failure.
@@ -343,7 +484,9 @@ int main()
 	if ((NULL == CU_add_test(pSuite, "test of initGrille()", test_initGrille))
 	|| (NULL == CU_add_test(pSuite, "test of estPleine()", test_estPleine))
 	|| (NULL == CU_add_test(pSuite, "test of caseLibre()", test_caseLibre))
-	|| (NULL == CU_add_test(pSuite, "test of ajoutPion()", test_ajoutPion)))
+	|| (NULL == CU_add_test(pSuite, "test of ajoutPion()", test_ajoutPion))
+	|| (NULL == CU_add_test(pSuite, "test of quatreALaSuiteHorizontal()", test_quatreALaSuiteHorizontal))
+	|| (NULL == CU_add_test(pSuite, "test of quatreALaSuiteDiagonale1()", test_quatreALaSuiteDiagonale1)))
 	{
 	  CU_cleanup_registry();
 	  return CU_get_error();
