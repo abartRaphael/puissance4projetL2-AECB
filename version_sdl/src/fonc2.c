@@ -163,7 +163,7 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
 						grilleDeValeurs[l][c].couleur = pion.couleur;
 						grilleDeValeurs[l][c].type = pion.type;
 						break;
-					default : printf("Impossible de voir ce message ajout_pion\n");
+					default : printf("Impossible de voir ce message ajout_pion (pion sur la grille.type=no_type)\n");
 				}
 				break;
 			case pleine :
@@ -194,7 +194,7 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
 						grilleDeValeurs[l][c].couleur = pion.couleur;
 						grilleDeValeurs[l][c].type = pion.type;
 						break;
-					default : printf("Impossible de voir ce message ajout_pion\n");
+					default : printf("Impossible de voir ce message ajout_pion (pion sur la grille.type=no_type)\n");
 				}
 				break;
 			case bloquante :
@@ -214,10 +214,11 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
 						grilleDeValeurs[l][c].couleur = pion.couleur;
 						grilleDeValeurs[l][c].type = pion.type;
 						break;
-					default : printf("Impossible de voir ce message ajout_pion\n");
+					default : printf("Impossible de voir ce message ajout_pion (pion sur la grille.type=no_type)\n");
 				}
 				break;
-			default : printf("Impossible de voir ce message ajout_pion\n");
+			default :
+				printf("Impossible de voir ce message ajout_pion (pion.type=no_type)\n");
 				return 1;
 		}
 		return 0;
