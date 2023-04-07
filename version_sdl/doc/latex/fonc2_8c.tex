@@ -20,13 +20,13 @@ int \mbox{\hyperlink{fonc2_8c_a93566690c33ff62f99608225a00663e4}{case\+Libre}} (
 \begin{DoxyCompactList}\small\item\em Permet de savoir quelle case d\textquotesingle{}une colonne donnée est vide, et la plus basse. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{fonc2_8c_ab926d19204c959711faebe551da747a5}{ajout\+Pion}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, t\+\_\+pion pion)
 \begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}ajouter un pion à la grille de jeu. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{fonc2_8c_af9b50449b31acc0bd7f882c0a73c131c}{quatre\+ALa\+Suite\+Horizontal}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, int l, t\+\_\+pion pion)
+int \mbox{\hyperlink{fonc2_8c_a6366c7314c24f9b6145f19ac0d07fc56}{quatre\+ALa\+Suite\+Horizontal}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int l, int c, t\+\_\+pion pion)
 \begin{DoxyCompactList}\small\item\em vérifie si 4 pions de même couleur ou plus se trouvent sur la même LIGNE \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{fonc2_8c_a850276b12b5f2cf6467321bcd716ae12}{quatre\+ALa\+Suite\+Vertical}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, t\+\_\+pion pion)
 \begin{DoxyCompactList}\small\item\em vérifie si 4 pions de même couleur ou plus se trouvent sur la même COLONNE \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{fonc2_8c_a3fb15e7480275169fc6c3314dd2f7478}{quatre\+ALa\+Suite\+Diagonale1}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, int l, t\+\_\+pion pion)
+int \mbox{\hyperlink{fonc2_8c_a844b18ab72b34da50749362bf63a75d2}{quatre\+ALa\+Suite\+Diagonale1}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int l, int c, t\+\_\+pion pion)
 \begin{DoxyCompactList}\small\item\em vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la gauche/haut \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{fonc2_8c_a27267bb9ec5f80680b69af4202b7b929}{quatre\+ALa\+Suite\+Diagonale2}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, int l, t\+\_\+pion pion)
+int \mbox{\hyperlink{fonc2_8c_a095ef956e1ff58d70910b3b4f2653360}{quatre\+ALa\+Suite\+Diagonale2}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int l, int c, t\+\_\+pion pion)
 \begin{DoxyCompactList}\small\item\em vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE, en partant de la droite/haut \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{fonc2_8c_a476fbeb362bdebeb61507e4d8f8fdc3d}{est\+Quatre\+ALa\+Suite}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, int c, t\+\_\+pion pion)
 \begin{DoxyCompactList}\small\item\em appelle les quatre fonctions pour vérifier s\textquotesingle{}il y a un 4 à la suite après le dernier coup joué \end{DoxyCompactList}\item 
@@ -35,13 +35,13 @@ void \mbox{\hyperlink{fonc2_8c_adfe1e3608dc124277cb9c70d0c51908d}{sauvegarde\+Au
 void \mbox{\hyperlink{fonc2_8c_a251ff91a66d6dfe6f159dbbae747cb38}{charger\+Partie}} (t\+\_\+pion grille\+De\+Valeurs\mbox{[}LIGNES\mbox{]}\mbox{[}COLONNES\mbox{]}, t\+\_\+pion $\ast$pion, int $\ast$nb\+Tours)
 \begin{DoxyCompactList}\small\item\em Charge la configuration de la partie sauvegardée dans le fichier \char`\"{}partie.\+txt\char`\"{}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonc2_8c_a1e9bffae93e218015506d55dd1ecca1d}\label{fonc2_8c_a1e9bffae93e218015506d55dd1ecca1d}} 
-void {\bfseries supprimer\+Partie} ()
+void \mbox{\hyperlink{fonc2_8c_a1e9bffae93e218015506d55dd1ecca1d}{supprimer\+Partie}} ()
 \begin{DoxyCompactList}\small\item\em Supprime la partie sauvegardée dans le fichier \char`\"{}partie.\+txt\char`\"{}, car la partie est finie. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{fonc2_8c_a7dda822e753af74b9b99d85dfa3c244f}\label{fonc2_8c_a7dda822e753af74b9b99d85dfa3c244f}} 
 int {\bfseries decrementer\+\_\+pion\+\_\+special} (t\+\_\+pion pion)
 \item 
 \mbox{\Hypertarget{fonc2_8c_afcf469d712a17f3e1c7e39f3964f6ba1}\label{fonc2_8c_afcf469d712a17f3e1c7e39f3964f6ba1}} 
-int {\bfseries mode\+\_\+creux} ()
+int \mbox{\hyperlink{fonc2_8c_afcf469d712a17f3e1c7e39f3964f6ba1}{mode\+\_\+creux}} ()
 \begin{DoxyCompactList}\small\item\em Lance une partie en mode creux (à supprimer) \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{fonc2_8c_a920a279ef2381c2220417d5fab29ec32}{demarrer\+\_\+partie}} (SDL\+\_\+\+Window $\ast$p\+Window, SDL\+\_\+\+Renderer $\ast$renderer, t\+\_\+partie type\+De\+Partie)
 \begin{DoxyCompactList}\small\item\em Lance une partie en mode normal. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -214,7 +214,7 @@ Remplit toutes les cases de la grille de puissance 4 avec la valeur \char`\"{}vi
 {\em grille\+De\+Valeurs} & grille de puissance 4 \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{fonc2_8c_a3fb15e7480275169fc6c3314dd2f7478}\label{fonc2_8c_a3fb15e7480275169fc6c3314dd2f7478}} 
+\mbox{\Hypertarget{fonc2_8c_a844b18ab72b34da50749362bf63a75d2}\label{fonc2_8c_a844b18ab72b34da50749362bf63a75d2}} 
 \index{fonc2.c@{fonc2.c}!quatreALaSuiteDiagonale1@{quatreALaSuiteDiagonale1}}
 \index{quatreALaSuiteDiagonale1@{quatreALaSuiteDiagonale1}!fonc2.c@{fonc2.c}}
 \doxysubsubsection{\texorpdfstring{quatreALaSuiteDiagonale1()}{quatreALaSuiteDiagonale1()}}
@@ -228,9 +228,9 @@ vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE,
 \begin{DoxyParams}{Paramètres}
 {\em grille\+De\+Valeurs} & grille de puissance 4 \\
 \hline
-{\em c} & indice de la colonne où le joueur à joué \\
-\hline
 {\em l} & indice de la ligne où le joueur à joué \\
+\hline
+{\em c} & indice de la colonne où le joueur à joué \\
 \hline
 {\em pion} & le pion joué \\
 \hline
@@ -238,7 +238,7 @@ vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE,
 \begin{DoxyReturn}{Renvoie}
 retourne 1 s\textquotesingle{}il y a un 4 la la suite, 0 sinon 
 \end{DoxyReturn}
-\mbox{\Hypertarget{fonc2_8c_a27267bb9ec5f80680b69af4202b7b929}\label{fonc2_8c_a27267bb9ec5f80680b69af4202b7b929}} 
+\mbox{\Hypertarget{fonc2_8c_a095ef956e1ff58d70910b3b4f2653360}\label{fonc2_8c_a095ef956e1ff58d70910b3b4f2653360}} 
 \index{fonc2.c@{fonc2.c}!quatreALaSuiteDiagonale2@{quatreALaSuiteDiagonale2}}
 \index{quatreALaSuiteDiagonale2@{quatreALaSuiteDiagonale2}!fonc2.c@{fonc2.c}}
 \doxysubsubsection{\texorpdfstring{quatreALaSuiteDiagonale2()}{quatreALaSuiteDiagonale2()}}
@@ -252,9 +252,9 @@ vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE,
 \begin{DoxyParams}{Paramètres}
 {\em grille\+De\+Valeurs} & grille de puissance 4 \\
 \hline
-{\em c} & indice de la colonne où le joueur à joué \\
-\hline
 {\em l} & indice de la ligne où le joueur à joué \\
+\hline
+{\em c} & indice de la colonne où le joueur à joué \\
 \hline
 {\em pion} & le pion joué \\
 \hline
@@ -262,7 +262,7 @@ vérifie si 4 pions de même couleur ou plus se trouvent sur la même DIAGONALE,
 \begin{DoxyReturn}{Renvoie}
 retourne 1 s\textquotesingle{}il y a un 4 la la suite, 0 sinon 
 \end{DoxyReturn}
-\mbox{\Hypertarget{fonc2_8c_af9b50449b31acc0bd7f882c0a73c131c}\label{fonc2_8c_af9b50449b31acc0bd7f882c0a73c131c}} 
+\mbox{\Hypertarget{fonc2_8c_a6366c7314c24f9b6145f19ac0d07fc56}\label{fonc2_8c_a6366c7314c24f9b6145f19ac0d07fc56}} 
 \index{fonc2.c@{fonc2.c}!quatreALaSuiteHorizontal@{quatreALaSuiteHorizontal}}
 \index{quatreALaSuiteHorizontal@{quatreALaSuiteHorizontal}!fonc2.c@{fonc2.c}}
 \doxysubsubsection{\texorpdfstring{quatreALaSuiteHorizontal()}{quatreALaSuiteHorizontal()}}
@@ -276,9 +276,9 @@ vérifie si 4 pions de même couleur ou plus se trouvent sur la même LIGNE
 \begin{DoxyParams}{Paramètres}
 {\em grille\+De\+Valeurs} & grille de puissance 4 \\
 \hline
-{\em c} & indice de la colonne où le joueur à joué \\
-\hline
 {\em l} & indice de la ligne où le joueur à joué \\
+\hline
+{\em c} & indice de la colonne où le joueur à joué \\
 \hline
 {\em pion} & le pion joué \\
 \hline

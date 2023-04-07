@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>puissance4projetL2-AEC: Référence du fichier src/foncSdl.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -19,8 +19,8 @@
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
  <tbody>
- <tr id="projectrow">
-  <td id="projectalign">
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">puissance4projetL2-AEC<span id="projectnumber">&#160;1</span>
    </div>
    <div id="projectbrief">Un puissance 4 avec des pièces spéciales</div>
@@ -30,16 +30,16 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.9.5 -->
+<!-- Généré par Doxygen 1.9.2 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 $(function() {
   initMenu('',true,false,'search.php','Recherche');
   $(document).ready(function() { init_search(); });
@@ -82,7 +82,7 @@ $(function() {
 <code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
 <code>#include &quot;../lib/foncSdl.h&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:ae541d45311ba6f5fa0d79d877b9c7e22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#ae541d45311ba6f5fa0d79d877b9c7e22">init</a> (SDL_Window **window, SDL_Renderer **renderer, int width, int height)</td></tr>
 <tr class="memdesc:ae541d45311ba6f5fa0d79d877b9c7e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise les systèmes de SDL, crée le pointeur sur fenêtre et le renderer  <a href="foncSdl_8c.html#ae541d45311ba6f5fa0d79d877b9c7e22">Plus de détails...</a><br /></td></tr>
@@ -93,19 +93,19 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a2609ddea83b240e09a5b1d7065804ed0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#a2609ddea83b240e09a5b1d7065804ed0">setDrawColor</a> (SDL_Renderer *renderer, SDL_Color color)</td></tr>
 <tr class="memdesc:a2609ddea83b240e09a5b1d7065804ed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">change la couleur utilisée pour dessiner avec un SDL_Color  <a href="foncSdl_8c.html#a2609ddea83b240e09a5b1d7065804ed0">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a2609ddea83b240e09a5b1d7065804ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48c56405e6e10f263f37ee49561b4b92"><td class="memItemLeft" align="right" valign="top"><a id="a48c56405e6e10f263f37ee49561b4b92" name="a48c56405e6e10f263f37ee49561b4b92"></a>
+<tr class="memitem:a48c56405e6e10f263f37ee49561b4b92"><td class="memItemLeft" align="right" valign="top"><a id="a48c56405e6e10f263f37ee49561b4b92"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setPixel</b> (SDL_Surface *surface, Uint8 r, Uint8 g, Uint8 b, Uint8 a, size_t x, size_t y)</td></tr>
 <tr class="separator:a48c56405e6e10f263f37ee49561b4b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22884fdfda1408bbfad6d97f6073021e"><td class="memItemLeft" align="right" valign="top">SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#a22884fdfda1408bbfad6d97f6073021e">createSurfaceFromTexture</a> (SDL_Texture *texture)</td></tr>
-<tr class="memdesc:a22884fdfda1408bbfad6d97f6073021e"><td class="mdescLeft">&#160;</td><td class="mdescRight">crée un SDL_Surface à partir d'un SDL_Texture du même format  <a href="foncSdl_8c.html#a22884fdfda1408bbfad6d97f6073021e">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a22884fdfda1408bbfad6d97f6073021e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15b5714bf82da0b4500c9835154e6979"><td class="memItemLeft" align="right" valign="top"><a id="a15b5714bf82da0b4500c9835154e6979" name="a15b5714bf82da0b4500c9835154e6979"></a>
+<tr class="memitem:ab2d83d764792ebdd05f2688073954711"><td class="memItemLeft" align="right" valign="top"><a id="ab2d83d764792ebdd05f2688073954711"></a>
+SDL_Surface *&#160;</td><td class="memItemRight" valign="bottom"><b>createSurfaceFromTexture</b> (SDL_Texture *texture)</td></tr>
+<tr class="separator:ab2d83d764792ebdd05f2688073954711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15b5714bf82da0b4500c9835154e6979"><td class="memItemLeft" align="right" valign="top"><a id="a15b5714bf82da0b4500c9835154e6979"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>initDamier</b> (SDL_Rect damier[LIGNES *COLONNES], SDL_Renderer *renderer, int largeurRectGrille, int offsetGrilleX, int offsetGrilleY)</td></tr>
 <tr class="separator:a15b5714bf82da0b4500c9835154e6979"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabfff9959f1575886bb7492faa8d998a"><td class="memItemLeft" align="right" valign="top"><a id="aabfff9959f1575886bb7492faa8d998a" name="aabfff9959f1575886bb7492faa8d998a"></a>
+<tr class="memitem:aabfff9959f1575886bb7492faa8d998a"><td class="memItemLeft" align="right" valign="top"><a id="aabfff9959f1575886bb7492faa8d998a"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>initCoordonneesPions</b> (SDL_Rect coordonneesPions[LIGNES][COLONNES], int largeurRectGrille, int offsetGrilleX, int offsetGrilleY)</td></tr>
 <tr class="separator:aabfff9959f1575886bb7492faa8d998a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59057a566670e84529d59bec85b46ace"><td class="memItemLeft" align="right" valign="top"><a id="a59057a566670e84529d59bec85b46ace" name="a59057a566670e84529d59bec85b46ace"></a>
+<tr class="memitem:a59057a566670e84529d59bec85b46ace"><td class="memItemLeft" align="right" valign="top"><a id="a59057a566670e84529d59bec85b46ace"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>afficherPions</b> (SDL_Renderer *renderer, t_pion grilleDeValeurs[LIGNES][COLONNES], SDL_Rect coordonneesPions[LIGNES][COLONNES], images_t *images, SDL_Color arrierePlan)</td></tr>
 <tr class="separator:a59057a566670e84529d59bec85b46ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8817f60c260dbee3f0cf0764f5c8172"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="foncSdl_8c.html#ae8817f60c260dbee3f0cf0764f5c8172">initStructTextures</a> (SDL_Renderer *renderer, images_t *images, t_partie typeDePartie)</td></tr>
@@ -133,7 +133,7 @@ ElGhoumari Soumia </dd>
 <dd>
 Coupé Xavier </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
-<a id="addf4327b0b19eacd9021ef8c8947948b" name="addf4327b0b19eacd9021ef8c8947948b"></a>
+<a id="addf4327b0b19eacd9021ef8c8947948b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#addf4327b0b19eacd9021ef8c8947948b">&#9670;&nbsp;</a></span>afficherDamier()</h2>
 
 <div class="memitem">
@@ -177,34 +177,7 @@ Coupé Xavier </dd></dl>
 
 </div>
 </div>
-<a id="a22884fdfda1408bbfad6d97f6073021e" name="a22884fdfda1408bbfad6d97f6073021e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22884fdfda1408bbfad6d97f6073021e">&#9670;&nbsp;</a></span>createSurfaceFromTexture()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_Surface * createSurfaceFromTexture </td>
-          <td>(</td>
-          <td class="paramtype">SDL_Texture *&#160;</td>
-          <td class="paramname"><em>texture</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>crée un SDL_Surface à partir d'un SDL_Texture du même format </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">texture</td><td>texture à utiliser pour en fait une Surface, nécessaire </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Renvoie</dt><dd>retourne un SDL_Surface pour un succès, NULL pour une erreur </dd></dl>
-
-</div>
-</div>
-<a id="ad5b452fdbfd44112a07cbf8fd4c765c9" name="ad5b452fdbfd44112a07cbf8fd4c765c9"></a>
+<a id="ad5b452fdbfd44112a07cbf8fd4c765c9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5b452fdbfd44112a07cbf8fd4c765c9">&#9670;&nbsp;</a></span>dimensionGrilleDynamique()</h2>
 
 <div class="memitem">
@@ -262,7 +235,7 @@ Coupé Xavier </dd></dl>
 
 </div>
 </div>
-<a id="ac3e1526ff919da1f7638eb0ba584a4f5" name="ac3e1526ff919da1f7638eb0ba584a4f5"></a>
+<a id="ac3e1526ff919da1f7638eb0ba584a4f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac3e1526ff919da1f7638eb0ba584a4f5">&#9670;&nbsp;</a></span>freeLesImages()</h2>
 
 <div class="memitem">
@@ -288,7 +261,7 @@ Coupé Xavier </dd></dl>
 
 </div>
 </div>
-<a id="a8e95a75d6f3ecadd37b7a9afebfc4afb" name="a8e95a75d6f3ecadd37b7a9afebfc4afb"></a>
+<a id="a8e95a75d6f3ecadd37b7a9afebfc4afb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8e95a75d6f3ecadd37b7a9afebfc4afb">&#9670;&nbsp;</a></span>getColonneClick()</h2>
 
 <div class="memitem">
@@ -330,7 +303,7 @@ Coupé Xavier </dd></dl>
 
 </div>
 </div>
-<a id="ae541d45311ba6f5fa0d79d877b9c7e22" name="ae541d45311ba6f5fa0d79d877b9c7e22"></a>
+<a id="ae541d45311ba6f5fa0d79d877b9c7e22"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae541d45311ba6f5fa0d79d877b9c7e22">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
@@ -382,7 +355,7 @@ Coupé Xavier </dd></dl>
 
 </div>
 </div>
-<a id="ae8817f60c260dbee3f0cf0764f5c8172" name="ae8817f60c260dbee3f0cf0764f5c8172"></a>
+<a id="ae8817f60c260dbee3f0cf0764f5c8172"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8817f60c260dbee3f0cf0764f5c8172">&#9670;&nbsp;</a></span>initStructTextures()</h2>
 
 <div class="memitem">
@@ -427,7 +400,7 @@ Coupé Xavier </dd></dl>
 
 </div>
 </div>
-<a id="a18acbef7dbd99a94b93352d7592d9f74" name="a18acbef7dbd99a94b93352d7592d9f74"></a>
+<a id="a18acbef7dbd99a94b93352d7592d9f74"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a18acbef7dbd99a94b93352d7592d9f74">&#9670;&nbsp;</a></span>loadImage()</h2>
 
 <div class="memitem">
@@ -465,7 +438,7 @@ Coupé Xavier </dd></dl>
 
 </div>
 </div>
-<a id="a2609ddea83b240e09a5b1d7065804ed0" name="a2609ddea83b240e09a5b1d7065804ed0"></a>
+<a id="a2609ddea83b240e09a5b1d7065804ed0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2609ddea83b240e09a5b1d7065804ed0">&#9670;&nbsp;</a></span>setDrawColor()</h2>
 
 <div class="memitem">
@@ -506,7 +479,7 @@ Coupé Xavier </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
 </small></address>
 </body>
 </html>

@@ -23,8 +23,9 @@ int \mbox{\hyperlink{foncSdl_8c_a2609ddea83b240e09a5b1d7065804ed0}{set\+Draw\+Co
 \mbox{\Hypertarget{foncSdl_8c_a48c56405e6e10f263f37ee49561b4b92}\label{foncSdl_8c_a48c56405e6e10f263f37ee49561b4b92}} 
 void {\bfseries set\+Pixel} (SDL\+\_\+\+Surface $\ast$surface, Uint8 r, Uint8 g, Uint8 b, Uint8 a, size\+\_\+t x, size\+\_\+t y)
 \item 
-SDL\+\_\+\+Surface $\ast$ \mbox{\hyperlink{foncSdl_8c_a22884fdfda1408bbfad6d97f6073021e}{create\+Surface\+From\+Texture}} (SDL\+\_\+\+Texture $\ast$texture)
-\begin{DoxyCompactList}\small\item\em crée un SDL\+\_\+\+Surface à partir d\textquotesingle{}un SDL\+\_\+\+Texture du même format \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{foncSdl_8c_ab2d83d764792ebdd05f2688073954711}\label{foncSdl_8c_ab2d83d764792ebdd05f2688073954711}} 
+SDL\+\_\+\+Surface $\ast$ {\bfseries create\+Surface\+From\+Texture} (SDL\+\_\+\+Texture $\ast$texture)
+\item 
 \mbox{\Hypertarget{foncSdl_8c_a15b5714bf82da0b4500c9835154e6979}\label{foncSdl_8c_a15b5714bf82da0b4500c9835154e6979}} 
 int {\bfseries init\+Damier} (SDL\+\_\+\+Rect damier\mbox{[}LIGNES $\ast$COLONNES\mbox{]}, SDL\+\_\+\+Renderer $\ast$renderer, int largeur\+Rect\+Grille, int offset\+GrilleX, int offset\+GrilleY)
 \item 
@@ -84,24 +85,6 @@ dessine tous les rectangles contenu dans \char`\"{}damier\char`\"{}, en \char`\"
 {\em couleur} & couleur des rectangles de la grille à afficher \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{foncSdl_8c_a22884fdfda1408bbfad6d97f6073021e}\label{foncSdl_8c_a22884fdfda1408bbfad6d97f6073021e}} 
-\index{foncSdl.c@{foncSdl.c}!createSurfaceFromTexture@{createSurfaceFromTexture}}
-\index{createSurfaceFromTexture@{createSurfaceFromTexture}!foncSdl.c@{foncSdl.c}}
-\doxysubsubsection{\texorpdfstring{createSurfaceFromTexture()}{createSurfaceFromTexture()}}
-{\footnotesize\ttfamily SDL\+\_\+\+Surface $\ast$ create\+Surface\+From\+Texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Texture $\ast$}]{texture }\end{DoxyParamCaption})}
-
-
-
-crée un SDL\+\_\+\+Surface à partir d\textquotesingle{}un SDL\+\_\+\+Texture du même format 
-
-
-\begin{DoxyParams}{Paramètres}
-{\em texture} & texture à utiliser pour en fait une Surface, nécessaire \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Renvoie}
-retourne un SDL\+\_\+\+Surface pour un succès, NULL pour une erreur 
-\end{DoxyReturn}
 \mbox{\Hypertarget{foncSdl_8c_ad5b452fdbfd44112a07cbf8fd4c765c9}\label{foncSdl_8c_ad5b452fdbfd44112a07cbf8fd4c765c9}} 
 \index{foncSdl.c@{foncSdl.c}!dimensionGrilleDynamique@{dimensionGrilleDynamique}}
 \index{dimensionGrilleDynamique@{dimensionGrilleDynamique}!foncSdl.c@{foncSdl.c}}
