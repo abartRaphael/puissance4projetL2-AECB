@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
     
     
     // Chargez l'image de fond d'écran
-    SDL_Surface* backgroundSurface = SDL_LoadBMP("tache_bleue.bmp");
+    SDL_Surface* backgroundSurface = SDL_LoadBMP("../img/imageMenu/tache_bleue.bmp");
     SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
 
     // Dessinez la texture de fond d'écran
@@ -79,7 +79,7 @@ int main(int argc, char* argv[])
     
 
     // Création du texte pour le bouton "Jouer"
-    SDL_Surface* play_button_surface = IMG_Load("bouton_jouer.bmp");
+    SDL_Surface* play_button_surface = IMG_Load("../img/imageMenu/bouton_jouer.bmp");
     if (play_button_surface == NULL) {
         printf("Erreur lors du chargement de l'image bouton_jouer.bmp : %s\n", SDL_GetError());
         return 1;
@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
     SDL_RenderCopy(renderer, play_button_texture, NULL, &play_button_rect);
     
     // Création du texte pour le bouton "Quitter"
-    SDL_Surface* quit_button_surface = IMG_Load("bouton_quitter.bmp");
+    SDL_Surface* quit_button_surface = IMG_Load("../img/imageMenu/bouton_quitter.bmp");
     if (quit_button_surface == NULL) {
         printf("Erreur lors du chargement de l'image bouton_quitter.bmp : %s\n", SDL_GetError());
         return 1;
@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
     SDL_RenderCopy(renderer, quit_button_texture, NULL, &quit_button_rect);
 
     // Création du texte pour le bouton "regles"
-    SDL_Surface* regles_button_surface = IMG_Load("bouton_regles.bmp");
+    SDL_Surface* regles_button_surface = IMG_Load("../img/imageMenu/bouton_regles.bmp");
     if (regles_button_surface == NULL) {
         printf("Erreur lors du chargement de l'image bouton_regles.bmp : %s\n", SDL_GetError());
         return 1;
@@ -110,8 +110,8 @@ int main(int argc, char* argv[])
     SDL_RenderCopy(renderer, regles_button_texture, NULL, &regles_button_rect);
      
     // Chargement de l'icône pour couper la musique
-    SDL_Surface* bouton_sound_on_surface = SDL_LoadBMP("bouton_sound_on.bmp");
-    SDL_Surface* bouton_sound_off_surface = SDL_LoadBMP("bouton_sound_off.bmp");
+    SDL_Surface* bouton_sound_on_surface = SDL_LoadBMP("../img/imageMenu/bouton_sound_on.bmp");
+    SDL_Surface* bouton_sound_off_surface = SDL_LoadBMP("../img/imageMenu/bouton_sound_off.bmp");
 
     if (bouton_sound_on_surface == NULL) {
         printf("Erreur lors du chargement de l'image bouton_sound_on.bmp : %s\n", SDL_GetError());
@@ -128,7 +128,7 @@ int main(int argc, char* argv[])
     SDL_RenderCopy(renderer, bouton_sound_on_texture, NULL, &bouton_sound_on_rect);
 
     // Chargement de l'icône pour revenir en arriere 
-    SDL_Surface* bouton_back_surface = SDL_LoadBMP("bouton_back.bmp");
+    SDL_Surface* bouton_back_surface = SDL_LoadBMP("../img/imageMenu/bouton_back.bmp");
     if (bouton_back_surface == NULL) {
         printf("Erreur lors du chargement de l'image bouton_back.bmp : %s\n", SDL_GetError());
         return 1;
@@ -139,7 +139,7 @@ int main(int argc, char* argv[])
    
 
      // Création du texte pour du contenu des "regles"
-    SDL_Surface* regles_surface = IMG_Load("regles.bmp");
+    SDL_Surface* regles_surface = IMG_Load("../img/imageMenu/regles.bmp");
     if (regles_surface == NULL) {
         printf("Erreur lors du chargement de l'image regles.bmp : %s\n", SDL_GetError());
         return 1;
@@ -148,7 +148,7 @@ int main(int argc, char* argv[])
     SDL_Rect regles_rect = SDL_CreerRect(0,0,640,480);
     
      // Création du texte pour le bouton "Contre un joueur"
-    SDL_Surface* contre_joueur_button_surface = IMG_Load("bouton_contre_joueur.bmp");
+    SDL_Surface* contre_joueur_button_surface = IMG_Load("../img/imageMenu/bouton_contre_joueur.bmp");
     if (contre_joueur_button_surface == NULL) {
         printf("Erreur lors du chargement de l'image bouton_contre_joueur.bmp : %s\n", SDL_GetError());
         return 1;
@@ -158,7 +158,7 @@ int main(int argc, char* argv[])
     
     
     // Création du texte pour le bouton "contre l'ordinateur"
-    SDL_Surface* contre_ordinateur_button_surface = IMG_Load("bouton_contre_ordinateur.bmp");
+    SDL_Surface* contre_ordinateur_button_surface = IMG_Load("../img/imageMenu/bouton_contre_ordinateur.bmp");
     if (contre_ordinateur_button_surface == NULL) {
         printf("Erreur lors du chargement de l'image bouton_contre_ordinateur.bmp : %s\n", SDL_GetError());
         return 1;
