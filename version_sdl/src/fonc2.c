@@ -663,7 +663,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 
 
 
-	afficherDamier( renderer, damier, couleurDamier );
+	afficherDamier( renderer, damier, &images, couleurDamier );
 
 
 	do {
@@ -709,7 +709,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 				setDrawColor(renderer, arrierePlan);
 				SDL_RenderClear(renderer);
 				// * réafficher damier
-				afficherDamier( renderer, damier, couleurDamier );
+				afficherDamier( renderer, damier, &images, couleurDamier );
 				// * réafficher les pions
 				afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, couleurDamier);
 

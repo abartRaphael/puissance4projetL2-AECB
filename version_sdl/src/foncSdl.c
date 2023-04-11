@@ -2,8 +2,6 @@
 #include <stdlib.h>
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
 
 #include "../lib/foncSdl.h"
 
@@ -233,13 +231,13 @@ int initCoordonneesPions(   SDL_Rect coordonneesPions[LIGNES][COLONNES],
  * \param grilleDeValeurs matrice contenant les pièces jouées (t_pion)
  * \param coordonneesPions matrice contenant les coordonnées où placer l'image de pièce
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions
- * \param arrierePlan couleur de l'arrière-plan de la fenêtre
+ * \param couleurDamier couleur de la grille, pour représenter des bordures
  */
 void afficherPions( SDL_Renderer* renderer, 
 					t_pion grilleDeValeurs[LIGNES][COLONNES], 
 					SDL_Rect coordonneesPions[LIGNES][COLONNES], 
 					images_t* images, 
-					SDL_Color arrierePlan) {
+					SDL_Color couleurDamier) {
 
 
 	int err;
@@ -299,14 +297,8 @@ void afficherPions( SDL_Renderer* renderer,
 					err = SDL_RenderCopy(renderer, images->pionJauneRougeBloquant, NULL, &coordonneesPions[i][j]); 
 					break;
 
-				case vide:
+				//case vide:
 				//default:
-					// remplir la case par un rectangle de la même couleur que l'arrière-plan
-					setDrawColor(renderer, arrierePlan);
-					SDL_RenderFillRect(renderer, &coordonneesPions[i][j]);
-
-					err = SDL_RenderCopy(renderer, images->caseVide, NULL, &coordonneesPions[i][j]); 
-					break;
 			}
 
 			if(err == -1) {
@@ -422,12 +414,22 @@ int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x ) {
  * \param damier tableau des coordonnées des rectangles de la grille
  * \param couleur couleur des rectangles de la grille à afficher
  */
-void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], SDL_Color couleur ) {
+void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], images_t* images, SDL_Color couleur ) {
 
 	setDrawColor(renderer, couleur);
 
 	if( SDL_RenderDrawRects( renderer, damier, 42 ) == -1 ) {
 		fprintf(stderr, "Erreur SDL_RenderDrawRects : %s\n", SDL_GetError());
+	}
+
+
+	for(int i=0 ; i<42 ; i++) {
+		// remplir la case par un rectangle de la même couleur que la grille
+		setDrawColor(renderer, couleur);
+		SDL_RenderFillRect(renderer, &damier[i]);
+
+		// puis placer un rond blanc, pour représenter un trou
+		SDL_RenderCopy(renderer, images->caseVide, NULL, &damier[i]); 
 	}
 }
 

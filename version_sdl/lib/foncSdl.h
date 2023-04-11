@@ -2,8 +2,6 @@
 #define H_FONCSDL_
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
 
 #include "../lib/fonc2.h"
 
@@ -154,9 +152,10 @@ int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x );
  * \brief dessine tous les rectangles contenu dans "damier", en "couleur", et l'affiche à l'écran
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param damier tableau des coordonnées des rectangles de la grille
+ * \param images structure contenant des pointeurs sur toutes les textures d'images de pions
  * \param couleur couleur des rectangles de la grille à afficher
  */
-void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], SDL_Color couleur );
+void afficherDamier( SDL_Renderer* renderer, SDL_Rect damier[42], images_t* images, SDL_Color couleur );
 
 
 
