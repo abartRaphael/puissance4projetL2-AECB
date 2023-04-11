@@ -149,7 +149,7 @@ void initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int la
 	rectMenus->rect_bouton_mode_normal = 		creerRect(largeurWindow/4, 100, largeurWindow/2, hauteurWindow/3);
 	rectMenus->rect_bouton_quitter = 			creerRect(largeurWindow/4, 160, largeurWindow/2, hauteurWindow/3);    
 	rectMenus->rect_bouton_regles = 			creerRect(largeurWindow/4, 240, largeurWindow/2, hauteurWindow/3);
-	rectMenus->rect_bouton_rejouer = 			creerRect(largeurWindow/4, 240, largeurWindow/2, hauteurWindow/3);
+	rectMenus->rect_bouton_rejouer = 			creerRect(largeurWindow/4, 80, largeurWindow/2, hauteurWindow/3);
 	rectMenus->rect_sound = 					creerRect(580, 420, 50, 50); // Position de l'icône en bas à droite de la fenêtre
 
 	//SDL_Rect bouton_sound_off_rect = 			creerRect(580, 420, 50, 50); // Position de l'icône en bas à droite de la fenêtre
