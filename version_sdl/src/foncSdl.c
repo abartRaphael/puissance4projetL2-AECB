@@ -348,43 +348,6 @@ int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, t
 
 
 /**
- * \fn int initStructTexturesMenu( SDL_Renderer* renderer, images_menus_t* images )
- * \brief crée (alloue) les images des menus et les affecte à une structure images_menus_t
- * \param renderer pointeur de SDL_Renderer, nécessaire
- * \param images structure contenant des pointeurs sur toutes les textures d'images des menus, à remplir
- * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
- */
-int initStructTexturesMenu( SDL_Renderer* renderer, images_menus_t* images ) {
-	/** 
-	 * Les textures ne sont pas faites pour une modification pixels par pixels. 
-	 * Elles ont l’avantage d’êtres affichables rapidement, 
-	 * de pouvoir être redimensionnée à la volée et copiée rapidement
-	 */
-	
-	// autre solution -> IMG_Load();
-
-
-	// charger les images des arrière_plans
-	images->tache_bleue = loadImage("img/imagePieces/tache_bleue.bmp",renderer);
-	images->regles = loadImage("img/imagePieces/regles.bmp",renderer);
-
-	// charger les images des boutons
-	images->bouton_back = loadImage("img/imagePieces/bouton_back.bmp",renderer);
-	images->bouton_contre_joueur = loadImage("img/imagePieces/bouton_contre_joueur.bmp",renderer);
-	images->bouton_contre_ordinateur = loadImage("img/imagePieces/bouton_contre_ordinateur.bmp",renderer);
-	images->bouton_jouer = loadImage("img/imagePieces/bouton_jouer.bmp",renderer);
-	images->bouton_quitter = loadImage("img/imagePieces/bouton_quitter.bmp",renderer);
-	images->bouton_regles = loadImage("img/imagePieces/bouton_regles.bmp",renderer);
-	images->sound_off = loadImage("img/imagePieces/sound_off.bmp",renderer);
-	images->sound_on = loadImage("img/imagePieces/sound_on.bmp",renderer);
-
-		
-	return 0;
-}
-
-
-
-/**
  * \fn int freeLesImagesPieces(images_pieces_t* images)
  * \brief free (désalloue) les images des pièces dans une structure images_pieces_t
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à désallouer
@@ -407,37 +370,6 @@ void freeLesImagesPieces(images_pieces_t* images) {
 		SDL_DestroyTexture( images->pionRougeJauneBloquant );
 	if( images->pionJauneRougeBloquant != NULL)
 		SDL_DestroyTexture( images->pionJauneRougeBloquant );
-}
-
-
-
-/**
- * \fn int freeLesImagesMenu(images_menus_t* images)
- * \brief free (désalloue) les images des menus dans une structure images_menus_t
- * \param images structure contenant des pointeurs sur toutes les textures d'images des menus, à désallouer
- */
-void freeLesImagesMenu(images_menus_t* images) {
-
-	if( images->tache_bleue != NULL)
-		SDL_DestroyTexture( images->tache_bleue );
-	if( images->regles != NULL)
-		SDL_DestroyTexture( images->regles );
-	if( images->bouton_back != NULL)
-		SDL_DestroyTexture( images->bouton_back );
-	if( images->bouton_contre_joueur != NULL)
-		SDL_DestroyTexture( images->bouton_contre_joueur );
-	if( images->bouton_contre_ordinateur != NULL)
-		SDL_DestroyTexture( images->bouton_contre_ordinateur );
-	if( images->bouton_jouer != NULL)
-		SDL_DestroyTexture( images->bouton_jouer );
-	if( images->bouton_quitter != NULL)
-		SDL_DestroyTexture( images->bouton_quitter );
-	if( images->bouton_regles != NULL)
-		SDL_DestroyTexture( images->bouton_regles );
-	if( images->sound_off != NULL)
-		SDL_DestroyTexture( images->sound_off );
-	if( images->sound_on != NULL)
-		SDL_DestroyTexture( images->sound_on );
 }
 
 
