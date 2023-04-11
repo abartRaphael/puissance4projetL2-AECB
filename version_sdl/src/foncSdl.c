@@ -2,6 +2,10 @@
 #include <stdlib.h>
 
 #include <SDL2/SDL.h>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5b09d00de20ea47010c16a4586bbd3b3d283c373
 
 #include "../lib/foncSdl.h"
 

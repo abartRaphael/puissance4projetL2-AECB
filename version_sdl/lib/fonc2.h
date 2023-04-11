@@ -46,6 +46,10 @@ typedef struct{
 
 
 #include <SDL2/SDL.h>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8be2df6e29f0067e0ce6d8bd365407cb7ba11081
 
 
 /**
