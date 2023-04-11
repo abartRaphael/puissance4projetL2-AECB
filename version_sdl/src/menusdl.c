@@ -60,7 +60,7 @@ int main(int argc, char* argv[])
         exit(EXIT_FAILURE);
     }
 
-    Mix_Music* musique = Mix_LoadMUS("musique.mp3");
+    Mix_Music* musique = Mix_LoadMUS("../musique/musique.mp3");
     if (musique == NULL) {
         printf("Erreur de chargement de la musique : %s\n", Mix_GetError());
         exit(EXIT_FAILURE);
