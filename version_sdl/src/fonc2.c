@@ -550,24 +550,28 @@ int decrementer_pion_special( t_pion pion ) {
 	if( pion.couleur == rouge ) {
 
 		if( pion.type == creuse ) {
-			if(cpt_rouge_creuse-- == 0)
+			if(cpt_rouge_creuse == 0)
 				return(0);
+			cpt_rouge_creuse--;
 		}
 		else if( pion.type == bloquante){
 				
-			if(cpt_rouge_bloquante-- == 0)
+			if(cpt_rouge_bloquante == 0)
 				return(0);
+			cpt_rouge_bloquante--;
 		}
 	}
 	else if( pion.couleur == jaune) {
 
 		if( pion.type == creuse ) {
-			if(cpt_jaune_creuse-- == 0)
+			if(cpt_jaune_creuse == 0)
 				return(0);
+			cpt_jaune_creuse--;
 		}
 		else if( pion.type == bloquante ){
-			if(cpt_jaune_bloquante-- == 0)
+			if(cpt_jaune_bloquante == 0)
 				return(0);
+			cpt_jaune_bloquante--;
 		}
 	}
 	
