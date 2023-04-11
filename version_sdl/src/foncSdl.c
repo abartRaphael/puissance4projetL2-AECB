@@ -300,10 +300,13 @@ void afficherPions( SDL_Renderer* renderer,
 					break;
 
 				case vide:
-				default:
+				//default:
 					// remplir la case par un rectangle de la même couleur que l'arrière-plan
 					setDrawColor(renderer, arrierePlan);
 					SDL_RenderFillRect(renderer, &coordonneesPions[i][j]);
+
+					err = SDL_RenderCopy(renderer, images->caseVide, NULL, &coordonneesPions[i][j]); 
+					break;
 			}
 
 			if(err == -1) {
@@ -335,6 +338,7 @@ int initStructTextures( SDL_Renderer* renderer, images_t* images, t_partie typeD
 	// charger les images de pièces pleines (rouge et jaune)
 	images->pionRougePlein = loadImage("img/pionRouge.bmp",renderer);
 	images->pionJaunePlein = loadImage("img/pionJaune.bmp",renderer);
+	images->caseVide = loadImage("img/caseVide.bmp",renderer);
 
 	if( typeDePartie == modeCreux ) {
 		images->pionRougeCreux = loadImage("img/pieceRougeCreuse.bmp",renderer);
