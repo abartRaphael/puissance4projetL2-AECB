@@ -18,7 +18,7 @@
 
 
 
-typedef enum {principal=1, regles, mode, fin} menu_t;
+//typedef enum {principal=1, regles, mode, fin} menu_t;
 
 
 
@@ -94,18 +94,18 @@ void initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int la
 
 
 /**
- * \fn int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, menu_t menu_actuel )
+ * \fn int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, affichage_t menu_actuel )
  * \brief affiche le menu à l'écran, en fonction de menu_actuel
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param imagesMenus structure contenant des pointeurs sur toutes les textures d'images des menus
  * \param rectMenus structure contenant les rectangles où placer les images pour les menus
  * \param menu_actuel type enum représentant le menu à afficher
  */
-int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, menu_t menu_actuel );
+int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, affichage_t* menu_actuel );
 
 
 
-int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, t_partie* typeDePartie );
+int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, affichage_t* actuel );
 
 
 

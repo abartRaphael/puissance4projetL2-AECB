@@ -18,11 +18,23 @@ typedef enum{
 } t_couleur;
 typedef enum{no_type, creuse, pleine, bloquante} t_type;
 
+/*
 typedef enum{
 	quitter=-1, 
 	modeNormal=1, 	//!< pour une partie de puissance 4 classique (un seul type de pièce)
 	modeCreux		//!< pour une partie de puissance 4 avec des pièces creuses et bloquantes
 } t_partie;
+*/
+
+typedef enum{
+	quitter=-1, 
+	principal=1, 
+	regles, 
+	mode, 
+	modeNormal, 	//!< pour une partie de puissance 4 classique (un seul type de pièce)
+	modeCreux,		//!< pour une partie de puissance 4 avec des pièces creuses et bloquantes
+	fin
+} affichage_t;
 
 /**
  * \struct t_pion fonc2.h 
@@ -46,10 +58,6 @@ typedef struct{
 
 
 #include <SDL2/SDL.h>
-<<<<<<< HEAD
-=======
-
->>>>>>> 8be2df6e29f0067e0ce6d8bd365407cb7ba11081
 
 
 /**
@@ -171,13 +179,13 @@ void supprimerPartie();
 int mode_creux();
 
 /**
- * \fn int demarrer_partie( SDL_Window* pWindow, SDL_Renderer *renderer, t_partie typeDePartie )
+ * \fn int demarrer_partie( SDL_Window* pWindow, SDL_Renderer *renderer, affichage_t typeDePartie )
  * \brief Lance une partie de puissance 4 normale ou en mode creux
  * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
  * \param renderer pointeur de SDL_Renderer, nécessaire pour les fonctions SDL d'affichage
  * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
  */
-int demarrer_partie( SDL_Window* pWindow, SDL_Renderer *renderer, t_partie typeDePartie );
+int demarrer_partie( SDL_Window* pWindow, SDL_Renderer *renderer, affichage_t typeDePartie );
 
 /**
  * \fn void decrementer_pion_special( t_couleur couleur, t_type type )

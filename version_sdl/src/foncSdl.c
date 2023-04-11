@@ -2,10 +2,6 @@
 #include <stdlib.h>
 
 #include <SDL2/SDL.h>
-<<<<<<< HEAD
-
-=======
->>>>>>> 5b09d00de20ea47010c16a4586bbd3b3d283c373
 
 #include "../lib/foncSdl.h"
 
@@ -323,7 +319,7 @@ void afficherPions( SDL_Renderer* renderer,
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à remplir
  * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
  */
-int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, t_partie typeDePartie ) {
+int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, affichage_t typeDePartie ) {
 	/** 
 	 * Les textures ne sont pas faites pour une modification pixels par pixels. 
 	 * Elles ont l’avantage d’êtres affichables rapidement, 

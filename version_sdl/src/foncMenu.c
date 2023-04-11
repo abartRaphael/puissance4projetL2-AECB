@@ -159,14 +159,14 @@ void initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int la
 
 
 /**
- * \fn int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, menu_t menu_actuel )
+ * \fn int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, affichage_t* menu_actuel )
  * \brief affiche le menu à l'écran, en fonction de menu_actuel
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param imagesMenus structure contenant des pointeurs sur toutes les textures d'images des menus
  * \param rectMenus structure contenant les rectangles où placer les images pour les menus
  * \param menu_actuel type enum représentant le menu à afficher
  */
-int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, menu_t menu_actuel ) {
+int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, affichage_t* menu_actuel ) {
 
 	int err;
 
@@ -175,7 +175,7 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
 	setDrawColor(renderer, noir);
 	SDL_RenderClear(renderer);
 
-	switch(menu_actuel) {
+	switch(*menu_actuel) {
 		case principal:
 			err = SDL_RenderCopy(renderer, imagesMenus->tache_bleue, NULL, NULL);
 			if(err == -1) {
@@ -271,7 +271,7 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
 
 
 
-int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, t_partie* typeDePartie ) {
+int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, affichage_t* actuel ) {
 
 
 	// La largeur et la hauteur de la fenêtre du menu
@@ -284,7 +284,7 @@ int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* 
 	SDL_Event event;
 	SDL_Point clic;
 
-	menu_t menu_actuel = principal; 
+	//menu_t menu_actuel = principal; 
 	rect_menus_t rectMenus;
 
 
@@ -305,7 +305,7 @@ int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* 
 		// Gestion des événements
 		SDL_WaitEventTimeout(&event, 200);
 
-		if( afficherMenu( renderer, imagesMenus, &rectMenus, menu_actuel ) == -1 ) {
+		if( afficherMenu( renderer, imagesMenus, &rectMenus, actuel ) == -1 ) {
 			return -1;
 		}
 		
@@ -320,23 +320,23 @@ int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* 
 			clic.x = event.button.x;
 			clic.y = event.button.y;
 
-			switch(menu_actuel) {
+			switch(*actuel) {
 
 				case principal:
 					// menu principal à l'écran
 
 					if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_quitter) ) {
 						// Le bouton "Quitter" a été cliqué
-						*typeDePartie = quitter;
+						*actuel = quitter;
 						continuer = 0;
 					}
 					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_jouer) ) {
 						// Le bouton "Jouer" a été cliqué
-						menu_actuel = mode;
+						*actuel = mode;
 					}
 					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_regles) ) {
 						// Le bouton "Regles" a été cliqué
-						menu_actuel = regles;
+						*actuel = regles;
 					}
 					break;
 				
@@ -344,29 +344,37 @@ int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* 
 				case regles:
 					if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_back) ) {
 						// Le bouton "Back" a été cliqué
-						menu_actuel = principal;
+						*actuel = principal;
 					}
 					break;
 					
 				case mode:
 					if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_back) ) {
 						// Le bouton "Back" a été cliqué
-						menu_actuel = principal;
+						*actuel = principal;
 					}
-					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_contre_joueur) ) {
+					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_mode_normal) ) {
 						// Le bouton "Mode Classique" a été cliqué
-						*typeDePartie = modeNormal;
+						*actuel = modeNormal;
 						continuer = 0;
 					}
-					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_back) ) {
+					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_mode_creux) ) {
 						// Le bouton "Mode Creux" a été cliqué
-						*typeDePartie = modeCreux;
+						*actuel = modeCreux;
 						continuer = 0;
 					}
 
 					break;
 				case fin:
-
+					if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_rejouer) ) {
+						// Le bouton "Rejouer" a été cliqué
+						*actuel = mode;
+					}
+					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_quitter) ) {
+						// Le bouton "Quitter" a été cliqué
+						*actuel = quitter;
+						continuer = 0;
+					}
 					break;
 			}
 			

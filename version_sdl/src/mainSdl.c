@@ -34,7 +34,8 @@ int main(int argc, char** argv)
 	//valeur toujours retournée à la fin du programme
 	int statut = EXIT_FAILURE;
 
-	t_partie typeDePartie;
+	//t_partie typeDePartie;
+	affichage_t actuel=principal;
 	images_menus_t imagesMenus;
 	
 
@@ -57,19 +58,21 @@ int main(int argc, char** argv)
 
 	// menu principal
 
-	if( menuPrincipal( pWindow, renderer, &imagesMenus, &typeDePartie ) == -1 ) {
-		fprintf(stderr, "Erreur menuPrincipal() : %s\n", SDL_GetError());
+	while(actuel != quitter) {
+		if( menuPrincipal( pWindow, renderer, &imagesMenus, &actuel ) == -1 ) {
+			fprintf(stderr, "Erreur menuPrincipal() : %s\n", SDL_GetError());
+		}
+
+
+		if( actuel != quitter ) {
+			//typeDePartie = modeNormal;
+			//typeDePartie = modeCreux;
+
+			demarrer_partie(pWindow, renderer, actuel);
+
+			actuel = fin;
+		}
 	}
-
-
-	if( typeDePartie != quitter ) {
-		//typeDePartie = modeNormal;
-		typeDePartie = modeCreux;
-
-		demarrer_partie(pWindow, renderer, typeDePartie);
-	}
-
-
 
 
 
@@ -93,7 +96,7 @@ Quit:
 
 	SDL_Quit();
 
-	//printf("bonne fin de programme\n");
+	printf("bonne fin de programme\n");
 
 
 	return statut;

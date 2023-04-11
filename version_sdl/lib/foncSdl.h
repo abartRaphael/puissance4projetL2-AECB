@@ -126,13 +126,13 @@ void afficherPions( SDL_Renderer* renderer,
 
 
 /**
- * \fn int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, t_partie typeDePartie )
+ * \fn int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, affichage_t typeDePartie )
  * \brief crée (alloue) les images des pièces d'une partie normale et les affecte à une structure images_pieces_t
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à remplir
  * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
  */
-int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, t_partie typeDePartie );
+int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, affichage_t typeDePartie );
 
 
 
