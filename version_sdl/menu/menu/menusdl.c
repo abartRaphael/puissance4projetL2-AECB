@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
     
     
     // Chargez l'image de fond d'écran
-    SDL_Surface* backgroundSurface = SDL_LoadBMP("img.bmp");
+    SDL_Surface* backgroundSurface = SDL_LoadBMP("tache_bleue.bmp");
     SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
 
     // Dessinez la texture de fond d'écran
@@ -79,9 +79,9 @@ int main(int argc, char* argv[])
     
 
     // Création du texte pour le bouton "Jouer"
-    SDL_Surface* play_button_surface = IMG_Load("jouer.bmp");
+    SDL_Surface* play_button_surface = IMG_Load("bouton_jouer.bmp");
     if (play_button_surface == NULL) {
-        printf("Erreur lors du chargement de l'image Jouer.bmp : %s\n", SDL_GetError());
+        printf("Erreur lors du chargement de l'image bouton_jouer.bmp : %s\n", SDL_GetError());
         return 1;
     }
     SDL_Texture* play_button_texture = SDL_CreateTextureFromSurface(renderer, play_button_surface);
@@ -89,9 +89,9 @@ int main(int argc, char* argv[])
     SDL_RenderCopy(renderer, play_button_texture, NULL, &play_button_rect);
     
     // Création du texte pour le bouton "Quitter"
-    SDL_Surface* quit_button_surface = IMG_Load("quitter.bmp");
+    SDL_Surface* quit_button_surface = IMG_Load("bouton_quitter.bmp");
     if (quit_button_surface == NULL) {
-        printf("Erreur lors du chargement de l'image Quitter.bmp : %s\n", SDL_GetError());
+        printf("Erreur lors du chargement de l'image bouton_quitter.bmp : %s\n", SDL_GetError());
         return 1;
     }
 
@@ -100,9 +100,9 @@ int main(int argc, char* argv[])
     SDL_RenderCopy(renderer, quit_button_texture, NULL, &quit_button_rect);
 
     // Création du texte pour le bouton "regles"
-    SDL_Surface* regles_button_surface = IMG_Load("regles.bmp");
+    SDL_Surface* regles_button_surface = IMG_Load("bouton_regles.bmp");
     if (regles_button_surface == NULL) {
-        printf("Erreur lors du chargement de l'image regles.bmp : %s\n", SDL_GetError());
+        printf("Erreur lors du chargement de l'image bouton_regles.bmp : %s\n", SDL_GetError());
         return 1;
     }
     SDL_Texture* regles_button_texture = SDL_CreateTextureFromSurface(renderer, regles_button_surface);
@@ -110,43 +110,47 @@ int main(int argc, char* argv[])
     SDL_RenderCopy(renderer, regles_button_texture, NULL, &regles_button_rect);
      
     // Chargement de l'icône pour couper la musique
-    SDL_Surface* icon = SDL_LoadBMP("icone.bmp");
-    SDL_Surface* icon2 = SDL_LoadBMP("icone2.bmp");
+    SDL_Surface* bouton_sound_on_surface = SDL_LoadBMP("bouton_sound_on.bmp");
+    SDL_Surface* bouton_sound_off_surface = SDL_LoadBMP("bouton_sound_off.bmp");
 
-    if (icon == NULL) {
-        printf("Erreur lors du chargement de l'image icone.bmp : %s\n", SDL_GetError());
+    if (bouton_sound_on_surface == NULL) {
+        printf("Erreur lors du chargement de l'image bouton_sound_on.bmp : %s\n", SDL_GetError());
         return 1;
     }
-    SDL_Texture* iconTexture = SDL_CreateTextureFromSurface(renderer, icon);
-    SDL_Texture* iconTexture2 = SDL_CreateTextureFromSurface(renderer, icon2);
-    SDL_Rect iconRect = SDL_CreerRect(580, 420, 50, 50); // Position de l'icône en bas à droite de la fenêtre
-    SDL_Rect iconRect2 = SDL_CreerRect(580, 420, 50, 50); // Position de l'icône en bas à droite de la fenêtre
-    SDL_RenderCopy(renderer, iconTexture, NULL, &iconRect);
+     if (bouton_sound_off_surface == NULL) {
+        printf("Erreur lors du chargement de l'image bouton_sound_off.bmp : %s\n", SDL_GetError());
+        return 1;
+    }
+    SDL_Texture* bouton_sound_on_texture = SDL_CreateTextureFromSurface(renderer, bouton_sound_on_surface);
+    SDL_Texture* bouton_sound_off_texture = SDL_CreateTextureFromSurface(renderer, bouton_sound_off_surface);
+    SDL_Rect bouton_sound_on_rect = SDL_CreerRect(580, 420, 50, 50); // Position de l'icône en bas à droite de la fenêtre
+    SDL_Rect bouton_sound_off_rect = SDL_CreerRect(580, 420, 50, 50); // Position de l'icône en bas à droite de la fenêtre
+    SDL_RenderCopy(renderer, bouton_sound_on_texture, NULL, &bouton_sound_on_rect);
 
     // Chargement de l'icône pour revenir en arriere 
-    SDL_Surface* icon_back = SDL_LoadBMP("back.bmp");
-    if (icon == NULL) {
-        printf("Erreur lors du chargement de l'image icone.bmp : %s\n", SDL_GetError());
+    SDL_Surface* bouton_back_surface = SDL_LoadBMP("bouton_back.bmp");
+    if (bouton_back_surface == NULL) {
+        printf("Erreur lors du chargement de l'image bouton_back.bmp : %s\n", SDL_GetError());
         return 1;
     }
-    SDL_Texture* icon_backTexture = SDL_CreateTextureFromSurface(renderer, icon_back);
+    SDL_Texture* bouton_back_texture = SDL_CreateTextureFromSurface(renderer, bouton_back_surface);
   
-    SDL_Rect icon_backRect = SDL_CreerRect(10, 10, 40, 40); // Position de l'icône en hautb à gauche de la fenêtre
+    SDL_Rect bouton_back_rect = SDL_CreerRect(10, 10, 40, 40); // Position de l'icône en hautb à gauche de la fenêtre
    
 
      // Création du texte pour du contenu des "regles"
-    SDL_Surface* imgregles_button_surface = IMG_Load("imgregles.bmp");
-    if (imgregles_button_surface == NULL) {
-        printf("Erreur lors du chargement de l'image imgregles.bmp : %s\n", SDL_GetError());
+    SDL_Surface* regles_surface = IMG_Load("regles.bmp");
+    if (regles_surface == NULL) {
+        printf("Erreur lors du chargement de l'image regles.bmp : %s\n", SDL_GetError());
         return 1;
     }
-    SDL_Texture* imgregles_button_texture = SDL_CreateTextureFromSurface(renderer, imgregles_button_surface);
-    SDL_Rect imgregles_button_rect = SDL_CreerRect(0,0,640,480);
+    SDL_Texture* regles_texture = SDL_CreateTextureFromSurface(renderer, regles_surface);
+    SDL_Rect regles_rect = SDL_CreerRect(0,0,640,480);
     
      // Création du texte pour le bouton "Contre un joueur"
-    SDL_Surface* contre_joueur_button_surface = IMG_Load("boutton_contre_joueur.bmp");
+    SDL_Surface* contre_joueur_button_surface = IMG_Load("bouton_contre_joueur.bmp");
     if (contre_joueur_button_surface == NULL) {
-        printf("Erreur lors du chargement de l'image boutton_contre_joueur.bmp : %s\n", SDL_GetError());
+        printf("Erreur lors du chargement de l'image bouton_contre_joueur.bmp : %s\n", SDL_GetError());
         return 1;
     }
     SDL_Texture* contre_joueur_button_texture = SDL_CreateTextureFromSurface(renderer, contre_joueur_button_surface);
@@ -154,9 +158,9 @@ int main(int argc, char* argv[])
     
     
     // Création du texte pour le bouton "contre l'ordinateur"
-    SDL_Surface* contre_ordinateur_button_surface = IMG_Load("boutton_contre_ordinateur.bmp");
+    SDL_Surface* contre_ordinateur_button_surface = IMG_Load("bouton_contre_ordinateur.bmp");
     if (contre_ordinateur_button_surface == NULL) {
-        printf("Erreur lors du chargement de l'image boutton_contre_ordinateur.bmp : %s\n", SDL_GetError());
+        printf("Erreur lors du chargement de l'image bouton_contre_ordinateur.bmp : %s\n", SDL_GetError());
         return 1;
     }
 
@@ -205,7 +209,7 @@ int main(int argc, char* argv[])
                             SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);
                             SDL_RenderCopy(renderer, contre_joueur_button_texture, NULL, &contre_joueur_button_rect);
                             SDL_RenderCopy(renderer, contre_ordinateur_button_texture, NULL, &contre_ordinateur_button_rect);
-                            SDL_RenderCopy(renderer, icon_backTexture, NULL, &icon_backRect);
+                            SDL_RenderCopy(renderer, bouton_back_texture, NULL, &bouton_back_rect);
                             SDL_RenderPresent(renderer);
                             menu_actuel = mode;
 
@@ -214,8 +218,8 @@ int main(int argc, char* argv[])
                         if (mouseX >= regles_button_rect.x && mouseX <= regles_button_rect.x + regles_button_rect.w &&
                             mouseY >= regles_button_rect.y && mouseY <= regles_button_rect.y + regles_button_rect.h) {
                             // Le bouton "Regles" a été cliqué
-                            SDL_RenderCopy(renderer, imgregles_button_texture, NULL, &imgregles_button_rect);
-                            SDL_RenderCopy(renderer, icon_backTexture, NULL, &icon_backRect);
+                            SDL_RenderCopy(renderer, regles_texture, NULL, &regles_rect);
+                            SDL_RenderCopy(renderer, bouton_back_texture, NULL, &bouton_back_rect);
                             SDL_RenderPresent(renderer);
                             menu_actuel = regles;
                         }
@@ -223,8 +227,8 @@ int main(int argc, char* argv[])
                     
                     
                     case regles:
-                        if(mouseX >= icon_backRect.x && mouseX <= icon_backRect.x + icon_backRect.w &&
-                            mouseY >= icon_backRect.y && mouseY <= icon_backRect.y + icon_backRect.h){
+                        if(mouseX >= bouton_back_rect.x && mouseX <= bouton_back_rect.x + bouton_back_rect.w &&
+                            mouseY >= bouton_back_rect.y && mouseY <= bouton_back_rect.y + bouton_back_rect.h){
                             // Le bouton "Back" a été cliqué
                             SDL_RenderClear(renderer);
                             SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);
@@ -238,8 +242,8 @@ int main(int argc, char* argv[])
                         break;
                         
                     case mode:
-                        if(mouseX >= icon_backRect.x && mouseX <= icon_backRect.x + icon_backRect.w &&
-                            mouseY >= icon_backRect.y && mouseY <= icon_backRect.y + icon_backRect.h){
+                        if(mouseX >= bouton_back_rect.x && mouseX <= bouton_back_rect.x + bouton_back_rect.w &&
+                            mouseY >= bouton_back_rect.y && mouseY <= bouton_back_rect.y + bouton_back_rect.h){
                             // Le bouton "Back" a été cliqué
                             SDL_RenderClear(renderer);
                             SDL_RenderCopy(renderer, backgroundTexture, NULL, NULL);
@@ -256,8 +260,8 @@ int main(int argc, char* argv[])
                 
             
                 // dans tous les cas
-                if(event.button.x >= iconRect.x && event.button.x <= iconRect.x + iconRect.w &&
-                           event.button.y >= iconRect.y && event.button.y <= iconRect.y + iconRect.h) 
+                if(event.button.x >= bouton_sound_on_rect.x && event.button.x <= bouton_sound_on_rect.x + bouton_sound_on_rect.w &&
+                           event.button.y >= bouton_sound_on_rect.y && event.button.y <= bouton_sound_on_rect.y + bouton_sound_on_rect.h) 
                 {
                     // Le bouton "mute" à été cliqué
                     if (musique_active)
@@ -274,12 +278,12 @@ int main(int argc, char* argv[])
 
                 if (musique_active)
                 {
-                    SDL_RenderCopy(renderer, iconTexture, NULL, &iconRect2);
+                    SDL_RenderCopy(renderer, bouton_sound_on_texture, NULL, &bouton_sound_off_rect);
                     SDL_RenderPresent(renderer);
                 }
                 else
                 {
-                    SDL_RenderCopy(renderer, iconTexture2, NULL, &iconRect);
+                    SDL_RenderCopy(renderer, bouton_sound_off_texture, NULL, &bouton_sound_on_rect);
                     SDL_RenderPresent(renderer);
                 }
             } 
