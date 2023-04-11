@@ -299,6 +299,7 @@ void afficherPions( SDL_Renderer* renderer,
 
 				//case vide:
 				//default:
+					
 			}
 
 			if(err == -1) {
@@ -328,17 +329,17 @@ int initStructTextures( SDL_Renderer* renderer, images_t* images, t_partie typeD
 	// autre solution -> IMG_Load();
 
 	// charger les images de pièces pleines (rouge et jaune)
-	images->pionRougePlein = loadImage("img/pionRouge.bmp",renderer);
-	images->pionJaunePlein = loadImage("img/pionJaune.bmp",renderer);
-	images->caseVide = loadImage("img/caseVide.bmp",renderer);
+	images->pionRougePlein = loadImage("img/imagePieces/pionRouge.bmp",renderer);
+	images->pionJaunePlein = loadImage("img/imagePieces/pionJaune.bmp",renderer);
+	images->caseVide = loadImage("img/imagePieces/caseVide.bmp",renderer);
 
 	if( typeDePartie == modeCreux ) {
-		images->pionRougeCreux = loadImage("img/pieceRougeCreuse.bmp",renderer);
-		images->pionJauneCreux = loadImage("img/pieceJauneCreuse.bmp",renderer);
-		images->pionRougeBloquant = loadImage("img/pionRougeBloquante.bmp",renderer);
-		images->pionJauneBloquant = loadImage("img/pionJauneBloquante.bmp",renderer);
-		images->pionRougeJauneBloquant = loadImage("img/pionRougeDouble.bmp",renderer);
-		images->pionJauneRougeBloquant = loadImage("img/pionJauneDouble.bmp",renderer);
+		images->pionRougeCreux = loadImage("img/imagePieces/pieceRougeCreuse.bmp",renderer);
+		images->pionJauneCreux = loadImage("img/imagePieces/pieceJauneCreuse.bmp",renderer);
+		images->pionRougeBloquant = loadImage("img/imagePieces/pionRougeBloquante.bmp",renderer);
+		images->pionJauneBloquant = loadImage("img/imagePieces/pionJauneBloquante.bmp",renderer);
+		images->pionRougeJauneBloquant = loadImage("img/imagePieces/pionRougeDouble.bmp",renderer);
+		images->pionJauneRougeBloquant = loadImage("img/imagePieces/pionJauneDouble.bmp",renderer);
 	}
 		
 	return 0;
