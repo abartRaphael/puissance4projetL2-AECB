@@ -592,8 +592,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 
 	// variables sdl
 
-	images_t images;
-	SDL_Surface *surface = NULL;
+	images_pieces_t images;
 
 	// variables de couleur
 	SDL_Color	noir = {0, 0, 0, 255}, 
@@ -640,7 +639,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 	initCoordonneesPions(   coordonneesPions, 
 							largeurRectGrille, offsetGrilleX, offsetGrilleY);
 
-	initStructTextures( renderer, &images, typeDePartie );
+	initStructTexturesPieces( renderer, &images, typeDePartie );
 	
 
 
@@ -837,11 +836,8 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 
 // * Quitter
 Quit:
-	freeLesImages(&images);
+	freeLesImagesPieces(&images);
 
-	if(surface) {
-		SDL_FreeSurface(surface);
-	}
 	//if(format) {
 		//SDL_FreeFormat(format);
 	//}
