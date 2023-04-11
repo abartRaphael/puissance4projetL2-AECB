@@ -2,11 +2,10 @@
 #include <stdlib.h>
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
 
 #include "../lib/fonc2.h"
 #include "../lib/foncSdl.h"
+#include "../lib/foncMenu.h"
 
 /**
  * \file mainSdl.c
@@ -36,6 +35,7 @@ int main(int argc, char** argv)
 	int statut = EXIT_FAILURE;
 
 	t_partie typeDePartie;
+	images_menus_t imagesMenus;
 	
 
 	//créer fenêtre ET renderer en même temps
@@ -43,7 +43,13 @@ int main(int argc, char** argv)
 	{
 		goto Quit;
 	}
-
+/*
+	// Initialisation de SDL_mixer
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+		fprintf(stderr, "Erreur d'initialisation de SDL_mixer : %s\n", Mix_GetError());
+		goto Quit;
+	}
+*/
 //====
 
 // On agit sur la fenêtre ici 
@@ -51,13 +57,17 @@ int main(int argc, char** argv)
 
 	// menu principal
 
+	if( menuPrincipal( pWindow, renderer, &imagesMenus, &typeDePartie ) == -1 ) {
+		fprintf(stderr, "Erreur menuPrincipal() : %s\n", SDL_GetError());
+	}
 
-	// lancement de partie normale
 
-	//typeDePartie = modeNormal;
-	typeDePartie = modeCreux;
+	if( typeDePartie != quitter ) {
+		//typeDePartie = modeNormal;
+		typeDePartie = modeCreux;
 
-	demarrer_partie(pWindow, renderer, typeDePartie);
+		demarrer_partie(pWindow, renderer, typeDePartie);
+	}
 
 
 
@@ -68,6 +78,10 @@ int main(int argc, char** argv)
 
 // Quitter
 Quit:
+
+	freeLesImagesMenu(&imagesMenus);
+
+	//Mix_FreeMusic(musique);
 
 	if(renderer) {
 		SDL_DestroyRenderer(renderer);

@@ -19,6 +19,7 @@ typedef enum{
 typedef enum{no_type, creuse, pleine, bloquante} t_type;
 
 typedef enum{
+	quitter=-1, 
 	modeNormal=1, 	//!< pour une partie de puissance 4 classique (un seul type de pièce)
 	modeCreux		//!< pour une partie de puissance 4 avec des pièces creuses et bloquantes
 } t_partie;
@@ -45,8 +46,6 @@ typedef struct{
 
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_image.h>
 
 
 /**
