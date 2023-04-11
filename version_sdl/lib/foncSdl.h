@@ -23,6 +23,7 @@
  * \brief structure contenant des pointeurs sur toutes les textures d'images de pions
  */
 typedef struct images_pieces_s {
+	SDL_Texture* caseVide;
 	SDL_Texture* pionRougePlein;
 	SDL_Texture* pionRougeCreux;
 	SDL_Texture* pionJaunePlein;
@@ -31,7 +32,6 @@ typedef struct images_pieces_s {
 	SDL_Texture* pionRougeBloquant;
 	SDL_Texture* pionRougeJauneBloquant;
 	SDL_Texture* pionJauneRougeBloquant;
-	SDL_Texture* caseVide;
 } images_pieces_t;
 
 

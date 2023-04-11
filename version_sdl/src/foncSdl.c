@@ -354,6 +354,8 @@ int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, a
  */
 void freeLesImagesPieces(images_pieces_t* images) {
 
+	if( images->caseVide != NULL)
+		SDL_DestroyTexture( images->caseVide );
 	if( images->pionRougePlein != NULL )
 		SDL_DestroyTexture( images->pionRougePlein );
 	if( images->pionRougeCreux != NULL)
