@@ -36,24 +36,6 @@ typedef struct images_pieces_s {
 
 
 
-/** \struct images_menu_s
- * \brief structure contenant des pointeurs sur toutes les textures d'images pour les menus
- */
-typedef struct images_menu_s {
-	SDL_Texture* bouton_back;
-	SDL_Texture* bouton_contre_joueur;
-	SDL_Texture* bouton_contre_ordinateur;
-	SDL_Texture* bouton_jouer;
-	SDL_Texture* bouton_quitter;
-	SDL_Texture* bouton_regles;
-	SDL_Texture* regles;
-	SDL_Texture* sound_off;
-	SDL_Texture* sound_on;
-	SDL_Texture* tache_bleue;
-} images_menus_t;
-
-
-
 /**
  * \fn int init(SDL_Window* * window, SDL_Renderer* * renderer, int width, int height)
  * \brief initialise les systèmes de SDL, crée le pointeur sur fenêtre et le renderer
@@ -155,31 +137,11 @@ int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, t
 
 
 /**
- * \fn int initStructTexturesMenu( SDL_Renderer* renderer, images_menus_t* images )
- * \brief crée (alloue) les images des menus et les affecte à une structure images_menus_t
- * \param renderer pointeur de SDL_Renderer, nécessaire
- * \param images structure contenant des pointeurs sur toutes les textures d'images des menus, à remplir
- * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
- */
-int initStructTexturesMenu( SDL_Renderer* renderer, images_menus_t* images );
-
-
-
-/**
  * \fn int freeLesImagesPieces(images_pieces_t* images)
  * \brief free (désalloue) les images des pièces dans une structure images_pieces_t
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à désallouer
  */
 void freeLesImagesPieces(images_pieces_t* images);
-
-
-
-/**
- * \fn int freeLesImagesMenu(images_menus_t* images)
- * \brief free (désalloue) les images des menus dans une structure images_menus_t
- * \param images structure contenant des pointeurs sur toutes les textures d'images des menus, à désallouer
- */
-void freeLesImagesMenu(images_menus_t* images);
 
 
 
