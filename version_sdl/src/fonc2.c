@@ -594,6 +594,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 	// variables de couleur
 	SDL_Color	noir = {0, 0, 0, 255}, 
 				blanc = {255, 255, 255, 255}, 
+				cyan = {0, 255, 255, 255}, 
 				couleurDamier = blanc, 
 				arrierePlan = noir; // couleur d'arrière-plan de la fenêtre
 
@@ -667,7 +668,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 
 	do {
 
-		afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, arrierePlan);
+		afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, couleurDamier);
 		SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
 
 		// * alterne la couleur de pion du joueur
@@ -710,7 +711,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 				// * réafficher damier
 				afficherDamier( renderer, damier, couleurDamier );
 				// * réafficher les pions
-				afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, arrierePlan);
+				afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, couleurDamier);
 
 
 				SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
