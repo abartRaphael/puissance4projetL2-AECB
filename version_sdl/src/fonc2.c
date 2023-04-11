@@ -806,7 +806,9 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 
 
 	// * fin de partie
-	//afficherPions(renderer, grilleDeValeurs, coordonneesPions, images, arrierePlan);
+	afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images, couleurDamier);
+	SDL_RenderPresent(renderer);
+	SDL_Delay(1000); //attendre 1s
 	
 	if(!quit) {
 		if(nbTours == (LIGNES*COLONNES)) {
