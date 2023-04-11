@@ -755,14 +755,17 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, t_partie typeD
 					pionJoueur.type = bloquante;
 				}
 
-				restePionSpecial = decrementer_pion_special(pionJoueur);
+				
 
 				if( colonneCliquee != -1	// * si le joueur a bien cliqué dans la grille
-				&&	!estPleine(grilleDeValeurs, colonneCliquee-1)	// * si la colonne cliquée n'est pas déjà pleine
-				&&	restePionSpecial )	// * si le joueur possède encore le pion qu'il veut jouer
+				&&	!estPleine(grilleDeValeurs, colonneCliquee-1) )	// * si la colonne cliquée n'est pas déjà pleine
 				{
-					// * le coup est bon et peut être joué
-					play = SDL_TRUE;
+					restePionSpecial = decrementer_pion_special(pionJoueur);
+
+					if( restePionSpecial ) { // * si le joueur possède encore le pion qu'il veut jouer
+						// * le coup est bon et peut être joué
+						play = SDL_TRUE;
+					}
 				}
 				
 				if( restePionSpecial == 0 ) {
