@@ -115,13 +115,12 @@ int initCoordonneesPions(   SDL_Rect coordonneesPions[LIGNES][COLONNES],
  * \param grilleDeValeurs matrice contenant les pièces jouées (t_pion)
  * \param coordonneesPions matrice contenant les coordonnées où placer l'image de pièce
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions
- * \param arrierePlan couleur de l'arrière-plan de la fenêtre
+ * \return retourne 0 pour un succès, -1 pour une erreur
  */
-void afficherPions( SDL_Renderer* renderer, 
+int afficherPions( SDL_Renderer* renderer, 
 					t_pion grilleDeValeurs[LIGNES][COLONNES], 
 					SDL_Rect coordonneesPions[LIGNES][COLONNES], 
-					images_pieces_t* images, 
-					SDL_Color arrierePlan);
+					images_pieces_t* images);
 
 
 
@@ -131,6 +130,7 @@ void afficherPions( SDL_Renderer* renderer,
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à remplir
  * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
+ * \return retourne 1 pour un succès, 0 pour une erreur
  */
 int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, affichage_t typeDePartie );
 
@@ -147,10 +147,11 @@ void freeLesImagesPieces(images_pieces_t* images);
 
 /**
  * \fn int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x )
- * \brief 
+ * \brief calcule quelle colonne de la grille de puissance 4 a été cliquée
  * \param damier tableau des coordonnées des rectangles de la grille
  * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
  * \param x position horizontale de la souris au moment du clic, par rapport à la fenêtre
+ * \return un entier [1;7] correspondant à la colonne cliquée, ou -1 si le click est en dehors des 7 colonnes
  */
 int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x );
 

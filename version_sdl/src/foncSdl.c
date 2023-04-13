@@ -223,7 +223,6 @@ int initCoordonneesPions(   SDL_Rect coordonneesPions[LIGNES][COLONNES],
 }
 
 
-
 /**
  * \fn void afficherPions(t_pion grilleDeValeurs[LIGNES][COLONNES], SDL_Renderer* renderer)
  * \brief Affiche les pions à l'écran
@@ -231,21 +230,20 @@ int initCoordonneesPions(   SDL_Rect coordonneesPions[LIGNES][COLONNES],
  * \param grilleDeValeurs matrice contenant les pièces jouées (t_pion)
  * \param coordonneesPions matrice contenant les coordonnées où placer l'image de pièce
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions
- * \param couleurDamier couleur de la grille, pour représenter des bordures
+ * \return retourne 0 pour un succès, -1 pour une erreur
  */
-void afficherPions( SDL_Renderer* renderer, 
+int afficherPions( SDL_Renderer* renderer, 
 					t_pion grilleDeValeurs[LIGNES][COLONNES], 
 					SDL_Rect coordonneesPions[LIGNES][COLONNES], 
-					images_pieces_t* images, 
-					SDL_Color couleurDamier) {
+					images_pieces_t* images) {
 
 
-	int err;
+	int err=0;
 
 	for(int i=0 ; i<LIGNES ; i++) {
 		for(int j=0 ; j<COLONNES ; j++) {
 				
-			switch (grilleDeValeurs[i][j].couleur ) 
+			switch(grilleDeValeurs[i][j].couleur) 
 			{
 				case rouge:
 
@@ -297,8 +295,9 @@ void afficherPions( SDL_Renderer* renderer,
 					err = SDL_RenderCopy(renderer, images->pionJauneRougeBloquant, NULL, &coordonneesPions[i][j]); 
 					break;
 
-				//case vide:
-				//default:
+				case vide:
+				default:
+					printf("Mauvaise valeur d'état dans (grilleDeValeurs[i][j].couleur) : %d\n", grilleDeValeurs[i][j].couleur);
 					
 			}
 
@@ -308,16 +307,19 @@ void afficherPions( SDL_Renderer* renderer,
 
 		}
 	}
+
+	return err;
 }
 
 
 
 /**
- * \fn int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, t_partie typeDePartie )
+ * \fn int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, affichage_t typeDePartie )
  * \brief crée (alloue) les images des pièces d'une partie normale et les affecte à une structure images_pieces_t
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param images structure contenant des pointeurs sur toutes les textures d'images de pions, à remplir
  * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
+ * \return retourne 1 pour un succès, 0 pour une erreur
  */
 int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, affichage_t typeDePartie ) {
 	/** 
@@ -340,9 +342,13 @@ int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, a
 		images->pionJauneBloquant = loadImage("img/imagePieces/pionJauneBloquante.bmp",renderer);
 		images->pionRougeJauneBloquant = loadImage("img/imagePieces/pionRougeDouble.bmp",renderer);
 		images->pionJauneRougeBloquant = loadImage("img/imagePieces/pionJauneDouble.bmp",renderer);
+
+		return(images->pionRougePlein && images->pionJaunePlein && images->caseVide
+			&& images->pionRougeCreux && images->pionJauneCreux && images->pionRougeBloquant
+			&& images->pionJauneBloquant && images->pionRougeJauneBloquant && images->pionJauneRougeBloquant );
 	}
 		
-	return 0;
+	return (images->pionRougePlein && images->pionJaunePlein && images->caseVide);
 }
 
 
@@ -378,13 +384,14 @@ void freeLesImagesPieces(images_pieces_t* images) {
 
 /**
  * \fn int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x )
- * \brief 
+ * \brief calcule quelle colonne de la grille de puissance 4 a été cliquée
  * \param damier tableau des coordonnées des rectangles de la grille
  * \param largeurRectGrille largeur des rectangles (carrés) qui composent la grille à afficher
  * \param x position horizontale de la souris au moment du clic, par rapport à la fenêtre
+ * \return un entier [1;7] correspondant à la colonne cliquée, ou -1 si le click est en dehors des 7 colonnes
  */
 int getColonneClick( SDL_Rect damier[7], int largeurRectGrille, Sint32 x ) {
-	// TODO fonction qui déduit dans quelle colonne le joueur a cliqué
+	// fonction qui déduit dans quelle colonne le joueur a cliqué
 
 	if( x < damier[0].x
 	 || (damier[6].x + largeurRectGrille ) < x ) {
