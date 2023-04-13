@@ -272,15 +272,15 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
 	if( Mix_PlayingMusic() ) {
 		err = SDL_RenderCopy(renderer, imagesMenus->sound_on, NULL, &rectMenus->rect_sound);
 		if(err == -1) {
-				fprintf(stderr, "Erreur SDL_RenderCopy, dans afficherMenu : %s\n", SDL_GetError());
-				return err;
+			fprintf(stderr, "Erreur SDL_RenderCopy, dans afficherMenu : %s\n", SDL_GetError());
+			return err;
 		}
 	}
 	else {
 		err = SDL_RenderCopy(renderer, imagesMenus->sound_off, NULL, &rectMenus->rect_sound);
 		if(err == -1) {
-				fprintf(stderr, "Erreur SDL_RenderCopy, dans afficherMenu : %s\n", SDL_GetError());
-				return err;
+			fprintf(stderr, "Erreur SDL_RenderCopy, dans afficherMenu : %s\n", SDL_GetError());
+			return err;
 		}
 	}
 	return 0;
@@ -288,14 +288,23 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
 
 
 
+/**
+ * \fn int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, affichage_t menu_actuel )
+ * \brief affiche le menu à l'écran, en fonction de menu_actuel
+ * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
+ * \param renderer pointeur de SDL_Renderer, nécessaire
+ * \param imagesMenus structure contenant des pointeurs sur toutes les textures d'images des menus
+ * \param rectMenus structure contenant les rectangles où placer les images pour les menus
+ * \param actuel type enum représentant le menu à afficher en premier
+ * \param musique pointeur de Mix_Music, pour relancer la musique quand on appuie sur le bouton Mute une 2e fois
+ * \return 0 pour un succès, -1 pour une erreur
+ */
 int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, affichage_t* actuel, Mix_Music* musique ) {
 
 
 	// La largeur et la hauteur de la fenêtre du menu
 	int largeurWindow, 
-		hauteurWindow, 
-		err = 0, 
-		continuer = 1;
+		hauteurWindow;
 
 	SDL_Event event;
 	SDL_Point clic;
@@ -308,7 +317,10 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 	//initialisations
 	SDL_GetWindowSize(pWindow, &largeurWindow, &hauteurWindow);
 
-	initStructTexturesMenu(	renderer, imagesMenus );
+	if( initStructTexturesMenu( renderer, imagesMenus ) == 0 ) {
+		fprintf(stderr, "Erreur loadImage, dans initStructTexturesMenu : %s\n", SDL_GetError());
+		return -1;
+	}
 
 	initStructRectMenu(	renderer, &rectMenus, largeurWindow, hauteurWindow );
 
@@ -317,7 +329,10 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 
 	// Boucle principale du menu
 
-	while(continuer) {
+	while( *actuel == principal 
+		|| *actuel == regles 
+		|| *actuel == mode
+		|| *actuel == fin ) {
 		// Gestion des événements
 		SDL_WaitEventTimeout(&event, 200);
 
@@ -329,7 +344,7 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 
 		if (event.type == SDL_QUIT) {
 			// L'utilisateur a cliqué sur le bouton de fermeture de la fenêtre
-			continuer = 0;
+			*actuel = quitter;
 		}
 		else if (event.type == SDL_MOUSEBUTTONDOWN) 
 		{
@@ -344,7 +359,6 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 					if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_quitter) ) {
 						// Le bouton "Quitter" a été cliqué
 						*actuel = quitter;
-						continuer = 0;
 					}
 					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_jouer) ) {
 						// Le bouton "Jouer" a été cliqué
@@ -372,12 +386,10 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_mode_normal) ) {
 						// Le bouton "Mode Classique" a été cliqué
 						*actuel = modeNormal;
-						continuer = 0;
 					}
 					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_mode_creux) ) {
 						// Le bouton "Mode Creux" a été cliqué
 						*actuel = modeCreux;
-						continuer = 0;
 					}
 
 					break;
@@ -389,12 +401,12 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_quitter) ) {
 						// Le bouton "Quitter" a été cliqué
 						*actuel = quitter;
-						continuer = 0;
 					}
 					break;
 				
 				case modeNormal:
 				case modeCreux:
+				case quitter:
 				default:
 					printf("Mauvaise valeur d'état dans (*actuel) : %d\n", *actuel);
 			}
@@ -411,11 +423,15 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 				else
 				{
 					// Si la musique est inactive, on la joue en boucle
-					Mix_PlayMusic(musique, -1);
+					if( Mix_PlayMusic(musique, -1) == -1 ) {
+						fprintf(stderr, "Erreur Mix_PlayMusic, dans gererMenus : %s\n", Mix_GetError());
+						return -1;
+					}
+
 				}
 			}
 		}
 	}
 
-	return err;
+	return 0;
 }

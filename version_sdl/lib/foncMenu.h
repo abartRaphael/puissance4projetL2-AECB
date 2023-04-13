@@ -120,6 +120,17 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
 
 
 
+/**
+ * \fn int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menus_t* rectMenus, affichage_t menu_actuel )
+ * \brief affiche le menu à l'écran, en fonction de menu_actuel
+ * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
+ * \param renderer pointeur de SDL_Renderer, nécessaire
+ * \param imagesMenus structure contenant des pointeurs sur toutes les textures d'images des menus
+ * \param rectMenus structure contenant les rectangles où placer les images pour les menus
+ * \param actuel type enum représentant le menu à afficher en premier
+ * \param musique pointeur de Mix_Music, pour relancer la musique quand on appuie sur le bouton Mute une 2e fois
+ * \return 0 pour un succès, -1 pour une erreur
+ */
 int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, affichage_t* actuel, Mix_Music* musique );
 
 
