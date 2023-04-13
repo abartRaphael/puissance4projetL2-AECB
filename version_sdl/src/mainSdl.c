@@ -50,11 +50,15 @@ int main(int argc, char** argv)
 
 	// Initialisation de SDL_mixer
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+
 		fprintf(stderr, "Erreur d'initialisation de SDL_mixer : %s\n", Mix_GetError());
-		goto Quit;
+		//goto Quit;
+	}
+	else {
+		// bonne initialisation
+		musique = loadMusique("../musique/musique.mp3");
 	}
 
-	musique = loadMusique("../musique/musique.mp3");
 
 //====
 
@@ -66,6 +70,7 @@ int main(int argc, char** argv)
 	while(actuel != quitter) {
 		if( gererMenus( pWindow, renderer, &imagesMenus, &actuel, musique ) == -1 ) {
 			fprintf(stderr, "Erreur gererMenus() : %s\n", SDL_GetError());
+			goto Quit;
 		}
 
 
@@ -86,7 +91,8 @@ Quit:
 
 	freeLesImagesMenu(&imagesMenus);
 
-	Mix_FreeMusic(musique);
+	if(musique)
+		Mix_FreeMusic(musique);
 	Mix_CloseAudio();
 
 	if(renderer) {
