@@ -96,14 +96,13 @@ void freeLesImagesMenu(images_menus_t* imagesMenus);
 
 
 /**
- * \fn int initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int largeurWindow, int hauteurWindow ) {
- * \brief crée les images des menus et les affecte à une structure images_menus_t
+ * \fn int initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int largeurWindow, int hauteurWindow )
+ * \brief crée les rectangles où placer les images des menus et les ajoute à une structure rect_menus_t
+ * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param rectMenus structure contenant les rectangles où placer les images pour les menus, à remplir
- * \param largeurWindow largeur actuelle de la fenêtre
- * \param hauteurWindow hauteur actuelle de la fenêtre
  */
-void initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int largeurWindow, int hauteurWindow );
+void initStructRectMenu( SDL_Window* pWindow, SDL_Renderer* renderer, rect_menus_t* rectMenus );
 
 
 
