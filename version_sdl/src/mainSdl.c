@@ -73,11 +73,9 @@ int main(int argc, char** argv)
 			goto Quit;
 		}
 
-
 		if( actuel != quitter ) {
 
 			demarrer_partie(pWindow, renderer, actuel);
-			actuel = fin;
 		}
 	}
 

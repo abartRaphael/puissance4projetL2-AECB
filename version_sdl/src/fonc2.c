@@ -605,8 +605,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 				coordonneesPions[LIGNES][COLONNES]; //coordonnées où insérer les images des pions
 	
 	SDL_Event event;
-	SDL_bool	quit = SDL_FALSE, // variable pour quitter la boucle d'évènement (fermer le programme)
-				play = SDL_FALSE; // vrai quand un joueur a joué (cliqué)
+	SDL_bool play = SDL_FALSE; // vrai quand un joueur a joué (cliqué)
 
 
 	int largeurWindow, 
@@ -682,14 +681,14 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 
 
 		// * Boucle d'attente d'action d'utilisateur
-		while(!quit && !play)
+		while(!play)
 		{
 			// * Gestion_Évènements
 			SDL_WaitEventTimeout(&event, 200);
 
 			// * Analyse_Évènements
 			if(event.type == SDL_QUIT) {
-				quit = SDL_TRUE;
+				typeDePartie = quitter;
 				goto Quit;
 			}
 			else if(event.window.event == SDL_WINDOWEVENT_RESIZED) {
@@ -786,21 +785,18 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 		play = SDL_FALSE;
 
 
-		if(!quit) {
 			
-			ajoutPion(grilleDeValeurs, colonneCliquee-1, pionJoueur);
+		ajoutPion(grilleDeValeurs, colonneCliquee-1, pionJoueur);
 
-			nbTours++;
-		}
+		nbTours++;
 
 		//sauvegardeAuto(grilleDeValeurs, pionJoueur, nbTours);
+		
 
 
 		// * la partie s'arrête quand il y a un 4 à la suite, 
 		// * quand les 42 pions ont été joués (tour n°42), 
-		// * ou quand la fenêtre se ferme
-	}while(!quit
-		&& !estQuatreALaSuite(grilleDeValeurs, colonneCliquee-1, pionJoueur) 
+	}while(!estQuatreALaSuite(grilleDeValeurs, colonneCliquee-1, pionJoueur) 
 		&& nbTours < (LIGNES*COLONNES));
 
 
@@ -810,30 +806,29 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 	SDL_RenderPresent(renderer);
 	SDL_Delay(1000); //attendre 1s
 	
-	if(!quit) {
-		if(nbTours == (LIGNES*COLONNES)) {
-			// * quand match nul
-			printf("match nul\n");
-		}
-		else {
-			// * quand un gagnant
-			printf("les ");
-			switch(pionJoueur.couleur) {
-					case rouge: printf("rouges(X)"); break;
-					case jaune: printf("jaunes(O)"); break;
-					default : printf("Impossible de voir ce message\n");
-				}
-			printf(" ont gagnés\n\n");
-		}
-
-		//supprimerPartie();
-		cpt_rouge_creuse = NB_CREUSE;
-		cpt_rouge_bloquante = NB_BLOQUANTE;
-		cpt_jaune_creuse = NB_CREUSE;
-		cpt_jaune_bloquante = NB_BLOQUANTE;
+	
+	if(nbTours == (LIGNES*COLONNES)) {
+		// * quand match nul
+		printf("match nul\n");
+	}
+	else {
+		// * quand un gagnant
+		printf("les ");
+		switch(pionJoueur.couleur) {
+				case rouge: printf("rouges(X)"); break;
+				case jaune: printf("jaunes(O)"); break;
+				default : printf("Impossible de voir ce message\n");
+			}
+		printf(" ont gagnés\n\n");
 	}
 
-	
+	//supprimerPartie();
+	cpt_rouge_creuse = NB_CREUSE;
+	cpt_rouge_bloquante = NB_BLOQUANTE;
+	cpt_jaune_creuse = NB_CREUSE;
+	cpt_jaune_bloquante = NB_BLOQUANTE;
+
+	typeDePartie = fin;
 
 
 // * Quitter
