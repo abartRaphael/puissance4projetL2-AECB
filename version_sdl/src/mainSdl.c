@@ -75,7 +75,7 @@ int main(int argc, char** argv)
 
 		if( actuel != quitter ) {
 
-			demarrer_partie(pWindow, renderer, actuel);
+			demarrer_partie(pWindow, renderer, &actuel);
 		}
 	}
 

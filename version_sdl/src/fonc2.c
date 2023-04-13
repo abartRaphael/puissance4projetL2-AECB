@@ -582,13 +582,13 @@ int decrementer_pion_special( t_pion pion ) {
 
 
 /**
- * \fn int demarrer_partie(SDL_Window* pWindow, SDL_Renderer *renderer, t_partie typeDePartie )
- * \brief Lance une partie en mode normal
+ * \fn int demarrer_partie(SDL_Window* pWindow, SDL_Renderer *renderer, t_partie* typeDePartie )
+ * \brief Lance une partie de puissance 4 normale ou en mode creux
  * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
  * \param renderer pointeur de SDL_Renderer, nécessaire pour les fonctions SDL d'affichage
  * \param typeDePartie type enum, vaut soit modeNormal (1), soit modeCreux (2)
  */
-int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t typeDePartie ) {
+int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t* typeDePartie ) {
 
 	// variables sdl
 
@@ -638,7 +638,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 	initCoordonneesPions(   coordonneesPions, 
 							largeurRectGrille, offsetGrilleX, offsetGrilleY);
 
-	initStructTexturesPieces( renderer, &images, typeDePartie );
+	initStructTexturesPieces( renderer, &images, *typeDePartie );
 	
 
 
@@ -688,7 +688,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 
 			// * Analyse_Évènements
 			if(event.type == SDL_QUIT) {
-				typeDePartie = quitter;
+				*typeDePartie = quitter;
 				goto Quit;
 			}
 			else if(event.window.event == SDL_WINDOWEVENT_RESIZED) {
@@ -736,7 +736,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 					// * click gauche = pion plein
 					pionJoueur.type = pleine;
 				}
-				else if(typeDePartie == modeCreux
+				else if(*typeDePartie == modeCreux
 					&&	event.button.button == SDL_BUTTON_RIGHT) {
 					//printf("clic droit\n");
 
@@ -745,7 +745,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 
 					// * vérifier si le joueur possède encore le pion qu'il veut jouer
 				}
-				else if(typeDePartie == modeCreux
+				else if(*typeDePartie == modeCreux
 					&&	event.button.button == SDL_BUTTON_MIDDLE) {
 					//printf("clic molette\n");
 
@@ -828,7 +828,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 	cpt_jaune_creuse = NB_CREUSE;
 	cpt_jaune_bloquante = NB_BLOQUANTE;
 
-	typeDePartie = fin;
+	*typeDePartie = fin;
 
 
 // * Quitter
