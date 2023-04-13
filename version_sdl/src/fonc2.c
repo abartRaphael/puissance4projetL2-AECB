@@ -243,9 +243,10 @@ int ajoutPion(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion){
  * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, int c, t_pion pion) {
+int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, int c, t_pion pion, int suite[4]) {
 
-	int pionsALaSuite=0;
+	int pionsALaSuite=0, 
+		est4ALaSuite=0;
 
 	//est-ce que le pion du centre est de la même couleur que celle du joueur qui a joué, déjà
 	if(grilleDeValeurs[l][3].couleur == pion.couleur || grilleDeValeurs[l][3].couleur == rougeJaune) {
@@ -256,16 +257,31 @@ int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, in
 			if(grilleDeValeurs[l][i].couleur == pion.couleur 
 			|| grilleDeValeurs[l][i].couleur == rougeJaune 
 			|| grilleDeValeurs[l][i].couleur == jauneRouge ) {
+
+				if(pionsALaSuite == 0) {
+					// sauvegarde la première case du quatre à la suite
+					suite[0] = l;
+					suite[1] = i;
+				}
+
 				pionsALaSuite++;
+
+				if(pionsALaSuite > 3) {
+					// sauvegarde la dernière case du quatre à la suite
+					suite[2] = l;
+					suite[3] = i;
+					est4ALaSuite=1;
+				}
 			}
 			else {
 				pionsALaSuite = 0;
 			}
 
-			if(pionsALaSuite > 3) {
-				return 1;
-			}
 		}
+	}
+
+	if(est4ALaSuite) {
+		return 1;
 	}
 
 	return 0;
@@ -279,9 +295,10 @@ int quatreALaSuiteHorizontal(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, in
  * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion) {
+int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion, int suite[4]) {
 
-	int pionsALaSuite=0;
+	int pionsALaSuite=0, 
+		est4ALaSuite=0;
 
 	//parcourir la ligne où le dernier pion a été joué
 	for(int i=0 ; i<LIGNES ; i++) {
@@ -289,15 +306,29 @@ int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pi
 		if(grilleDeValeurs[i][c].couleur == pion.couleur 
 		|| grilleDeValeurs[i][c].couleur == rougeJaune
 		|| grilleDeValeurs[i][c].couleur == jauneRouge ) {
+
+			if(pionsALaSuite == 0) {
+				// sauvegarde la première case du quatre à la suite
+				suite[0] = i;
+				suite[1] = c;
+			}
+
 			pionsALaSuite++;
+
+			if(pionsALaSuite > 3) {
+				// sauvegarde la dernière case du quatre à la suite
+				suite[2] = i;
+				suite[3] = c;
+				est4ALaSuite=1;
+			}
 		}
 		else {
 			pionsALaSuite = 0;
 		}
+	}
 
-		if(pionsALaSuite > 3) {
-			return 1;
-		}
+	if(est4ALaSuite) {
+		return 1;
 	}
 	
 	return 0;
@@ -312,9 +343,10 @@ int quatreALaSuiteVertical(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pi
  * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, int c, t_pion pion) {
+int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, int c, t_pion pion, int suite[4]) {
 
 	int pionsALaSuite=0, 
+		est4ALaSuite=0, 
 		x=l,
 		y=c;
 
@@ -338,7 +370,21 @@ int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, in
 		if(grilleDeValeurs[x][y].couleur == pion.couleur 
 		|| grilleDeValeurs[x][y].couleur == rougeJaune
 		|| grilleDeValeurs[x][y].couleur == jauneRouge ) {
+
+			if(pionsALaSuite == 0) {
+				// sauvegarde la première case du quatre à la suite
+				suite[0] = x;
+				suite[1] = y;
+			}
+
 			pionsALaSuite++;
+
+			if(pionsALaSuite > 3) {
+				// sauvegarde la dernière case du quatre à la suite
+				suite[2] = x;
+				suite[3] = y;
+				est4ALaSuite=1;
+			}
 		}
 		else {
 			pionsALaSuite = 0;
@@ -347,9 +393,10 @@ int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, in
 		x++;
 		y++;
 
-		if(pionsALaSuite > 3) {
-			return 1;
-		}
+	}
+
+	if(est4ALaSuite) {
+		return 1;
 	}
 
 	return 0;
@@ -366,9 +413,10 @@ int quatreALaSuiteDiagonale1(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, in
  * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, int c, t_pion pion) {
+int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, int c, t_pion pion, int suite[4]) {
 
 	int pionsALaSuite=0, 
+		est4ALaSuite=0, 
 		x=l,
 		y=c; 
 
@@ -394,7 +442,21 @@ int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, in
 		if(grilleDeValeurs[x][y].couleur == pion.couleur 
 		|| grilleDeValeurs[x][y].couleur == rougeJaune 
 		|| grilleDeValeurs[x][y].couleur == jauneRouge ) {
+
+			if(pionsALaSuite == 0) {
+				// sauvegarde la première case du quatre à la suite
+				suite[0] = x;
+				suite[1] = y;
+			}
+
 			pionsALaSuite++;
+
+			if(pionsALaSuite > 3) {
+				// sauvegarde la dernière case du quatre à la suite
+				suite[2] = x;
+				suite[3] = y;
+				est4ALaSuite=1;
+			}
 		}
 		else {
 			pionsALaSuite = 0;
@@ -403,9 +465,10 @@ int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, in
 		x++;
 		y--;
 
-		if(pionsALaSuite > 3) {
-			return 1;
-		}
+	}
+
+	if(est4ALaSuite) {
+		return 1;
 	}
 
 	return 0;
@@ -421,7 +484,7 @@ int quatreALaSuiteDiagonale2(t_pion grilleDeValeurs[LIGNES][COLONNES], int l, in
  * \param pion le pion joué
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int estQuatreALaSuite(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion) {
+int estQuatreALaSuite(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pion, int suite[4]) {
 
 	int l;//ligne où se trouve le dernier pion joué
 
@@ -433,10 +496,10 @@ int estQuatreALaSuite(t_pion grilleDeValeurs[LIGNES][COLONNES], int c, t_pion pi
 	}
 
 
-	return quatreALaSuiteHorizontal(grilleDeValeurs, l, c, pion)
-	|| quatreALaSuiteVertical(grilleDeValeurs, c, pion)
-	|| quatreALaSuiteDiagonale1(grilleDeValeurs, l, c, pion)
-	|| quatreALaSuiteDiagonale2(grilleDeValeurs, l, c, pion);
+	return quatreALaSuiteHorizontal(grilleDeValeurs, l, c, pion, suite)
+	|| quatreALaSuiteVertical(grilleDeValeurs, c, pion, suite)
+	|| quatreALaSuiteDiagonale1(grilleDeValeurs, l, c, pion, suite)
+	|| quatreALaSuiteDiagonale2(grilleDeValeurs, l, c, pion, suite);
 }
 
 
@@ -581,6 +644,19 @@ int decrementer_pion_special( t_pion pion ) {
 
 
 
+void afficherLigneGagnant(SDL_Renderer* renderer, SDL_Rect coordonneesPions[LIGNES][COLONNES], int suite[4], SDL_Color arrierePlan)
+{
+	setDrawColor(renderer, arrierePlan);
+
+	SDL_RenderDrawLine(renderer, 
+						coordonneesPions[ suite[0] ][ suite[1] ].x + coordonneesPions[ suite[0] ][ suite[1] ].w/2, 
+						coordonneesPions[ suite[0] ][ suite[1] ].y + coordonneesPions[ suite[0] ][ suite[1] ].h/2,
+						coordonneesPions[ suite[2] ][ suite[3] ].x + coordonneesPions[ suite[2] ][ suite[3] ].w/2, 
+						coordonneesPions[ suite[2] ][ suite[3] ].y + coordonneesPions[ suite[2] ][ suite[3] ].h/2);
+}
+
+
+
 /**
  * \fn int demarrer_partie(SDL_Window* pWindow, SDL_Renderer *renderer, t_partie* typeDePartie )
  * \brief Lance une partie de puissance 4 normale ou en mode creux
@@ -616,7 +692,8 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t* t
 		
 		colonneCliquee, 
 		nbTours=0, 
-		restePionSpecial=1;
+		restePionSpecial=1, 
+		suite[4];
 
 	t_pion	grilleDeValeurs[LIGNES][COLONNES], // représentation de la grille de jeu dans le code (pour les fonctions) avec la structure t_pion
 			pionJoueur;
@@ -796,13 +873,15 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t* t
 
 		// * la partie s'arrête quand il y a un 4 à la suite, 
 		// * quand les 42 pions ont été joués (tour n°42), 
-	}while(!estQuatreALaSuite(grilleDeValeurs, colonneCliquee-1, pionJoueur) 
+	}while(!estQuatreALaSuite(grilleDeValeurs, colonneCliquee-1, pionJoueur, suite) 
 		&& nbTours < (LIGNES*COLONNES));
 
 
 
 	// * fin de partie
 	afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images);
+	// * dessine trait sur le quatre à la suite
+	afficherLigneGagnant(renderer, coordonneesPions, suite, arrierePlan);
 	SDL_RenderPresent(renderer);
 	SDL_Delay(1000); //attendre 1s
 	

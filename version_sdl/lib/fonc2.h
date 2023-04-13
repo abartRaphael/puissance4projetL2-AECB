@@ -104,7 +104,7 @@ int ajoutPion(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur);
  * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteHorizontal(t_pion grille[LIGNES][COLONNES], int l, int c, t_pion couleur);
+int quatreALaSuiteHorizontal(t_pion grille[LIGNES][COLONNES], int l, int c, t_pion couleur, int suite[4]);
 
 /**
  * \fn int quatreALaSuiteVertical(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur)
@@ -114,7 +114,7 @@ int quatreALaSuiteHorizontal(t_pion grille[LIGNES][COLONNES], int l, int c, t_pi
  * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteVertical(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur);
+int quatreALaSuiteVertical(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur, int suite[4]);
 
 /**
  * \fn int quatreALaSuiteDiagonale1(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur)
@@ -125,7 +125,7 @@ int quatreALaSuiteVertical(t_pion grille[LIGNES][COLONNES], int c, t_pion couleu
  * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteDiagonale1(t_pion grille[LIGNES][COLONNES], int l, int c, t_pion couleur);
+int quatreALaSuiteDiagonale1(t_pion grille[LIGNES][COLONNES], int l, int c, t_pion couleur, int suite[4]);
 
 /**
  * \fn int quatreALaSuiteDiagonale2(t_pion grille[LIGNES][COLONNES], int c, int l, t_pion couleur)
@@ -136,7 +136,7 @@ int quatreALaSuiteDiagonale1(t_pion grille[LIGNES][COLONNES], int l, int c, t_pi
  * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int quatreALaSuiteDiagonale2(t_pion grille[LIGNES][COLONNES], int l, int c, t_pion couleur);
+int quatreALaSuiteDiagonale2(t_pion grille[LIGNES][COLONNES], int l, int c, t_pion couleur, int suite[4]);
 
 /**
  * \fn int estQuatreALaSuite(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur)
@@ -146,7 +146,7 @@ int quatreALaSuiteDiagonale2(t_pion grille[LIGNES][COLONNES], int l, int c, t_pi
  * \param couleur la couleur du pion du joueur qui le joue (rouge/jaune)
  * \return retourne 1 s'il y a un 4 la la suite, 0 sinon
  */
-int estQuatreALaSuite(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur);
+int estQuatreALaSuite(t_pion grille[LIGNES][COLONNES], int c, t_pion couleur, int suite[4]);
 
 /**
  * \fn void sauvegardeAuto(t_pion grille[LIGNES][COLONNES], t_pion couleur, int nbTours)
