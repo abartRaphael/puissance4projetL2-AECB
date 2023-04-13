@@ -105,7 +105,10 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
 
 
 
-int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, affichage_t* actuel );
+
+
+
+Mix_Music* loadMusique(const char* path);
 
 
 

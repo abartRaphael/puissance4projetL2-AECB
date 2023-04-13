@@ -2,7 +2,7 @@
 
 #include <SDL2/SDL.h>
 //#include <SDL2/SDL_image.h>
-//#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_mixer.h>
 
 #include "../lib/foncSdl.h"
 #include "../lib/foncMenu.h"
@@ -39,8 +39,8 @@ SDL_Rect creerRect(int x, int y, int w, int h){
 }
 
 
-/*
-Mix_Music* loadMusique(char* path)
+
+Mix_Music* loadMusique(const char* path)
 {
 	// "../musique/musique.mp3"
 
@@ -49,10 +49,11 @@ Mix_Music* loadMusique(char* path)
 		printf("Erreur de chargement de la musique : %s\n", Mix_GetError());
 		exit(EXIT_FAILURE);
 	}
-
 	//Mix_PlayMusic(musique, -1);
+
+	return musique;
 }
-*/
+
 
 
 /**
@@ -249,10 +250,14 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
 				return err;
 			}
 			break;
+
+		case modeNormal:
+		case modeCreux:
+		default:
+			printf("Mauvaise valeur d'état dans (*menu_actuel) : %d\n", *menu_actuel);
 	}
 
-	//if(musique_active)
-	if(1) {
+	if( Mix_PlayingMusic() ) {
 		err = SDL_RenderCopy(renderer, imagesMenus->sound_on, NULL, &rectMenus->rect_sound);
 		if(err == -1) {
 				fprintf(stderr, "Erreur SDL_RenderCopy, dans afficherMenu : %s\n", SDL_GetError());
@@ -271,15 +276,14 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
 
 
 
-int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, affichage_t* actuel ) {
+int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, affichage_t* actuel, Mix_Music* musique ) {
 
 
 	// La largeur et la hauteur de la fenêtre du menu
 	int largeurWindow, 
 		hauteurWindow, 
 		err = 0, 
-		continuer = 1, 
-		musique_active = 1;
+		continuer = 1;
 
 	SDL_Event event;
 	SDL_Point clic;
@@ -376,21 +380,26 @@ int menuPrincipal( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* 
 						continuer = 0;
 					}
 					break;
+				
+				case modeNormal:
+				case modeCreux:
+				default:
+					printf("Mauvaise valeur d'état dans (*actuel) : %d\n", *actuel);
 			}
 			
 		
-			// dans tous les cas
+			// dans tous les cas:
 			if( SDL_PointInRect(&clic, &rectMenus.rect_sound) ) {
 				// Le bouton "mute" à été cliqué
-				if(musique_active)
+				if( Mix_PlayingMusic() )
 				{
-					//Mix_HaltMusic(); // Si la musique est active, on la coupe
-					musique_active = 0;
+					// Si la musique est active, on la coupe
+					Mix_HaltMusic();
 				}
 				else
 				{
-					//Mix_PlayMusic(musique, -1); // Si la musique est inactive, on la joue en boucle
-					musique_active = 1;
+					// Si la musique est inactive, on la joue en boucle
+					Mix_PlayMusic(musique, -1);
 				}
 			}
 		}

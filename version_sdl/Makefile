@@ -27,7 +27,7 @@ DIRS	 = $(OBJDIR) $(BINDIR)
 SDL_LIB_DIR=/usr/lib/x86_64-linux-gnu
 SDL_INC_DIR=/usr/include/
 
-LIBS=-L$(SDL_LIB_DIR) -lSDL2 
+LIBS=-L$(SDL_LIB_DIR) -lSDL2 -lSDL_mixer
 INCLUDE_SDL=-I$(SDL_INC_DIR) 
 
 .PHONY: DIRS
