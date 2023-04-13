@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 	
 
 	//créer fenêtre ET renderer en même temps
-	if( init(&pWindow, &renderer, 640, 480) != 0 )
+	if( init(&pWindow, &renderer, 666, 533) != 0 )
 	{
 		goto Quit;
 	}
