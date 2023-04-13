@@ -144,7 +144,7 @@ void freeLesImagesMenu(images_menus_t* imagesMenus) {
 
 
 /**
- * \fn int initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int largeurWindow, int hauteurWindow )
+ * \fn int initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int l, int h )
  * \brief crée les rectangles où placer les images des menus et les ajoute à une structure rect_menus_t
  * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
  * \param renderer pointeur de SDL_Renderer, nécessaire
@@ -153,24 +153,32 @@ void freeLesImagesMenu(images_menus_t* imagesMenus) {
 void initStructRectMenu( SDL_Window* pWindow, SDL_Renderer* renderer, rect_menus_t* rectMenus ) {
 
 	// La largeur et la hauteur de la fenêtre du menu
-	int largeurWindow, 
-		hauteurWindow;
+	int l, 
+		h;
 
-	SDL_GetWindowSize(pWindow, &largeurWindow, &hauteurWindow);
+	SDL_GetWindowSize(pWindow, &l, &h);
 
-	rectMenus->rect_bouton_back = 				creerRect(10, 10, 40, 40); // Position de l'icône en haut à gauche de la fenêtre
-	rectMenus->rect_bouton_contre_joueur = 		creerRect(largeurWindow/4, 100, largeurWindow/2, hauteurWindow/3);
-	rectMenus->rect_bouton_contre_ordinateur = 	creerRect(largeurWindow/4, 200, largeurWindow/2, hauteurWindow/3); 
-	rectMenus->rect_bouton_jouer = 				creerRect(largeurWindow/4, 80, largeurWindow/2, hauteurWindow/3);
-	rectMenus->rect_bouton_mode_creux = 		creerRect(largeurWindow/4, 200, largeurWindow/2, hauteurWindow/3);
-	rectMenus->rect_bouton_mode_normal = 		creerRect(largeurWindow/4, 100, largeurWindow/2, hauteurWindow/3);
-	rectMenus->rect_bouton_quitter = 			creerRect(largeurWindow/4, 160, largeurWindow/2, hauteurWindow/3);    
-	rectMenus->rect_bouton_regles = 			creerRect(largeurWindow/4, 240, largeurWindow/2, hauteurWindow/3);
-	rectMenus->rect_bouton_rejouer = 			creerRect(largeurWindow/4, 80, largeurWindow/2, hauteurWindow/3);
-	rectMenus->rect_sound = 					creerRect(580, 420, 50, 50); // Position de l'icône en bas à droite de la fenêtre
+	rectMenus->rect_bouton_jouer = 				creerRect(l/4,	h/5+10,		l/2,	h/6);
+	rectMenus->rect_bouton_regles = 			creerRect(l/4,	(h/5)*2+10,	l/2,	h/6);
+	rectMenus->rect_bouton_quitter = 			creerRect(l/4,	(h/5)*3+10,	l/2,	h/6);    
 
+	rectMenus->rect_bouton_mode_normal = 		creerRect(l/4,	h/4+30,		l/2,	h/6);
+	rectMenus->rect_bouton_mode_creux = 		creerRect(l/4,	(h/4)*2+30,	l/2,	h/6);
+
+	rectMenus->rect_bouton_rejouer = 			creerRect(l/4,	h/4+30,		l/2,	h/6);
+	rectMenus->rect_bouton_quitter_fin = 		creerRect(l/4,	(h/4)*2+30,	l/2,	h/6);    
+
+	rectMenus->rect_bouton_back = 				creerRect(10,	10,			40,		40); // Position de l'icône en haut à gauche de la fenêtre
+
+	rectMenus->rect_sound = 					creerRect(l-60,	h-60,		60,		60); // Position de l'icône en bas à droite de la fenêtre
+
+	// inutilisé
+	//rectMenus->rect_bouton_contre_joueur = 		creerRect(l/4,	h/5,	l/4,	h/6);
+	//rectMenus->rect_bouton_contre_ordinateur = 	creerRect(l/4,	(h/5)*2,l/2,	h/6); 
+
+	// pas utile
 	//SDL_Rect bouton_sound_off_rect = 			creerRect(580, 420, 50, 50); // Position de l'icône en bas à droite de la fenêtre
-	//SDL_Rect regles_rect = 					creerRect(0, 0, largeurWindow, hauteurWindow);
+	//SDL_Rect regles_rect = 					creerRect(0, 0, l, h);
 }
 
 
@@ -261,7 +269,7 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
 				fprintf(stderr, "Erreur SDL_RenderCopy, dans afficherMenu : %s\n", SDL_GetError());
 				return err;
 			}
-			err = SDL_RenderCopy(renderer, imagesMenus->bouton_quitter, NULL, &rectMenus->rect_bouton_quitter);
+			err = SDL_RenderCopy(renderer, imagesMenus->bouton_quitter, NULL, &rectMenus->rect_bouton_quitter_fin);
 			if(err == -1) {
 				fprintf(stderr, "Erreur SDL_RenderCopy, dans afficherMenu : %s\n", SDL_GetError());
 				return err;
@@ -344,35 +352,23 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 		SDL_RenderPresent(renderer);
 
 		if (event.type == SDL_QUIT) {
-			// * L'utilisateur a cliqué sur le bouton de fermeture de la fenêtre
+			// L'utilisateur a cliqué sur le bouton de fermeture de la fenêtre
 			*actuel = quitter;
 		}
 		else if(event.window.event == SDL_WINDOWEVENT_RESIZED) {
-				// * la fenêtre a été redimensionnée
+			// * la fenêtre a été redimensionnée
 
-				//printf("event.window.data1 = %d\nevent.window.data2 = %d",event.window.data1,event.window.data2);
+			//printf("event.window.data1 = %d\nevent.window.data2 = %d",event.window.data1,event.window.data2);
 
-				// * recalculer les dimensions de la grille
-				dimensionGrilleDynamique( event.window.data1, event.window.data2, &largeurRectGrille, &offsetGrilleX, &offsetGrilleY);
+			// * recalculer les rectangles où placer les images
+			initStructRectMenu(	pWindow, renderer, &rectMenus );
 
-				// * réinitialiser les valeurs de la grille dans le damier
-				initDamier( damier, renderer, 
-				largeurRectGrille, offsetGrilleX, offsetGrilleY );
+			// * réafficher le menu
+			if( afficherMenu( renderer, imagesMenus, &rectMenus, actuel ) == -1 ) {
+				return -1;
+			}
 
-				initCoordonneesPions(   coordonneesPions, 
-							largeurRectGrille, offsetGrilleX, offsetGrilleY);
-
-				
-				// * réafficher arrière-plan de la fenêtre
-				setDrawColor(renderer, arrierePlan);
-				SDL_RenderClear(renderer);
-				// * réafficher damier
-				afficherDamier( renderer, damier, &images, couleurDamier );
-				// * réafficher les pions
-				afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images);
-
-
-				SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
+			SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
 		}
 		else if (event.type == SDL_MOUSEBUTTONDOWN) 
 		{
@@ -426,7 +422,7 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 						// Le bouton "Rejouer" a été cliqué
 						*actuel = mode;
 					}
-					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_quitter) ) {
+					else if( SDL_PointInRect(&clic, &rectMenus.rect_bouton_quitter_fin) ) {
 						// Le bouton "Quitter" a été cliqué
 						*actuel = quitter;
 					}

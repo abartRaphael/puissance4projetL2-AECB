@@ -54,6 +54,7 @@ typedef struct rect_menus_s {
 	SDL_Rect rect_bouton_mode_creux;
 	SDL_Rect rect_bouton_mode_normal;
 	SDL_Rect rect_bouton_quitter;
+	SDL_Rect rect_bouton_quitter_fin;
 	SDL_Rect rect_bouton_regles;
     SDL_Rect rect_bouton_rejouer;
     SDL_Rect rect_sound;
