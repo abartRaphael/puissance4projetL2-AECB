@@ -467,7 +467,7 @@ int contre_ordinateur(){
 	srand(time(NULL));
 	initGrille(grille);
 	
-	printf("Quelle couleur souhaitez-vous ? (r pour rouge) (j pour jaune) ");
+	printf("Quelle couleur souhaitez-vous ? (r pour rouge) (j pour jaune) : ");
 	scanf("%c", &choix);
 	
 	if( choix == 'r'){
