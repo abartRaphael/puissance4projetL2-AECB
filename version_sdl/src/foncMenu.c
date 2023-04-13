@@ -53,7 +53,7 @@ Mix_Music* loadMusique(const char* path)
 	Mix_Music* musique = Mix_LoadMUS(path);
 	if (musique == NULL) {
 		printf("Erreur de chargement de la musique : %s\n", Mix_GetError());
-		exit(EXIT_FAILURE);
+		return NULL;
 	}
 
 	return musique;
