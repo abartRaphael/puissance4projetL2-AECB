@@ -20,7 +20,6 @@ int main(){
 	
 	printf("Quel mode :\n\t1 : Mode normal\n\t2 : Mode creux\n\t3 : Mode contre l'ordinateur\n");
 	scanf("%i", &choix);
-	
 	if (choix == 1){
 		mode_normal();
 	}else if(choix == 2){
