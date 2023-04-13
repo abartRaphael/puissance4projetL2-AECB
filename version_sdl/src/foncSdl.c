@@ -329,6 +329,16 @@ int initStructTexturesPieces( SDL_Renderer* renderer, images_pieces_t* images, a
 	
 	// autre solution -> IMG_Load();
 
+	images->pionRougePlein = NULL;
+	images->pionJaunePlein = NULL;
+	images->caseVide = NULL;
+	images->pionRougeCreux = NULL;
+	images->pionJauneCreux = NULL;
+	images->pionRougeBloquant = NULL;
+	images->pionJauneBloquant = NULL;
+	images->pionRougeJauneBloquant = NULL;
+	images->pionJauneRougeBloquant = NULL;
+
 	// charger les images de pièces pleines (rouge et jaune)
 	images->pionRougePlein = loadImage("img/imagePieces/pionRouge.bmp",renderer);
 	images->pionJaunePlein = loadImage("img/imagePieces/pionJaune.bmp",renderer);
