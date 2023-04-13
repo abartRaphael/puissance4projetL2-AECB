@@ -596,7 +596,7 @@ int demarrer_partie( SDL_Window* pWindow, SDL_Renderer* renderer, affichage_t ty
 
 	// variables de couleur
 	SDL_Color	noir = {0, 0, 0, 255}, 
-				blanc = {255, 255, 255, 255}, 
+				//blanc = {255, 255, 255, 255}, 
 				bleu = {0, 0, 255, 255}, 
 				couleurDamier = bleu, 
 				arrierePlan = noir; // couleur d'arrière-plan de la fenêtre
