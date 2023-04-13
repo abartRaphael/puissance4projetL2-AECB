@@ -178,11 +178,11 @@ int initDamier( SDL_Rect damier[LIGNES*COLONNES], SDL_Renderer* renderer,
 			damier[indice].w = largeurRectGrille;
 			damier[indice].h = hauteur;
 
-			SDL_RenderDrawRect( renderer, &damier[indice] ); // dessine les carrés les uns après les autres
+			//SDL_RenderDrawRect( renderer, &damier[indice] ); // dessine les carrés les uns après les autres
 		}
 	}
 
-	// SDL_RenderDrawRects(renderer, damier, n); // autre méthode pour afficher plusieurs carrés
+	//SDL_RenderDrawRects(renderer, damier, n); // autre méthode pour afficher plusieurs carrés
 
 	return 0;
 }
