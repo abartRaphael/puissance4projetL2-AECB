@@ -296,9 +296,8 @@ int afficherPions( SDL_Renderer* renderer,
 					break;
 
 				case vide:
-				default:
-					printf("Mauvaise valeur d'état dans (grilleDeValeurs[i][j].couleur) : %d\n", grilleDeValeurs[i][j].couleur);
-					
+					//rien à faire
+					break;
 			}
 
 			if(err == -1) {
