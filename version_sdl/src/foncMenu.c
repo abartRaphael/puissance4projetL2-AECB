@@ -146,12 +146,17 @@ void freeLesImagesMenu(images_menus_t* imagesMenus) {
 /**
  * \fn int initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int largeurWindow, int hauteurWindow )
  * \brief crée les rectangles où placer les images des menus et les ajoute à une structure rect_menus_t
+ * \param pWindow pointeur de SDL_Window, pour récupérer les dimensions de la fenêtre
  * \param renderer pointeur de SDL_Renderer, nécessaire
  * \param rectMenus structure contenant les rectangles où placer les images pour les menus, à remplir
- * \param largeurWindow largeur actuelle de la fenêtre
- * \param hauteurWindow hauteur actuelle de la fenêtre
  */
-void initStructRectMenu( SDL_Renderer* renderer, rect_menus_t* rectMenus, int largeurWindow, int hauteurWindow ) {
+void initStructRectMenu( SDL_Window* pWindow, SDL_Renderer* renderer, rect_menus_t* rectMenus ) {
+
+	// La largeur et la hauteur de la fenêtre du menu
+	int largeurWindow, 
+		hauteurWindow;
+
+	SDL_GetWindowSize(pWindow, &largeurWindow, &hauteurWindow);
 
 	rectMenus->rect_bouton_back = 				creerRect(10, 10, 40, 40); // Position de l'icône en haut à gauche de la fenêtre
 	rectMenus->rect_bouton_contre_joueur = 		creerRect(largeurWindow/4, 100, largeurWindow/2, hauteurWindow/3);
@@ -301,11 +306,6 @@ int afficherMenu( SDL_Renderer* renderer, images_menus_t* imagesMenus, rect_menu
  */
 int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* imagesMenus, affichage_t* actuel, Mix_Music* musique ) {
 
-
-	// La largeur et la hauteur de la fenêtre du menu
-	int largeurWindow, 
-		hauteurWindow;
-
 	SDL_Event event;
 	SDL_Point clic;
 
@@ -314,15 +314,16 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 
 
 
-	//initialisations
-	SDL_GetWindowSize(pWindow, &largeurWindow, &hauteurWindow);
+	// initialisations
 
+	// initialiser toutes les images
 	if( initStructTexturesMenu( renderer, imagesMenus ) == 0 ) {
 		fprintf(stderr, "Erreur loadImage, dans initStructTexturesMenu : %s\n", SDL_GetError());
 		return -1;
 	}
 
-	initStructRectMenu(	renderer, &rectMenus, largeurWindow, hauteurWindow );
+	// créer les rectangles où placer les images
+	initStructRectMenu(	pWindow, renderer, &rectMenus );
 
 
 
@@ -343,8 +344,35 @@ int gererMenus( SDL_Window* pWindow, SDL_Renderer* renderer, images_menus_t* ima
 		SDL_RenderPresent(renderer);
 
 		if (event.type == SDL_QUIT) {
-			// L'utilisateur a cliqué sur le bouton de fermeture de la fenêtre
+			// * L'utilisateur a cliqué sur le bouton de fermeture de la fenêtre
 			*actuel = quitter;
+		}
+		else if(event.window.event == SDL_WINDOWEVENT_RESIZED) {
+				// * la fenêtre a été redimensionnée
+
+				//printf("event.window.data1 = %d\nevent.window.data2 = %d",event.window.data1,event.window.data2);
+
+				// * recalculer les dimensions de la grille
+				dimensionGrilleDynamique( event.window.data1, event.window.data2, &largeurRectGrille, &offsetGrilleX, &offsetGrilleY);
+
+				// * réinitialiser les valeurs de la grille dans le damier
+				initDamier( damier, renderer, 
+				largeurRectGrille, offsetGrilleX, offsetGrilleY );
+
+				initCoordonneesPions(   coordonneesPions, 
+							largeurRectGrille, offsetGrilleX, offsetGrilleY);
+
+				
+				// * réafficher arrière-plan de la fenêtre
+				setDrawColor(renderer, arrierePlan);
+				SDL_RenderClear(renderer);
+				// * réafficher damier
+				afficherDamier( renderer, damier, &images, couleurDamier );
+				// * réafficher les pions
+				afficherPions(renderer, grilleDeValeurs, coordonneesPions, &images);
+
+
+				SDL_RenderPresent(renderer); // met à jour les dessins du Renderer sur l'écran
 		}
 		else if (event.type == SDL_MOUSEBUTTONDOWN) 
 		{
