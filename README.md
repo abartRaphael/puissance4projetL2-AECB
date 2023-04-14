@@ -46,3 +46,7 @@ Il existe trois versions du projet :
 	V0 : Code existant du jeu en version Classique
 	V1 : Version SDL de la V0
 	V2 : Version du jeu en mode "Creux"
+
+
+Contrôles:
+	Le jeu se joue uniquement à la souris. Dans le mode Classique, les trois boutons de la souris permettent de placer des pièces. Et, dans le mode Creux, le clic gauche est pour jouer une pièce pleine, le clic droit pour jouer une pièce creuse, et le clic sur la molette de la souris pour jouer une pièce bloquante. 
