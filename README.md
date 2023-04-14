@@ -47,6 +47,9 @@ Il existe trois versions du projet :
 	V1 : Version SDL de la V0
 	V2 : Version du jeu en mode "Creux"
 
-
+Version terminal :
+	L'affichage des pièces fonctionne comme suit :
+		Premier caractère sert à identifier la couleur, J pour jaune, R pour rouge et @ pour les deux couleurs
+		Second caractère sert à identifier le type, P pour plein, C pour creux et B pour bloquant
 Contrôles:
 	Le jeu se joue uniquement à la souris. Dans le mode Classique, les trois boutons de la souris permettent de placer des pièces. Et, dans le mode Creux, le clic gauche est pour jouer une pièce pleine, le clic droit pour jouer une pièce creuse, et le clic sur la molette de la souris pour jouer une pièce bloquante. 
